@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
-const Resources = ({ navigation }) => {
+const ClubsList = () => {
   return (
     <View style={styles.container}>
-      <Text style={{ fontFamily: 'GeneralSansItalic' }}>Resources</Text>
+      <Text style={{ fontFamily: 'GeneralSansItalic' }}>Clubs List</Text>
       <StatusBar style="auto" />
     </View>
   );
@@ -19,4 +19,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Resources;
+export default ClubsList;

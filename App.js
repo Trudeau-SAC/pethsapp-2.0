@@ -1,13 +1,12 @@
 import { useFonts } from 'expo-font';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import HomeStack from './screens/home/HomeStack';
-import CommunityStack from './screens/community/CommunityStack';
-import ResourcesStack from './screens/resources/ResourcesStack';
-import Settings from './screens/settings/Settings';
+import HomeTabs from './screens/home/HomeTabs';
+import Transit from './screens/home/Transit';
+import ClubsList from './screens/community/ClubsList';
 
-const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   const [fontsLoaded] = useFonts({
@@ -27,12 +26,11 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      <Tab.Navigator screenOptions={{ headerShown: false }}>
-        <Tab.Screen name="Home" component={HomeStack} />
-        <Tab.Screen name="Community" component={CommunityStack} />
-        <Tab.Screen name="Resources" component={ResourcesStack} />
-        <Tab.Screen name="Settings" component={Settings} />
-      </Tab.Navigator>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Home" component={HomeTabs} />
+        <Stack.Screen name="Transit" component={Transit} />
+        <Stack.Screen name="Clubs List" component={ClubsList} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 };
