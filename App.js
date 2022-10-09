@@ -2,10 +2,10 @@ import { useFonts } from 'expo-font';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import Home from './screens/Home';
-import Community from './screens/Community';
-import Resources from './screens/Resources';
-import Settings from './screens/Settings';
+import HomeStack from './screens/home/HomeStack';
+import CommunityStack from './screens/community/CommunityStack';
+import ResourcesStack from './screens/resources/ResourcesStack';
+import Settings from './screens/settings/Settings';
 
 const Tab = createBottomTabNavigator();
 
@@ -28,9 +28,9 @@ const App = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator screenOptions={{ headerShown: false }}>
-        <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Community" component={Community} />
-        <Tab.Screen name="Resources" component={Resources} />
+        <Tab.Screen name="Home" component={HomeStack} />
+        <Tab.Screen name="Community" component={CommunityStack} />
+        <Tab.Screen name="Resources" component={ResourcesStack} />
         <Tab.Screen name="Settings" component={Settings} />
       </Tab.Navigator>
     </NavigationContainer>
