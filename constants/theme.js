@@ -19,6 +19,16 @@ export const theme = {
     neutral1: palette.grey1,
     neutral2: palette.grey2,
   },
+  fonts: {
+    bold: 'GeneralSansBold',
+    boldItalic: 'GeneralSansBoldItalic',
+    semibold: 'GeneralSansSemiBold',
+    semiboldItalic: 'GeneralSansSemiBoldItalic',
+    medium: 'GeneralSansMedium',
+    mediumItalic: 'GeneralSansMediumItalic',
+    regular: 'GeneralSans',
+    italic: 'GeneralSansItalic',
+  },
   spacing: {
     s0_5: 2,
     s1: 4,
