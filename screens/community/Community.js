@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import Card from '../../components/Card';
 
 const Community = ({ navigation }) => {
   return (
@@ -9,6 +10,7 @@ const Community = ({ navigation }) => {
         title="Clubs List"
         onPress={() => navigation.navigate('Clubs List')}
       />
+      <Card title="Clubs List" />
       <StatusBar style="auto" />
     </View>
   );
