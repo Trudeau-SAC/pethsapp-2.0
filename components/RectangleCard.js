@@ -7,16 +7,17 @@ import {
 } from 'react-native';
 import { ThemeContext } from '../utils/themeContext';
 import { useContext } from 'react';
+import { useTheme } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 
 const RectangleCard = (props) => {
-  const { theme } = useContext(ThemeContext);
+  const theme = useTheme();
   const navigation = useNavigation();
 
   const styles = StyleSheet.create({
     container: {
-      borderColor: theme.colors.primary,
+      borderColor: theme.colors.border,
       borderWidth: 1,
       borderRadius: 24,
       display: 'block',

@@ -11,6 +11,7 @@ export const palette = {
 };
 
 export const theme = {
+  dark: false,
   colors: {
     background: palette.beige,
     primary: palette.black,
@@ -19,6 +20,10 @@ export const theme = {
     neutral1: palette.grey1,
     neutral2: palette.grey2,
     onPrimary: palette.beige,
+    card: palette.red1,
+    text: palette.black,
+    border: palette.black,
+    notification: palette.beige,
   },
   fonts: {
     bold: 'GeneralSansBold',
@@ -99,6 +104,7 @@ export const theme = {
 
 export const darkTheme = {
   ...theme,
+  dark: true,
   colors: {
     background: palette.black,
     primary: palette.beige,
@@ -107,5 +113,9 @@ export const darkTheme = {
     neutral1: palette.grey2,
     neutral2: palette.grey1,
     onPrimary: palette.beige,
+    card: palette.red1,
+    text: palette.beige,
+    border: palette.beige,
+    notification: palette.beige,
   },
 };
