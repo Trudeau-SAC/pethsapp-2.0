@@ -2,14 +2,15 @@ import { useFonts } from 'expo-font';
 import { useState } from 'react';
 import { NavigationContainer, ThemeProvider } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { ThemeContext, lightTheme, darkTheme } from './Theme';
+import { theme, darkTheme } from './constants/theme';
+import { ThemeContext } from './utils/themeContext';
 
 import HomeTabs from './screens/home/HomeTabs';
 import Transit from './screens/home/Transit';
 import ClubsList from './screens/community/ClubsList';
 
 const themes = {
-  light: lightTheme,
+  light: theme,
   dark: darkTheme,
 };
 

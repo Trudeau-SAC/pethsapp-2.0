@@ -18,6 +18,7 @@ export const theme = {
     tertiary: palette.red2,
     neutral1: palette.grey1,
     neutral2: palette.grey2,
+    onPrimary: palette.beige,
   },
   fonts: {
     bold: 'GeneralSansBold',
@@ -105,5 +106,6 @@ export const darkTheme = {
     tertiary: palette.red3,
     neutral1: palette.grey2,
     neutral2: palette.grey1,
+    onPrimary: palette.beige,
   },
 };

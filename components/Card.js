@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native';
-import { ThemeContext } from '../Theme';
+import { ThemeContext } from '../utils/themeContext';
 import { useContext } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -10,7 +10,7 @@ const Card = (props) => {
     container: {
       alignItems: 'center',
       justifyContent: 'center',
-      borderColor: theme.colors.border,
+      borderColor: theme.colors.primary,
       borderWidth: 1,
       borderRadius: 24,
       width: 240,
@@ -25,7 +25,7 @@ const Card = (props) => {
   return (
     <LinearGradient
       style={styles.container}
-      colors={[theme.colors.primary + 'CC', theme.colors.primary + '00']}
+      colors={[theme.colors.secondary + 'CC', theme.colors.secondary + '00']}
       start={{ x: 0, y: 1 }}
       end={{ x: 1, y: 0 }}
     >
