@@ -29,18 +29,27 @@ const RectangleCard = (props) => {
     },
     textContainer: {
       flex: 1,
-      flexDirection: 'column-reverse',
+      flexDirection: 'column',
+      justifyContent: 'flex-end',
       position: 'absolute',
       width: 200,
       height: 112,
       bottom: theme.spacing.s6,
       left: theme.spacing.s5,
     },
-    title: {
+    text: {
       color: theme.colors.onPrimary,
+      marginTop: theme.spacing.s1,
+    },
+    title: {
       fontFamily: theme.fonts.semibold,
       fontWeight: theme.textVariants.heading6.fontWeight,
       fontSize: theme.textVariants.heading6.fontSize,
+    },
+    subtitle: {
+      fontFamily: theme.fonts.regular,
+      fontWeight: theme.textVariants.body2.fontWeight,
+      fontSize: theme.textVariants.body2.fontSize,
     },
     graphic: {
       resizeMode: 'contain',
@@ -58,8 +67,8 @@ const RectangleCard = (props) => {
       position: 'absolute',
       width: 36,
       height: 36,
-      right: 16,
-      top: 16,
+      right: theme.spacing.s4,
+      top: theme.spacing.s4,
       borderRadius: '50%',
       backgroundColor: theme.colors.onPrimary,
       padding: 8,
@@ -83,17 +92,25 @@ const RectangleCard = (props) => {
       />
       <View style={styles.textContainer}>
         {props.supertitle && (
-          <Text style={styles.supertitle}>{props.supertitle}</Text>
+          <Text style={{ ...styles.subtitle, ...styles.text }}>
+            {props.supertitle}
+          </Text>
         )}
-        {props.title && <Text style={styles.title}>{props.title}</Text>}
+        {props.title && (
+          <Text style={{ ...styles.title, ...styles.text }}>{props.title}</Text>
+        )}
         {props.subtitle && (
-          <Text style={styles.subtitle}>{props.subtitle}</Text>
+          <Text style={{ ...styles.subtitle, ...styles.text }}>
+            {props.subtitle}
+          </Text>
         )}
       </View>
       <TouchableHighlight
         style={styles.button}
         underlayColor={theme.colors.neutral2}
-        onPress={() => navigation.navigate(props.navigateTo)}
+        onPress={() =>
+          navigation.navigate(props.navigateTo, props.navigationParams)
+        }
       >
         <Image
           style={styles.icon}

@@ -8,6 +8,8 @@ const Community = ({ navigation }) => {
       <Text style={{ fontFamily: 'GeneralSansItalic' }}>Community</Text>
       <RectangleCard
         title="Clubs List"
+        subtitle="Clubs Fair, TSAC Event, Soccer Team Tryouts, DECA Meeting..."
+        supertitle="Sept. 19"
         navigateTo="Clubs List"
         imageSource={require('../../assets/graphics/clubs-list.png')}
       />
