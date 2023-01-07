@@ -35,7 +35,7 @@ const App = () => {
   }
 
   return (
-    <ThemeContext.Provider value={{ theme: themes[theme], setTheme }}>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
       <NavigationContainer theme={themes[theme]}>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Home Tabs" component={HomeTabs} />

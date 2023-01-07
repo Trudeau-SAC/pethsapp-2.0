@@ -1,12 +1,4 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableHighlight,
-  Image,
-} from 'react-native';
-import { ThemeContext } from '../utils/themeContext';
-import { useContext } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
@@ -54,7 +46,7 @@ const RectangleCard = (props) => {
   });
 
   return (
-    <TouchableHighlight
+    <TouchableOpacity
       style={styles.container}
       onPress={() => navigation.navigate(props.navigateTo)}
       underlayColor={theme.colors.onPrimary}
@@ -65,10 +57,7 @@ const RectangleCard = (props) => {
         )}
         <LinearGradient
           style={styles.background}
-          colors={[
-            theme.colors.secondary + 'CC',
-            theme.colors.secondary + '00',
-          ]}
+          colors={[theme.colors.card + 'CC', theme.colors.card + '00']}
           start={{ x: 0, y: 1 }}
           end={{ x: 1, y: 0 }}
         />
@@ -82,7 +71,7 @@ const RectangleCard = (props) => {
           )}
         </View>
       </View>
-    </TouchableHighlight>
+    </TouchableOpacity>
   );
 };
 
