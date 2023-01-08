@@ -1,30 +1,22 @@
-import { StyleSheet, View, Button } from 'react-native';
+import { ScrollView, Text } from 'react-native';
 import RectangleCard from '../../components/RectangleCard';
-import Text from '../../components/Text';
+import Layout from '../../components/Layout';
 
 const Community = ({ navigation }) => {
   return (
-    <View style={styles.container}>
-      <Text variant="heading1" color="text">
-        Community
-      </Text>
-      <RectangleCard
-        title="Clubs List"
-        subtitle="Clubs Fair, TSAC Event, Soccer Team Tryouts, DECA Meeting..."
-        supertitle="Sept. 19"
-        navigateTo="Clubs List"
-        imageSource={require('../../assets/graphics/clubs-list.png')}
-      />
-    </View>
+    <Layout>
+      <ScrollView>
+        <Text style={{ fontFamily: 'GeneralSansItalic' }}>Community</Text>
+        <RectangleCard
+          title="Clubs List"
+          subtitle="Clubs Fair, TSAC Event, Soccer Team Tryouts, DECA Meeting..."
+          supertitle="Sept. 19"
+          navigateTo="Clubs List"
+          imageSource={require('../../assets/graphics/clubs-list.png')}
+        />
+      </ScrollView>
+    </Layout>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default Community;

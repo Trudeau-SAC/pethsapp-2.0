@@ -1,6 +1,7 @@
-import { StyleSheet, Text, View, Switch } from 'react-native';
+import { Text, Switch } from 'react-native';
 import { useContext } from 'react';
 import { ThemeContext } from '../../utils/themeContext';
+import Layout from '../../components/Layout';
 
 const Settings = () => {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -10,19 +11,11 @@ const Settings = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <Layout>
       <Text style={{ fontFamily: 'GeneralSansItalic' }}>Settings</Text>
       <Switch value={theme == 'dark'} onValueChange={toggleTheme} />
-    </View>
+    </Layout>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default Settings;
