@@ -1,10 +1,13 @@
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, View, Button } from 'react-native';
 import RectangleCard from '../../components/RectangleCard';
+import Text from '../../components/Text';
 
 const Community = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text style={{ fontFamily: 'GeneralSansItalic' }}>Community</Text>
+      <Text variant="heading1" color="text">
+        Community
+      </Text>
       <RectangleCard
         title="Clubs List"
         subtitle="Clubs Fair, TSAC Event, Soccer Team Tryouts, DECA Meeting..."

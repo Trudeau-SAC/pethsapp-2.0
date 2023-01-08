@@ -1,8 +1,9 @@
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet, Image } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import ExpandButton from './ExpandButton';
+import Text from './Text';
 
 const RectangleCard = (props) => {
   const theme = useTheme();
@@ -33,18 +34,7 @@ const RectangleCard = (props) => {
       left: theme.spacing.s5,
     },
     text: {
-      color: theme.colors.onPrimary,
       marginTop: theme.spacing.s1,
-    },
-    title: {
-      fontFamily: theme.fonts.semibold,
-      fontWeight: theme.textVariants.heading6.fontWeight,
-      fontSize: theme.textVariants.heading6.fontSize,
-    },
-    subtitle: {
-      fontFamily: theme.fonts.regular,
-      fontWeight: theme.textVariants.body2.fontWeight,
-      fontSize: theme.textVariants.body2.fontSize,
     },
     graphic: {
       resizeMode: 'contain',
@@ -72,15 +62,17 @@ const RectangleCard = (props) => {
       />
       <View style={styles.textContainer}>
         {props.supertitle && (
-          <Text style={{ ...styles.subtitle, ...styles.text }}>
+          <Text color="onPrimary" variant="body2" style={styles.text}>
             {props.supertitle}
           </Text>
         )}
         {props.title && (
-          <Text style={{ ...styles.title, ...styles.text }}>{props.title}</Text>
+          <Text color="onPrimary" variant="heading6" style={styles.text}>
+            {props.title}
+          </Text>
         )}
         {props.subtitle && (
-          <Text style={{ ...styles.subtitle, ...styles.text }}>
+          <Text color="onPrimary" variant="body2" style={styles.text}>
             {props.subtitle}
           </Text>
         )}
