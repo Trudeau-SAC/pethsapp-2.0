@@ -1,19 +1,15 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import Text from '../../components/Text';
+import Layout from '../../components/Layout';
 
 const Transit = () => {
   return (
-    <View style={styles.container}>
-      <Text style={{ fontFamily: 'GeneralSansItalic' }}>Transit</Text>
-    </View>
+    <Layout>
+      <Text variant="heading3" color="text">
+        Transit
+      </Text>
+    </Layout>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default Transit;

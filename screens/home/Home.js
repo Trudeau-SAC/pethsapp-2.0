@@ -1,11 +1,14 @@
-import { Button, ScrollView, Text } from 'react-native';
+import { Button, ScrollView } from 'react-native';
 import Layout from '../../components/Layout';
+import Text from '../../components/Text';
 
 const Home = ({ navigation }) => {
   return (
     <Layout>
       <ScrollView>
-        <Text style={{ fontFamily: 'GeneralSansItalic' }}>Home</Text>
+        <Text variant="heading1" color="text">
+          Home
+        </Text>
         <Button
           title="Transit"
           onPress={() => navigation.navigate('Transit')}

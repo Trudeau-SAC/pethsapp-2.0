@@ -1,19 +1,14 @@
-import { StyleSheet, Text, View } from 'react-native';
+import Layout from '../../components/Layout';
+import Text from '../../components/Text';
 
 const ClubsList = () => {
   return (
-    <View style={styles.container}>
-      <Text style={{ fontFamily: 'GeneralSansItalic' }}>Clubs List</Text>
-    </View>
+    <Layout>
+      <Text variant="heading2" color="text">
+        Clubs List
+      </Text>
+    </Layout>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default ClubsList;

@@ -4,11 +4,14 @@ import { useTheme } from '@react-navigation/native';
 const Text = ({ style, variant, color, ...rest }) => {
   const theme = useTheme();
 
+  const textVariant = theme.textVariants[variant];
+
   return (
     <RNText
       style={{
         color: theme.colors[color],
-        ...theme.textVariants[variant],
+        fontFamily: theme.fonts[textVariant.fontWeight],
+        ...textVariant,
         ...style,
       }}
       {...rest}
