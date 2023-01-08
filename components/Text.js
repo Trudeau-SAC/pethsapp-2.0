@@ -10,7 +10,6 @@ const Text = ({ style, variant, color, ...rest }) => {
     <RNText
       style={{
         color: theme.colors[color],
-        fontFamily: theme.fonts[textVariant.fontWeight],
         ...textVariant,
         ...style,
       }}

@@ -33,6 +33,9 @@ const RectangleCard = (props) => {
       bottom: theme.spacing.s6,
       left: theme.spacing.s5,
     },
+    text: {
+      marginTop: theme.spacing.s1,
+    },
     graphic: {
       resizeMode: 'contain',
       height: '100%',
@@ -59,37 +62,17 @@ const RectangleCard = (props) => {
       />
       <View style={styles.textContainer}>
         {props.supertitle && (
-          <Text
-            color="onPrimary"
-            variant="body2"
-            style={{
-              marginTop: theme.spacing.s1,
-            }}
-          >
+          <Text color="onPrimary" variant="body2" style={styles.text}>
             {props.supertitle}
           </Text>
         )}
         {props.title && (
-          <Text
-            color="onPrimary"
-            variant="heading6"
-            style={{
-              marginTop: theme.spacing.s1,
-              fontWeight: 'semibold',
-              fontFamily: theme.fonts.semibold,
-            }}
-          >
+          <Text color="onPrimary" variant="cardTitle" style={styles.text}>
             {props.title}
           </Text>
         )}
         {props.subtitle && (
-          <Text
-            color="onPrimary"
-            variant="body2"
-            style={{
-              marginTop: theme.spacing.s1,
-            }}
-          >
+          <Text color="onPrimary" variant="body2" style={styles.text}>
             {props.subtitle}
           </Text>
         )}

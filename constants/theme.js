@@ -10,6 +10,17 @@ export const palette = {
   red3: '#F2C0C0',
 };
 
+export const fonts = {
+  bold: 'GeneralSansBold',
+  boldItalic: 'GeneralSansBoldItalic',
+  semibold: 'GeneralSansSemiBold',
+  semiboldItalic: 'GeneralSansSemiBoldItalic',
+  medium: 'GeneralSansMedium',
+  mediumItalic: 'GeneralSansMediumItalic',
+  regular: 'GeneralSans',
+  italic: 'GeneralSansItalic',
+};
+
 export const theme = {
   dark: false,
   colors: {
@@ -25,16 +36,6 @@ export const theme = {
     text: palette.black,
     border: palette.black,
     notification: palette.red1,
-  },
-  fonts: {
-    bold: 'GeneralSansBold',
-    boldItalic: 'GeneralSansBoldItalic',
-    semibold: 'GeneralSansSemiBold',
-    semiboldItalic: 'GeneralSansSemiBoldItalic',
-    medium: 'GeneralSansMedium',
-    mediumItalic: 'GeneralSansMediumItalic',
-    regular: 'GeneralSans',
-    italic: 'GeneralSansItalic',
   },
   spacing: {
     s0_5: 2,
@@ -65,40 +66,54 @@ export const theme = {
   },
   textVariants: {
     heading1: {
+      fontFamily: fonts.semibold,
       fontSize: 60,
       fontWeight: 'semibold',
     },
     heading2: {
+      fontFamily: fonts.semibold,
       fontSize: 48,
       fontWeight: 'semibold',
     },
     heading3: {
+      fontFamily: fonts.semibold,
       fontSize: 36,
       fontWeight: 'semibold',
     },
     heading4: {
+      fontFamily: fonts.medium,
       fontSize: 32,
       fontWeight: 'medium',
     },
     heading5: {
+      fontFamily: fonts.medium,
       fontSize: 24,
       fontWeight: 'medium',
     },
     heading6: {
+      fontFamily: fonts.medium,
       fontSize: 20,
       fontWeight: 'medium',
     },
     heading7: {
+      fontFamily: fonts.medium,
       fontSize: 16,
       fontWeight: 'medium',
     },
     body1: {
+      fontFamily: fonts.regular,
       fontSize: 14,
       fontWeight: 'regular',
     },
     body2: {
+      fontFamily: fonts.regular,
       fontSize: 12,
       fontWeight: 'regular',
+    },
+    cardTitle: {
+      fontFamily: fonts.semibold,
+      fontSize: 20,
+      fontWeight: 'semibold',
     },
   },
 };
