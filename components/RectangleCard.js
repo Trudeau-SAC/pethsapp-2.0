@@ -1,13 +1,8 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  TouchableHighlight,
-} from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
+import ExpandButton from './ExpandButton';
 
 const RectangleCard = (props) => {
   const theme = useTheme();
@@ -58,21 +53,6 @@ const RectangleCard = (props) => {
       position: 'absolute',
       right: 0,
     },
-    icon: {
-      resizeMode: 'contain',
-      width: '100%',
-      height: '100%',
-    },
-    button: {
-      position: 'absolute',
-      width: 36,
-      height: 36,
-      right: theme.spacing.s4,
-      top: theme.spacing.s4,
-      borderRadius: '50%',
-      backgroundColor: theme.colors.onPrimary,
-      padding: 8,
-    },
   });
 
   return (
@@ -105,18 +85,11 @@ const RectangleCard = (props) => {
           </Text>
         )}
       </View>
-      <TouchableHighlight
-        style={styles.button}
-        underlayColor={theme.colors.neutral2}
+      <ExpandButton
         onPress={() =>
           navigation.navigate(props.navigateTo, props.navigationParams)
         }
-      >
-        <Image
-          style={styles.icon}
-          source={require('../assets/icons/maximize-icon.png')}
-        />
-      </TouchableHighlight>
+      />
     </View>
   );
 };

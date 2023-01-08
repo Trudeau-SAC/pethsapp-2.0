@@ -1,11 +1,9 @@
 import { StyleSheet, Text, View } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
 
 const Transit = () => {
   return (
     <View style={styles.container}>
       <Text style={{ fontFamily: 'GeneralSansItalic' }}>Transit</Text>
-      <StatusBar style="auto" />
     </View>
   );
 };

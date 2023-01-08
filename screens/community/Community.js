@@ -1,5 +1,4 @@
 import { StyleSheet, Text, View, Button } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
 import RectangleCard from '../../components/RectangleCard';
 
 const Community = ({ navigation }) => {
@@ -13,7 +12,6 @@ const Community = ({ navigation }) => {
         navigateTo="Clubs List"
         imageSource={require('../../assets/graphics/clubs-list.png')}
       />
-      <StatusBar style="auto" />
     </View>
   );
 };

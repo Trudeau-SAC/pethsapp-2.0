@@ -1,5 +1,4 @@
 import { StyleSheet, Text, View, Switch } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
 import { useContext } from 'react';
 import { ThemeContext } from '../../utils/themeContext';
 
@@ -13,7 +12,6 @@ const Settings = () => {
   return (
     <View style={styles.container}>
       <Text style={{ fontFamily: 'GeneralSansItalic' }}>Settings</Text>
-      <StatusBar style="auto" />
       <Switch value={theme == 'dark'} onValueChange={toggleTheme} />
     </View>
   );
