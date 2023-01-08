@@ -1,5 +1,6 @@
 import { useTheme } from '@react-navigation/native';
 import { StyleSheet, TouchableHighlight, Image } from 'react-native';
+import { Feather } from '@expo/vector-icons';
 
 const ExpandButton = ({ onPress }) => {
   const theme = useTheme();
@@ -28,10 +29,7 @@ const ExpandButton = ({ onPress }) => {
       underlayColor={theme.colors.neutral2}
       onPress={onPress}
     >
-      <Image
-        style={styles.icon}
-        source={require('../assets/icons/maximize-icon.png')}
-      />
+      <Feather name="maximize-2" size={20} color={theme.colors.primary} />
     </TouchableHighlight>
   );
 };
