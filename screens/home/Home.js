@@ -4,7 +4,7 @@ import Text from '../../components/Text';
 
 const Home = ({ navigation }) => {
   return (
-    <Layout>
+    <Layout scrolling>
       <ScrollView>
         <Text variant="heading1" color="text">
           Home

@@ -4,7 +4,7 @@ import Layout from '../../components/Layout';
 
 const Transit = () => {
   return (
-    <Layout>
+    <Layout scrolling>
       <Text variant="heading3" color="text">
         Transit
       </Text>

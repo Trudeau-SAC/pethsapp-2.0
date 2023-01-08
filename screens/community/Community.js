@@ -1,16 +1,16 @@
 import { ScrollView } from 'react-native';
-import RectangleCard from '../../components/RectangleCard';
+import Card from '../../components/Card';
 import Layout from '../../components/Layout';
 import Text from '../../components/Text';
 
 const Community = ({ navigation }) => {
   return (
-    <Layout>
+    <Layout scrolling>
       <ScrollView>
         <Text variant="heading2" color="text">
           Community
         </Text>
-        <RectangleCard
+        <Card
           title="Clubs List"
           subtitle="Clubs Fair, TSAC Event, Soccer Team Tryouts, DECA Meeting..."
           supertitle="Sept. 19"

@@ -116,6 +116,7 @@ export const theme = {
       fontWeight: 'semibold',
     },
   },
+  tabBarHeight: 100, // Tab bar overlaps content, so padding must be added to bottom of content so it all shows
 };
 
 export const darkTheme = {

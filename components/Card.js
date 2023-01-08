@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import ExpandButton from './ExpandButton';
 import Text from './Text';
 
-const RectangleCard = (props) => {
+const Card = (props) => {
   const theme = useTheme();
   const navigation = useNavigation();
 
@@ -86,4 +86,4 @@ const RectangleCard = (props) => {
   );
 };
 
-export default RectangleCard;
+export default Card;

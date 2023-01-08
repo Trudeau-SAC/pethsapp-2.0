@@ -19,7 +19,7 @@ const HomeTabs = () => {
       position: 'absolute',
       backgroundColor: 'transparent',
       borderTopColor: 'transparent',
-      height: 100,
+      height: theme.tabBarHeight,
     },
     tabBarBackground: {
       height: '100%',
