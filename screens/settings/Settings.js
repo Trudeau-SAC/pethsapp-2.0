@@ -12,7 +12,7 @@ const Settings = () => {
   };
 
   return (
-    <Layout>
+    <Layout hasTabBar>
       <Text variant="heading2" color="text">
         Settings
       </Text>

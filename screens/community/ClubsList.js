@@ -3,7 +3,7 @@ import Text from '../../components/Text';
 
 const ClubsList = () => {
   return (
-    <Layout scrolling>
+    <Layout>
       <Text variant="heading2" color="text">
         Clubs List
       </Text>
