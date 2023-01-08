@@ -17,7 +17,7 @@ export const fonts = {
   semiboldItalic: 'GeneralSansSemiBoldItalic',
   medium: 'GeneralSansMedium',
   mediumItalic: 'GeneralSansMediumItalic',
-  regular: 'GeneralSans',
+  regular: 'GeneralSansRegular',
   italic: 'GeneralSansItalic',
 };
 
