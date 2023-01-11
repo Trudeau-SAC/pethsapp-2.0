@@ -1,6 +1,6 @@
 // Theme info: https://shopify.engineering/5-ways-to-improve-your-react-native-styling-workflow
 
-export const palette = {
+const palette = {
   beige: '#FEFBEF',
   grey1: '#5C5C5C',
   grey2: '#E2E2E2',
@@ -10,7 +10,7 @@ export const palette = {
   red3: '#F2C0C0',
 };
 
-export const fonts = {
+const fonts = {
   bold: 'GeneralSansBold',
   boldItalic: 'GeneralSansBoldItalic',
   semibold: 'GeneralSansSemiBold',
@@ -110,6 +110,16 @@ export const theme = {
       fontFamily: fonts.regular,
       fontSize: 12,
       fontWeight: 'regular',
+    },
+    cardTitle: {
+      fontFamily: fonts.semibold,
+      fontSize: 20,
+      fontWeight: 'semibold',
+    },
+    logo: {
+      fontFamily: fonts.bold,
+      fontSize: 12,
+      fontWeight: 'bold',
     },
   },
   tabBarHeight: 100, // Tab bar overlaps content, so padding must be added to bottom of content so it all shows

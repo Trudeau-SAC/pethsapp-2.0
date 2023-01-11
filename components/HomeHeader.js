@@ -31,10 +31,9 @@ export default function HomeHeader() {
   return (
     <>
       <Text
-        variant="body2"
+        variant="logo"
         color="logo"
         style={{
-          fontFamily: 'GeneralSansBold',
           marginBottom: theme.spacing.s4,
         }}
       >
