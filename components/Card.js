@@ -67,7 +67,11 @@ const Card = (props) => {
           </Text>
         )}
         {props.title && (
-          <Text color="onPrimary" variant="cardTitle" style={styles.text}>
+          <Text
+            color="onPrimary"
+            variant="heading6"
+            style={{ ...styles.text, fontFamily: 'GeneralSansSemiBold' }}
+          >
             {props.title}
           </Text>
         )}

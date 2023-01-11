@@ -36,6 +36,7 @@ export const theme = {
     text: palette.black,
     border: palette.black,
     notification: palette.red1,
+    logo: palette.red1,
   },
   spacing: {
     s0_5: 2,
@@ -110,11 +111,6 @@ export const theme = {
       fontSize: 12,
       fontWeight: 'regular',
     },
-    cardTitle: {
-      fontFamily: fonts.semibold,
-      fontSize: 20,
-      fontWeight: 'semibold',
-    },
   },
   tabBarHeight: 100, // Tab bar overlaps content, so padding must be added to bottom of content so it all shows
 };
@@ -128,5 +124,6 @@ export const darkTheme = {
     foreground: palette.beige,
     text: palette.beige,
     border: palette.beige,
+    logo: palette.red3,
   },
 };

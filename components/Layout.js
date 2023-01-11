@@ -13,10 +13,10 @@ export default function Layout({ children, hasTabBar }) {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      paddingTop: insets.top,
       paddingBottom: insets.bottom,
     },
     scrollView: {
+      minHeight: '100%',
       paddingLeft: theme.spacing.s5,
       paddingRight: theme.spacing.s5,
       paddingBottom: hasTabBar ? theme.tabBarHeight - insets.bottom : 0,
