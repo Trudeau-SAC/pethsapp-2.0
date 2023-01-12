@@ -1,4 +1,4 @@
-import { StyleSheet, ScrollView, View, Dimensions } from 'react-native';
+import { StyleSheet, ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTheme } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -9,26 +9,20 @@ import { LinearGradient } from 'expo-linear-gradient';
  */
 export default function Layout({ children, hasTabBar }) {
   const insets = useSafeAreaInsets();
-  const windowWidth = Dimensions.get('window').width;
   const theme = useTheme();
 
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      paddingBottom: insets.bottom,
-    },
-    scrollView: {
-      minHeight: '100%',
-      paddingLeft: theme.spacing.s5,
-      paddingRight: theme.spacing.s5,
-      paddingBottom: hasTabBar ? theme.tabBarHeight - insets.bottom : 0,
+      paddingBottom: hasTabBar ? theme.tabBarHeight : insets.bottom,
+      paddingLeft: insets.left,
+      paddingRight: insets.right,
     },
     gradient: {
       position: 'absolute',
       height: 164,
-      width: windowWidth,
-      top: 0,
       left: 0,
+      right: 0,
     },
     topBackground: {
       backgroundColor: theme.colors.primary + '4D',
@@ -41,21 +35,19 @@ export default function Layout({ children, hasTabBar }) {
   });
 
   return (
-    <View style={styles.container}>
-      <ScrollView
-        contentContainerStyle={styles.scrollView}
-        alwaysBounceVertical={false}
-      >
-        {/* View so that when the screen bounces on IOS, the background is consistent */}
-        <View style={styles.topBackground} />
-        <LinearGradient
-          style={styles.gradient}
-          colors={[theme.colors.primary + '4D', theme.colors.primary + '00']}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 0, y: 1 }}
-        />
-        {children}
-      </ScrollView>
-    </View>
+    <ScrollView
+      contentContainerStyle={styles.container}
+      alwaysBounceVertical={true}
+    >
+      {/* View so that when the screen bounces on IOS, the background is consistent */}
+      <View style={styles.topBackground} />
+      <LinearGradient
+        style={styles.gradient}
+        colors={[theme.colors.primary + '4D', theme.colors.primary + '00']}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 0, y: 1 }}
+      />
+      {children}
+    </ScrollView>
   );
 }
