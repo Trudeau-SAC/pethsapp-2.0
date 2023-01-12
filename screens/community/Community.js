@@ -1,5 +1,5 @@
 import { useTheme } from '@react-navigation/native';
-import Card from '../../components/Card';
+import RectangleCard from '../../components/RectangleCard';
 import Layout from '../../components/Layout';
 import Text from '../../components/Text';
 
@@ -15,8 +15,7 @@ const Community = ({ navigation }) => {
       >
         Community
       </Text>
-      <Card
-        shape="rectangle"
+      <RectangleCard
         title="Clubs List"
         subtitle="Clubs Fair, TSAC Event, Soccer Team Tryouts, DECA Meeting..."
         supertitle="Sept. 19"
