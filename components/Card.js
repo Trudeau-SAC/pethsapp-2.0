@@ -5,7 +5,27 @@ import { useNavigation } from '@react-navigation/native';
 import ExpandButton from './ExpandButton';
 import Text from './Text';
 
-const Card = (props) => {
+/**
+ * Card component, which displays text and images
+ * @param {string} shape The shape of the card, either 'rectangle' or 'square'
+ * @param {string} title The main title of the card
+ * @param {string} subtitle The subtitle of the card
+ * @param {string} supertitle Like the subtitle, but above the title
+ * @param {string} navigateTo The name of the screen to navigate to when the card is pressed
+ * @param {object} navigationParams The params to pass to the screen when navigating
+ * @param {string} imageSource The source of the image to display on the card
+ * @param {string} icon The name of the icon to display on the card
+ * @returns
+ */
+const Card = ({
+  shape,
+  title,
+  subtitle,
+  supertitle,
+  navigateTo,
+  navigationParams,
+  imageSource,
+}) => {
   const theme = useTheme();
   const navigation = useNavigation();
 
@@ -48,12 +68,10 @@ const Card = (props) => {
   return (
     <View
       style={styles.container}
-      onPress={() => navigation.navigate(props.navigateTo)}
+      onPress={() => navigation.navigate(navigateTo)}
       underlayColor={theme.colors.onPrimary}
     >
-      {props.imageSource && (
-        <Image source={props.imageSource} style={styles.graphic} />
-      )}
+      {imageSource && <Image source={imageSource} style={styles.graphic} />}
       <LinearGradient
         style={styles.background}
         colors={[theme.colors.card + 'CC', theme.colors.card + '00']}
@@ -61,26 +79,24 @@ const Card = (props) => {
         end={{ x: 1, y: 0 }}
       />
       <View style={styles.textContainer}>
-        {props.supertitle && (
+        {supertitle && (
           <Text color="onPrimary" variant="body2" style={styles.text}>
-            {props.supertitle}
+            {supertitle}
           </Text>
         )}
-        {props.title && (
+        {title && (
           <Text color="onPrimary" variant="cardTitle">
-            {props.title}
+            {title}
           </Text>
         )}
-        {props.subtitle && (
+        {subtitle && (
           <Text color="onPrimary" variant="body2" style={styles.text}>
-            {props.subtitle}
+            {subtitle}
           </Text>
         )}
       </View>
       <ExpandButton
-        onPress={() =>
-          navigation.navigate(props.navigateTo, props.navigationParams)
-        }
+        onPress={() => navigation.navigate(navigateTo, navigationParams)}
       />
     </View>
   );
