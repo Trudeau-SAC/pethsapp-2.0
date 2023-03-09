@@ -3,6 +3,7 @@ import Layout from '../../components/Layout';
 import Text from '../../components/Text';
 import HomeHeader from '../../components/HomeHeader';
 import { useTheme } from '@react-navigation/native';
+import Chip from '../../components/Chip';
 
 const Home = ({ navigation }) => {
   const theme = useTheme();
@@ -17,7 +18,6 @@ const Home = ({ navigation }) => {
       >
         <HomeHeader />
       </View>
-      <Button title="Transit" onPress={() => navigation.navigate('Transit')} />
     </Layout>
   );
 };
