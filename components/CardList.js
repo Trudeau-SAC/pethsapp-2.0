@@ -19,7 +19,7 @@ export default function CardList({ data }) {
   ));
 
   return (
-    <ScrollView style={{ flexGrow: 0 }} horizontal>
+    <ScrollView style={{ overflow: 'visible', flexGrow: 0 }} horizontal>
       {cards}
     </ScrollView>
   );
