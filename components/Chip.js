@@ -17,12 +17,12 @@ export default function Chip({ title, selected, onPress }) {
       alignSelf: 'flex-start',
     },
     text: {
-      color: selected ? theme.colors.foreground : theme.colors.text,
+      color: selected ? theme.colors.background : theme.colors.text,
     },
   });
 
   return (
-    <Pressable style={styles.chip} onPress={onPress(title)}>
+    <Pressable style={styles.chip} onPress={() => onPress(title)}>
       <Text style={styles.text} variant="">
         {title}
       </Text>

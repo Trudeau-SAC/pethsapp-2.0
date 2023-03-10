@@ -1,23 +1,24 @@
 import { View, Button } from 'react-native';
 import Layout from '../../components/Layout';
-import Text from '../../components/Text';
 import HomeHeader from '../../components/HomeHeader';
 import { useTheme } from '@react-navigation/native';
-import Chip from '../../components/Chip';
+import ChipRow from '../../components/ChipRow';
 
 const Home = ({ navigation }) => {
   const theme = useTheme();
 
   return (
-    <Layout hasTabBar>
+    <Layout>
       <View
         style={{
-          marginTop: theme.spacing.s16,
+          marginTop: theme.spacing.s11,
           marginBottom: theme.spacing.s12,
         }}
       >
         <HomeHeader />
       </View>
+
+      <ChipRow titles={['Twelve', 'Omori', 'Monika']} />
     </Layout>
   );
 };

@@ -9,7 +9,7 @@ const Community = ({ navigation }) => {
   const theme = useTheme();
 
   return (
-    <Layout hasTabBar>
+    <Layout>
       <Text variant="heading2" color="text">
         Community
       </Text>

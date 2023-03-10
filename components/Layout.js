@@ -5,18 +5,18 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 /**
  * Provides a consistent layout for all screens
- * @param {boolean} hasTabBar - Whether the screen shows the tab bar, so padding can be added to the bottom
  */
-export default function Layout({ children, hasTabBar }) {
+export default function Layout({ children }) {
   const insets = useSafeAreaInsets();
   const theme = useTheme();
 
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      paddingBottom: hasTabBar ? theme.tabBarHeight : insets.bottom,
-      paddingLeft: insets.left,
-      paddingRight: insets.right,
+      paddingTop: insets.top,
+      paddingBottom: insets.bottom + theme.tabBarHeight,
+      paddingLeft: insets.left + theme.spacing.s5,
+      paddingRight: insets.right + theme.spacing.s5,
     },
     gradient: {
       position: 'absolute',
