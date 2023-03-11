@@ -9,7 +9,7 @@ const ExpandButton = ({ onPress }) => {
     button: {
       width: 36,
       height: 36,
-      borderRadius: '50%',
+      borderRadius: 18,
       backgroundColor: theme.colors.onPrimary,
       padding: 8,
     },

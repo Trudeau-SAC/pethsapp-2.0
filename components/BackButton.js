@@ -10,9 +10,9 @@ const BackButton = ({ onPress }) => {
   return (
     <TouchableHighlight
       style={{
-        width: theme.spacing.s12,
-        height: theme.spacing.s12,
-        borderRadius: '50%',
+        width: 48,
+        height: 48,
+        borderRadius: 24,
         backgroundColor: theme.colors.background,
         padding: 8,
         borderColor: theme.colors.border,
