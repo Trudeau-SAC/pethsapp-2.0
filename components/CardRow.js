@@ -6,7 +6,7 @@ import RectangleCard from './RectangleCard';
  * A horizontal scroll view containing multiple cards
  * @param {object} data List of objects that contain data for each card
  */
-export default function CardList({ data }) {
+export default function CardRow({ data }) {
   const theme = useTheme();
 
   const cards = data.map((item, index) => (

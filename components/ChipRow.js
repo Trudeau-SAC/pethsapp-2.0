@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTheme } from '@react-navigation/native';
-import { ScrollView } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import Chip from './Chip';
 
 export default function ChipRow({ titles }) {
@@ -10,12 +10,14 @@ export default function ChipRow({ titles }) {
   return (
     <ScrollView style={{ overflow: 'visible' }} horizontal>
       {titles.map((title) => (
-        <Chip
-          title={title}
-          selected={title == selected}
-          onPress={setSelected}
-          style={{ marginRight: theme.spacing.s5 }}
-        />
+        <View style={{ marginRight: theme.spacing.s3 }}>
+          <Chip
+            key={title}
+            title={title}
+            selected={title == selected}
+            onPress={setSelected}
+          />
+        </View>
       ))}
     </ScrollView>
   );
