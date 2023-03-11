@@ -60,6 +60,11 @@ const RectangleCard = ({
       position: 'absolute',
       right: 0,
     },
+    expandButton: {
+      position: 'absolute',
+      right: theme.spacing.s4,
+      top: theme.spacing.s4,
+    },
   });
 
   return (
@@ -92,9 +97,11 @@ const RectangleCard = ({
           </Text>
         )}
       </View>
-      <ExpandButton
-        onPress={() => navigation.navigate(navigateTo, navigationParams)}
-      />
+      <View style={styles.expandButton}>
+        <ExpandButton
+          onPress={() => navigation.navigate(navigateTo, navigationParams)}
+        />
+      </View>
     </View>
   );
 };

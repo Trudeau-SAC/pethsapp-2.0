@@ -4,10 +4,10 @@ import { useTheme } from '@react-navigation/native';
 import { View, StyleSheet } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
-import Home from './Home';
-import Community from '../community/Community';
-import Resources from '../resources/Resources';
-import Settings from '../settings/Settings';
+import Home from './screens/Home';
+import Community from './screens/Community';
+import Resources from './screens/Resources';
+import Settings from './screens/Settings';
 
 const Tabs = createBottomTabNavigator();
 

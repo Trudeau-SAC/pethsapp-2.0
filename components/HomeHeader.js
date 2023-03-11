@@ -1,5 +1,6 @@
 import Text from './Text';
 import { useTheme } from '@react-navigation/native';
+import { View } from 'react-native';
 
 export default function HomeHeader() {
   const theme = useTheme();
@@ -29,7 +30,7 @@ export default function HomeHeader() {
   ];
 
   return (
-    <>
+    <View>
       <Text
         variant="logo"
         color="logo"
@@ -49,6 +50,6 @@ export default function HomeHeader() {
       <Text variant="heading1" color="text">
         {weekdays[date.getDay()]}
       </Text>
-    </>
+    </View>
   );
 }

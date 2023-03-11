@@ -1,5 +1,6 @@
-import { StyleSheet, Pressable, Text } from 'react-native';
+import { StyleSheet, Pressable } from 'react-native';
 import { useTheme } from '@react-navigation/native';
+import Text from './Text';
 
 export default function Chip({ title, selected, onPress }) {
   const theme = useTheme();
@@ -23,7 +24,7 @@ export default function Chip({ title, selected, onPress }) {
 
   return (
     <Pressable style={styles.chip} onPress={() => onPress(title)}>
-      <Text style={styles.text} variant="">
+      <Text color={selected ? 'background' : 'text'} variant="body1">
         {title}
       </Text>
     </Pressable>

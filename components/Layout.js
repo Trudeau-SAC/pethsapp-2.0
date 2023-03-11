@@ -13,8 +13,8 @@ export default function Layout({ children }) {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      paddingTop: insets.top,
-      paddingBottom: insets.bottom + theme.tabBarHeight,
+      paddingTop: insets.top + theme.spacing.s5,
+      paddingBottom: theme.tabBarHeight + theme.spacing.s5,
       paddingLeft: insets.left + theme.spacing.s5,
       paddingRight: insets.right + theme.spacing.s5,
     },

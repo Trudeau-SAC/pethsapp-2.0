@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { theme, darkTheme } from './constants/theme';
 import { ThemeContext } from './utils/themeContext';
 
-import HomeTabs from './screens/home/HomeTabs';
+import HomeTabs from './HomeTabs';
 import Transit from './screens/home/Transit';
 import ClubsList from './screens/community/ClubsList';
 
