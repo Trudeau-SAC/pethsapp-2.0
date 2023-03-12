@@ -1,6 +1,5 @@
 import Layout from '../../components/Layout';
-import Text from '../../components/Text';
-import BackButton from '../../components/BackButton';
+import Text from '../../components/ui/Text';
 import { useTheme } from '@react-navigation/native';
 import { View } from 'react-native';
 

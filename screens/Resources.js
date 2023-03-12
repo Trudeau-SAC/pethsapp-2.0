@@ -1,5 +1,5 @@
 import Layout from '../components/Layout';
-import Text from '../components/Text';
+import Text from '../components/ui/Text';
 
 const Resources = ({ navigation }) => {
   return (

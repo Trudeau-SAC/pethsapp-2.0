@@ -1,6 +1,6 @@
 import { View, Button } from 'react-native';
 import Layout from '../components/Layout';
-import HomeHeader from '../components/HomeHeader';
+import HomeHeader from '../components/home/HomeHeader';
 import { useTheme } from '@react-navigation/native';
 
 const Home = ({ navigation }) => {

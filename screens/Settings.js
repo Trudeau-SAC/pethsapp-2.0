@@ -1,11 +1,11 @@
 import { Switch } from 'react-native';
 import { useContext } from 'react';
-import { ThemeContext } from '../utils/themeContext';
+import { SettingsContext } from '../utils/settingsContext';
 import Layout from '../components/Layout';
-import Text from '../components/Text';
+import Text from '../components/ui/Text';
 
 const Settings = () => {
-  const { theme, setTheme } = useContext(ThemeContext);
+  const { settings, setSettings } = useContext(SettingsContext);
 
   const toggleTheme = () => {
     setTheme(theme == 'light' ? 'dark' : 'light');
@@ -16,7 +16,13 @@ const Settings = () => {
       <Text variant="heading2" color="text">
         Settings
       </Text>
-      <Switch value={theme == 'dark'} onValueChange={toggleTheme} />
+      <Switch value={theme == 'dark'} onValueChange={() => setSettings({
+        ...settings,
+        preferences: {
+          ...settings.preferences,
+          'Dark Mode': !settings.preferences['Dark Mode']
+        }
+      })} />
     </Layout>
   );
 };
