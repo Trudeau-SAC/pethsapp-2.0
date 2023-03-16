@@ -1,4 +1,4 @@
-import Text from '../ui/Text';
+import Text from './Text';
 import { useTheme } from '@react-navigation/native';
 import { View } from 'react-native';
 

@@ -1,14 +1,14 @@
 import Layout from '../components/Layout';
-import Text from '../components/ui/Text';
+import Text from '../components/Text';
 
-const Resources = ({ navigation }) => {
+const Settings = () => {
   return (
     <Layout>
       <Text variant="heading2" color="text">
-        Resources
+        Settings
       </Text>
     </Layout>
   );
 };
 
-export default Resources;
+export default Settings;

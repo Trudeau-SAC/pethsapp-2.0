@@ -21,7 +21,7 @@ const fonts = {
   italic: 'GeneralSansItalic',
 };
 
-export const theme = {
+export const lightTheme = {
   dark: false,
   colors: {
     background: palette.beige,
@@ -126,10 +126,10 @@ export const theme = {
 };
 
 export const darkTheme = {
-  ...theme,
+  ...lightTheme,
   dark: true,
   colors: {
-    ...theme.colors,
+    ...lightTheme.colors,
     background: palette.black,
     foreground: palette.beige,
     text: palette.beige,

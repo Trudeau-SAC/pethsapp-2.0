@@ -1,7 +1,6 @@
 import { useTheme } from '@react-navigation/native';
 import Layout from '../components/Layout';
-import Text from '../components/ui/Text';
-import data from '../constants/data';
+import Text from '../components/Text';
 
 const Community = ({ navigation }) => {
   const theme = useTheme();

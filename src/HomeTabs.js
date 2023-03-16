@@ -4,10 +4,10 @@ import { useTheme } from '@react-navigation/native';
 import { View, StyleSheet } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
-import Home from './screens/Home';
-import Community from './screens/Community';
-import Resources from './screens/Resources';
-import Settings from './screens/Settings';
+import Home from './screens/HomeScreen';
+import Community from './screens/CommunityScreen';
+import Resources from './screens/ResourcesScreen';
+import Settings from './screens/SettingsScreen';
 
 const Tabs = createBottomTabNavigator();
 
@@ -65,6 +65,8 @@ const HomeTabs = () => {
             case 'Settings':
               iconName = 'settings';
               break;
+            default:
+              throw new Error('Not a valid route name');
           }
 
           return <Feather name={iconName} size={32} color={color} />;
