@@ -1,5 +1,6 @@
 import Layout from '../components/Layout';
 import Text from '../components/Text';
+import Setting from '../components/Setting';
 
 const Settings = () => {
   return (
@@ -7,6 +8,8 @@ const Settings = () => {
       <Text variant="heading2" color="text">
         Settings
       </Text>
+
+      <Setting name="Setting" enabled={false} />
     </Layout>
   );
 };
