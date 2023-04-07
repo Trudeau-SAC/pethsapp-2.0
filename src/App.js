@@ -1,13 +1,9 @@
 import { useFonts } from 'expo-font';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { lightTheme } from './constants/themes';
+import { lightTheme, darkTheme } from './constants/themes';
 import { registerRootComponent } from 'expo';
-import { useReducer } from 'react';
-import {
-  SettingsContext,
-  SettingsDispatchContext,
-} from '../contexts/SettingsContext';
+import { SettingsProvider, useSettings } from './contexts/SettingsContext';
 
 import HomeTabs from './HomeTabs';
 import Transit from './screens/home/TransitScreen';
@@ -16,7 +12,7 @@ import ClubsList from './screens/community/ClubsListScreen';
 const Stack = createNativeStackNavigator();
 
 const App = () => {
-  const [settings, dispatch] = useReducer(settingsReducer, initialSettings);
+  const settings = useSettings();
 
   const [fontsLoaded] = useFonts({
     GeneralSansBold: require('../assets/fonts/GeneralSans-Bold.otf'),
@@ -34,38 +30,22 @@ const App = () => {
   }
 
   return (
-    <SettingsContext.Provider value={settings}>
-      <SettingsDispatchContext value={dispatch}>
-        <NavigationContainer theme={lightTheme}>
-          <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="Home Tabs" component={HomeTabs} />
-            <Stack.Screen name="Transit" component={Transit} />
-            <Stack.Screen name="Clubs List" component={ClubsList} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </SettingsDispatchContext>
-    </SettingsContext.Provider>
+    <NavigationContainer theme={settings['Dark Mode'] ? darkTheme : lightTheme}>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Home Tabs" component={HomeTabs} />
+        <Stack.Screen name="Transit" component={Transit} />
+        <Stack.Screen name="Clubs List" component={ClubsList} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
-const initialSettings = {
-  'Announcements and Events': false,
-  'Snow Day': false,
-  'Dark Mode': false,
+const AppWrapper = () => {
+  return (
+    <SettingsProvider>
+      <App />
+    </SettingsProvider>
+  );
 };
 
-function settingsReducer(settings, action) {
-  switch (action.type) {
-    case 'toggle': {
-      return {
-        ...settings,
-        [action.name]: !settings[action.name],
-      };
-    }
-    default: {
-      throw Error('Unknown action: ' + action.type);
-    }
-  }
-}
-
-registerRootComponent(App);
+registerRootComponent(AppWrapper);

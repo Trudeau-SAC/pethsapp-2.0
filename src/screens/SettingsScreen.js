@@ -9,7 +9,7 @@ const Settings = () => {
         Settings
       </Text>
 
-      <Setting name="Setting" enabled={false} />
+      <Setting name="Dark Mode" />
     </Layout>
   );
 };
