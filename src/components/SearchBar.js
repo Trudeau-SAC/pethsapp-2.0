@@ -34,6 +34,7 @@ export default function SearchBar({ value, onChangeText, placeholder }) {
         style={styles.textInput}
         placeholder={placeholder}
         onChangeText={onChangeText}
+        placeholderTextColor={theme.colors.text}
       />
     </View>
   );
