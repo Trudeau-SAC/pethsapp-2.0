@@ -15,14 +15,14 @@ const App = () => {
   const settings = useSettings();
 
   const [fontsLoaded] = useFonts({
-    GeneralSansBold: require('../assets/fonts/GeneralSans-Bold.otf'),
-    GeneralSansBoldItalic: require('../assets/fonts/GeneralSans-BoldItalic.otf'),
-    GeneralSansSemiBold: require('../assets/fonts/GeneralSans-Semibold.otf'),
-    GeneralSansSemiBoldItalic: require('../assets/fonts/GeneralSans-SemiboldItalic.otf'),
-    GeneralSansMedium: require('../assets/fonts/GeneralSans-Medium.otf'),
-    GeneralSansMediumItalic: require('../assets/fonts/GeneralSans-MediumItalic.otf'),
-    GeneralSansRegular: require('../assets/fonts/GeneralSans-Regular.otf'),
-    GeneralSansItalic: require('../assets/fonts/GeneralSans-Italic.otf'),
+    GeneralSansBold: require('./assets/fonts/GeneralSans-Bold.otf'),
+    GeneralSansBoldItalic: require('./assets/fonts/GeneralSans-BoldItalic.otf'),
+    GeneralSansSemiBold: require('./assets/fonts/GeneralSans-Semibold.otf'),
+    GeneralSansSemiBoldItalic: require('./assets/fonts/GeneralSans-SemiboldItalic.otf'),
+    GeneralSansMedium: require('./assets/fonts/GeneralSans-Medium.otf'),
+    GeneralSansMediumItalic: require('./assets/fonts/GeneralSans-MediumItalic.otf'),
+    GeneralSansRegular: require('./assets/fonts/GeneralSans-Regular.otf'),
+    GeneralSansItalic: require('./assets/fonts/GeneralSans-Italic.otf'),
   });
 
   if (!fontsLoaded) {

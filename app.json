@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/icons/icon.png",
     "userInterfaceStyle": "light",
-    "entryPoint": "./src/App.js",
+    "entryPoint": "./App.js",
     "splash": {
       "image": "./assets/icons/splash.png",
       "resizeMode": "contain",
