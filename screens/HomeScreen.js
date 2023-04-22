@@ -57,6 +57,8 @@ const Home = ({ navigation }) => {
               key={announcement._id}
               title={date}
               subtitle={body}
+              navigateTo="Rich Text Screen"
+              navigationParams={{ title: date, content: announcement.body }}
             />
           );
         })}

@@ -3,7 +3,7 @@ import { TouchableHighlight } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
-const BackButton = ({ onPress }) => {
+const BackButton = () => {
   const theme = useTheme();
   const navigation = useNavigation();
 
@@ -20,6 +20,7 @@ const BackButton = ({ onPress }) => {
         justifyContent: 'center',
         alignItems: 'center',
       }}
+      underlayColor={theme.colors.background}
       onPress={() => {
         navigation.goBack();
       }}

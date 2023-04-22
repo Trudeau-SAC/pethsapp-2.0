@@ -12,7 +12,6 @@ export default function Layout({ children }) {
 
   const styles = StyleSheet.create({
     container: {
-      flex: 1,
       paddingTop: insets.top + theme.spacing.s5,
       paddingBottom: theme.tabBarHeight + theme.spacing.s5,
       paddingLeft: insets.left + theme.spacing.s5,
@@ -35,10 +34,7 @@ export default function Layout({ children }) {
   });
 
   return (
-    <ScrollView
-      contentContainerStyle={styles.container}
-      alwaysBounceVertical={true}
-    >
+    <ScrollView contentContainerStyle={styles.container}>
       {/* View so that when the screen bounces on IOS, the background is consistent */}
       <View style={styles.topBackground} />
       <LinearGradient
