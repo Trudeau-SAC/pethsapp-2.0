@@ -15,9 +15,6 @@ const globalStyles = StyleSheet.create({
     marginTop: theme.spacing.s8,
     marginBottom: theme.spacing.s8,
   },
-  section: {
-    marginBottom: theme.spacing.s12,
-  },
 });
 
 export default globalStyles;

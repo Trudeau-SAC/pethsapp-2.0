@@ -11,7 +11,6 @@ import RectangleCard from '../components/RectangleCard';
 import Layout from '../components/Layout';
 import Text from '../components/Text';
 import HomeHeader from '../components/HomeHeader';
-import Section from '../components/Section';
 
 const Home = ({ navigation }) => {
   const [announcements, setAnnouncements] = useState([]);
@@ -43,7 +42,7 @@ const Home = ({ navigation }) => {
         <HomeHeader />
       </View>
 
-      <Section style={globalStyles.section}>
+      <View>
         <Text color="text" variant="heading5">
           Announcements
         </Text>
@@ -68,7 +67,19 @@ const Home = ({ navigation }) => {
             );
           })}
         </CardRow>
-      </Section>
+      </View>
+
+      <View>
+        <Text color="text" variant="heading5">
+          Events
+        </Text>
+      </View>
+
+      <View>
+        <Text color="text" variant="heading5">
+          More
+        </Text>
+      </View>
     </Layout>
   );
 };

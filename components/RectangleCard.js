@@ -97,11 +97,13 @@ const RectangleCard = ({
           </Text>
         )}
       </View>
-      <View style={styles.expandButton}>
-        <ExpandButton
-          onPress={() => navigation.navigate(navigateTo, navigationParams)}
-        />
-      </View>
+      {navigateTo && (
+        <View style={styles.expandButton}>
+          <ExpandButton
+            onPress={() => navigation.navigate(navigateTo, navigationParams)}
+          />
+        </View>
+      )}
     </View>
   );
 };
