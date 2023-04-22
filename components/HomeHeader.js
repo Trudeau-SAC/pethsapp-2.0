@@ -1,33 +1,11 @@
 import Text from './Text';
 import { useTheme } from '@react-navigation/native';
 import { View } from 'react-native';
+import { months, weekdays } from '../constants/time';
 
 export default function HomeHeader() {
   const theme = useTheme();
   const date = new Date();
-  const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
-  const weekdays = [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-  ];
 
   return (
     <View>
