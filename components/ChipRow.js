@@ -9,12 +9,16 @@ export default function ChipRow({ titles }) {
 
   return (
     <ScrollView style={{ overflow: 'visible' }} horizontal>
-      {titles.map((title) => (
-        <View style={{ marginRight: theme.spacing.s3 }}>
+      {titles.map((title, index) => (
+        <View
+          style={{
+            marginRight: index === titles.length - 1 ? 0 : theme.spacing.s3,
+          }}
+        >
           <Chip
             key={title}
             title={title}
-            selected={title == selected}
+            selected={title === selected}
             onPress={setSelected}
           />
         </View>

@@ -4,13 +4,14 @@ import { shortenedMonths } from '../constants/time';
 import { useTheme } from '@react-navigation/native';
 import { toPlainText } from '@portabletext/react';
 import globalStyles from '../constants/global-styles';
+import { StyleSheet, View } from 'react-native';
 
 import CardRow from '../components/CardRow';
 import RectangleCard from '../components/RectangleCard';
 import Layout from '../components/Layout';
 import Text from '../components/Text';
 import HomeHeader from '../components/HomeHeader';
-import { StyleSheet, View } from 'react-native';
+import Section from '../components/Section';
 
 const Home = ({ navigation }) => {
   const [announcements, setAnnouncements] = useState([]);
@@ -42,7 +43,7 @@ const Home = ({ navigation }) => {
         <HomeHeader />
       </View>
 
-      <View style={globalStyles.section}>
+      <Section style={globalStyles.section}>
         <Text color="text" variant="heading5">
           Announcements
         </Text>
@@ -67,7 +68,7 @@ const Home = ({ navigation }) => {
             );
           })}
         </CardRow>
-      </View>
+      </Section>
     </Layout>
   );
 };
