@@ -1,3 +1,5 @@
+import globalStyles from '../constants/global-styles';
+
 import Layout from '../components/Layout';
 import Text from '../components/Text';
 import Setting from '../components/Setting';
@@ -5,7 +7,7 @@ import Setting from '../components/Setting';
 const Settings = () => {
   return (
     <Layout>
-      <Text variant="heading2" color="text">
+      <Text style={globalStyles.heading2} variant="heading2" color="text">
         Settings
       </Text>
 
