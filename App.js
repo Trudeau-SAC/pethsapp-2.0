@@ -5,11 +5,15 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { lightTheme, darkTheme } from './constants/themes';
 import { registerRootComponent } from 'expo';
 import { SettingsProvider, useSettings } from './contexts/SettingsContext';
+import * as SplashScreen from 'expo-splash-screen';
+import { useCallback } from 'react';
 
 import HomeTabs from './HomeTabs';
 import Announcement from './screens/home/Announcement';
 import Transit from './screens/home/TransitScreen';
 import ClubsList from './screens/community/ClubsListScreen';
+
+SplashScreen.preventAutoHideAsync();
 
 const Stack = createNativeStackNavigator();
 
@@ -27,12 +31,21 @@ const App = () => {
     GeneralSansItalic: require('./assets/fonts/GeneralSans-Italic.otf'),
   });
 
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
   if (!fontsLoaded) {
     return null;
   }
 
   return (
-    <NavigationContainer theme={settings['Dark Mode'] ? darkTheme : lightTheme}>
+    <NavigationContainer
+      theme={settings['Dark Mode'] ? darkTheme : lightTheme}
+      onReady={onLayoutRootView}
+    >
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Home Tabs" component={HomeTabs} />
         <Stack.Screen name="Announcement" component={Announcement} />

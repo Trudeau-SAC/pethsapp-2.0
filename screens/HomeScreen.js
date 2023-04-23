@@ -4,7 +4,7 @@ import { shortenedMonths } from '../constants/time';
 import { useTheme } from '@react-navigation/native';
 import { toPlainText } from '@portabletext/react';
 import globalStyles from '../constants/global-styles';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 
 import CardRow from '../components/CardRow';
 import RectangleCard from '../components/RectangleCard';
@@ -15,13 +15,6 @@ import HomeHeader from '../components/HomeHeader';
 const Home = ({ navigation }) => {
   const [announcements, setAnnouncements] = useState([]);
   const theme = useTheme();
-
-  const styles = StyleSheet.create({
-    homeHeader: {
-      marginTop: theme.spacing.s11,
-      marginBottom: theme.spacing.s12,
-    },
-  });
 
   useEffect(() => {
     let ignore = false;
@@ -40,7 +33,12 @@ const Home = ({ navigation }) => {
 
   return (
     <Layout>
-      <View style={styles.homeHeader}>
+      <View
+        style={{
+          marginTop: theme.spacing.s11,
+          marginBottom: theme.spacing.s12,
+        }}
+      >
         <HomeHeader />
       </View>
 
@@ -49,6 +47,8 @@ const Home = ({ navigation }) => {
           <Text color="text" variant="heading5">
             Announcements
           </Text>
+
+          {/* Announcement cards */}
           <CardRow>
             {announcements.map((announcement) => {
               const d = new Date(Date.parse(announcement.date));
