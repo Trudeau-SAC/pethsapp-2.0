@@ -15,6 +15,12 @@ const globalStyles = StyleSheet.create({
     marginTop: theme.spacing.s8,
     marginBottom: theme.spacing.s8,
   },
+  section: {
+    rowGap: theme.spacing.s4,
+  },
+  sectionList: {
+    rowGap: theme.spacing.s12,
+  },
 });
 
 export default globalStyles;

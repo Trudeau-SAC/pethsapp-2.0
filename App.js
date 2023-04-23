@@ -7,7 +7,7 @@ import { registerRootComponent } from 'expo';
 import { SettingsProvider, useSettings } from './contexts/SettingsContext';
 
 import HomeTabs from './HomeTabs';
-import RichTextScreen from './screens/RichTextScreen';
+import Announcement from './screens/home/Announcement';
 import Transit from './screens/home/TransitScreen';
 import ClubsList from './screens/community/ClubsListScreen';
 
@@ -35,7 +35,7 @@ const App = () => {
     <NavigationContainer theme={settings['Dark Mode'] ? darkTheme : lightTheme}>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Home Tabs" component={HomeTabs} />
-        <Stack.Screen name="Rich Text Screen" component={RichTextScreen} />
+        <Stack.Screen name="Announcement" component={Announcement} />
         <Stack.Screen name="Transit" component={Transit} />
         <Stack.Screen name="Clubs List" component={ClubsList} />
       </Stack.Navigator>
