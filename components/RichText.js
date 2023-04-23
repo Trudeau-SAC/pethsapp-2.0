@@ -1,8 +1,31 @@
 import { PortableText } from '@portabletext/react-native';
+import { fonts } from '../constants/themes';
+import { Image } from 'expo-image';
+import { imageUrlFor } from '../lib/sanity';
+import { getImageDimensions } from '@sanity/asset-utils';
 
 import Text from './Text';
 
+const blurhash =
+  '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[';
+
 const components = {
+  types: {
+    image: ({ value }) => {
+      const { width, height } = getImageDimensions(value);
+      return (
+        <Image
+          style={{
+            width: '100%',
+            aspectRatio: width / height,
+            borderRadius: 16,
+          }}
+          source={imageUrlFor(value).url()}
+          placeholder={blurhash}
+        />
+      );
+    },
+  },
   block: {
     h1: ({ children }) => (
       <Text color="text" variant="heading5">
@@ -17,13 +40,11 @@ const components = {
   },
   marks: {
     strong: ({ children }) => (
-      <Text style={{ fontWeight: 'bold' }}>{children}</Text>
+      <Text style={{ fontFamily: fonts.bold }}>{children}</Text>
     ),
-    em: ({ children }) => {
-      return (
-        <Text style={{ fontFamily: 'GeneralSansItalic' }}>{children}</Text>
-      );
-    },
+    em: ({ children }) => (
+      <Text style={{ fontFamily: fonts.italic }}>{children}</Text>
+    ),
   },
 };
 
