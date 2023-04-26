@@ -1,5 +1,5 @@
 import { View } from 'react-native';
-import globalStyles from '../../constants/global-styles';
+import { useTheme } from '@react-navigation/native';
 
 import Layout from '../../components/Layout';
 import BackButton from '../../components/BackButton';
@@ -8,14 +8,26 @@ import RichText from '../../components/RichText';
 
 export default function RichTextScreen({ route }) {
   const { title, body } = route.params;
+  const theme = useTheme();
 
   return (
     <Layout>
-      <View style={globalStyles.backButton}>
+      <View
+        style={{
+          marginTop: theme.spacing.s15,
+        }}
+      >
         <BackButton />
       </View>
 
-      <Text style={globalStyles.screenHeading3} color="text" variant="heading3">
+      <Text
+        style={{
+          marginTop: theme.spacing.s8,
+          marginBottom: theme.spacing.s8,
+        }}
+        color="text"
+        variant="heading3"
+      >
         {title}
       </Text>
 

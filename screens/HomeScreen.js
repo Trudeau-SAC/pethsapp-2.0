@@ -3,7 +3,6 @@ import { client } from '../lib/sanity';
 import { shortenedMonths } from '../constants/time';
 import { useTheme } from '@react-navigation/native';
 import { toPlainText } from '@portabletext/react';
-import globalStyles from '../constants/global-styles';
 import { View } from 'react-native';
 import { builder } from '../lib/sanity';
 
@@ -63,9 +62,13 @@ const Home = ({ navigation }) => {
         <HomeHeader />
       </View>
 
-      <View style={globalStyles.sectionList}>
+      <View style={{ rowGap: theme.spacing.s12 }}>
         {/* Announcements section */}
-        <View style={globalStyles.section}>
+        <View
+          style={{
+            rowGap: theme.spacing.s4,
+          }}
+        >
           <Text color="text" variant="heading5">
             Announcements
           </Text>
@@ -93,7 +96,11 @@ const Home = ({ navigation }) => {
         </View>
 
         {/* Events section */}
-        <View style={globalStyles.section}>
+        <View
+          style={{
+            rowGap: theme.spacing.s4,
+          }}
+        >
           <Text color="text" variant="heading5">
             Events
           </Text>
@@ -114,7 +121,11 @@ const Home = ({ navigation }) => {
         </View>
 
         {/* More section */}
-        <View style={globalStyles.section}>
+        <View
+          style={{
+            rowGap: theme.spacing.s4,
+          }}
+        >
           <Text color="text" variant="heading5">
             More
           </Text>
