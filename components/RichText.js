@@ -6,22 +6,20 @@ import { getImageDimensions } from '@sanity/asset-utils';
 
 import Text from './Text';
 
-const blurhash =
-  '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[';
-
 const components = {
   types: {
     image: ({ value }) => {
       const { width, height } = getImageDimensions(value);
+
       return (
         <Image
           style={{
             width: '100%',
             aspectRatio: width / height,
             borderRadius: 16,
+            placeholder: value.blurHash,
           }}
           source={builder.image(value).url()}
-          placeholder={blurhash}
         />
       );
     },

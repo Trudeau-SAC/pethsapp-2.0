@@ -105,6 +105,7 @@ const Home = ({ navigation }) => {
                 imageSource={
                   event.card_image && builder.image(event.card_image).url()
                 }
+                blurhash={event.card_image && event.card_image.blurHash}
                 navigateTo="Event"
                 navigationParams={{ title: event.name, id: event._id }}
               />

@@ -24,7 +24,6 @@ export default function RichTextScreen({ route }) {
         { id: id }
       );
       if (!ignore) setDescription(result[0].description);
-      console.log(result);
     }
     fetchDescription();
 
