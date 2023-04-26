@@ -1,4 +1,4 @@
-import { View, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
@@ -73,7 +73,6 @@ const RectangleCard = ({
       onPress={() => navigation.navigate(navigateTo)}
       underlayColor={theme.colors.onPrimary}
     >
-      {imageSource && <Image source={imageSource} style={styles.graphic} />}
       <LinearGradient
         style={styles.background}
         colors={[theme.colors.card + 'CC', theme.colors.card + '00']}

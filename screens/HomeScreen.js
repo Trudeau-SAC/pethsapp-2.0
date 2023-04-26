@@ -5,6 +5,7 @@ import { useTheme } from '@react-navigation/native';
 import { toPlainText } from '@portabletext/react';
 import globalStyles from '../constants/global-styles';
 import { View } from 'react-native';
+import { builder } from '../lib/sanity';
 
 import CardRow from '../components/CardRow';
 import RectangleCard from '../components/RectangleCard';
@@ -14,18 +15,37 @@ import HomeHeader from '../components/HomeHeader';
 
 const Home = ({ navigation }) => {
   const [announcements, setAnnouncements] = useState([]);
+  const [events, setEvents] = useState([]);
   const theme = useTheme();
 
   useEffect(() => {
     let ignore = false;
+
+    /**
+     * Fetches the 5 most recent announcements from Sanity
+     */
     async function fetchAnnouncements() {
       const result = await client.fetch(
         '*[_type == "announcement"] | order(date desc) {_id, date, body}[0...5]'
-      ); // Query for the 5 most recent announcements
+      );
       if (!ignore) setAnnouncements(result);
     }
     fetchAnnouncements();
 
+    /**
+     * Fetches current and upcoming events from Sanity
+     */
+    async function fetchEvents() {
+      const today = new Date(Date.now()).toLocaleDateString('en-CA');
+      const result = await client.fetch(
+        '*[_type == "event" && end_date >= $today] | order(date asc) {_id, name, card_image}',
+        { today: today }
+      );
+      if (!ignore) setEvents(result);
+    }
+    fetchEvents();
+
+    // Cleanup function
     return () => {
       ignore = true;
     };
@@ -33,6 +53,7 @@ const Home = ({ navigation }) => {
 
   return (
     <Layout>
+      {/* Header */}
       <View
         style={{
           marginTop: theme.spacing.s11,
@@ -43,12 +64,11 @@ const Home = ({ navigation }) => {
       </View>
 
       <View style={globalStyles.sectionList}>
+        {/* Announcements section */}
         <View style={globalStyles.section}>
           <Text color="text" variant="heading5">
             Announcements
           </Text>
-
-          {/* Announcement cards */}
           <CardRow>
             {announcements.map((announcement) => {
               const d = new Date(Date.parse(announcement.date));
@@ -72,12 +92,27 @@ const Home = ({ navigation }) => {
           </CardRow>
         </View>
 
+        {/* Events section */}
         <View style={globalStyles.section}>
           <Text color="text" variant="heading5">
             Events
           </Text>
+          <CardRow>
+            {events.map((event) => (
+              <RectangleCard
+                key={event._id}
+                title={event.name}
+                imageSource={
+                  event.card_image && builder.image(event.card_image).url()
+                }
+                navigateTo="Event"
+                navigationParams={{ title: event.name, id: event._id }}
+              />
+            ))}
+          </CardRow>
         </View>
 
+        {/* More section */}
         <View style={globalStyles.section}>
           <Text color="text" variant="heading5">
             More

@@ -1,7 +1,7 @@
 import { PortableText } from '@portabletext/react-native';
 import { fonts } from '../constants/themes';
 import { Image } from 'expo-image';
-import { imageUrlFor } from '../lib/sanity';
+import { builder } from '../lib/sanity';
 import { getImageDimensions } from '@sanity/asset-utils';
 
 import Text from './Text';
@@ -20,7 +20,7 @@ const components = {
             aspectRatio: width / height,
             borderRadius: 16,
           }}
-          source={imageUrlFor(value).url()}
+          source={builder.image(value).url()}
           placeholder={blurhash}
         />
       );

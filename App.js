@@ -10,6 +10,7 @@ import { useCallback } from 'react';
 
 import HomeTabs from './HomeTabs';
 import Announcement from './screens/home/Announcement';
+import Event from './screens/home/Event';
 import Transit from './screens/home/TransitScreen';
 import ClubsList from './screens/community/ClubsListScreen';
 
@@ -49,6 +50,7 @@ const App = () => {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Home Tabs" component={HomeTabs} />
         <Stack.Screen name="Announcement" component={Announcement} />
+        <Stack.Screen name="Event" component={Event} />
         <Stack.Screen name="Transit" component={Transit} />
         <Stack.Screen name="Clubs List" component={ClubsList} />
       </Stack.Navigator>
