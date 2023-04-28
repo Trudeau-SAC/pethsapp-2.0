@@ -9,9 +9,9 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
 
 import HomeTabs from './HomeTabs';
-import Announcement from './screens/home/Announcement';
-import Event from './screens/home/Event';
-import Transit from './screens/home/TransitScreen';
+import Announcement from './screens/home/AnnouncementScreen';
+import Event from './screens/home/EventScreen';
+import PastEvents from './screens/home/PastEventsScreen';
 import ClubsList from './screens/community/ClubsListScreen';
 
 SplashScreen.preventAutoHideAsync();
@@ -51,7 +51,7 @@ const App = () => {
         <Stack.Screen name="Home Tabs" component={HomeTabs} />
         <Stack.Screen name="Announcement" component={Announcement} />
         <Stack.Screen name="Event" component={Event} />
-        <Stack.Screen name="Transit" component={Transit} />
+        <Stack.Screen name="Past Events" component={PastEvents} />
         <Stack.Screen name="Clubs List" component={ClubsList} />
       </Stack.Navigator>
     </NavigationContainer>

@@ -7,7 +7,14 @@ const Community = ({ navigation }) => {
 
   return (
     <Layout>
-      <Text variant="heading2" color="text">
+      <Text
+        style={{
+          marginTop: theme.spacing.s15,
+          marginBottom: theme.spacing.s8,
+        }}
+        variant="heading2"
+        color="text"
+      >
         Community
       </Text>
     </Layout>

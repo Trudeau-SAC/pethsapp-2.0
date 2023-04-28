@@ -8,7 +8,7 @@ import BackButton from '../../components/BackButton';
 import Text from '../../components/Text';
 import RichText from '../../components/RichText';
 
-export default function RichTextScreen({ route }) {
+export default function EventScreen({ route }) {
   const { title, id } = route.params;
   const [description, setDescription] = useState([]);
   const theme = useTheme();
@@ -39,6 +39,7 @@ export default function RichTextScreen({ route }) {
       <View
         style={{
           marginTop: theme.spacing.s15,
+          marginBottom: theme.spacing.s8,
         }}
       >
         <BackButton />
@@ -46,7 +47,6 @@ export default function RichTextScreen({ route }) {
 
       <Text
         style={{
-          marginTop: theme.spacing.s8,
           marginBottom: theme.spacing.s8,
         }}
         color="text"

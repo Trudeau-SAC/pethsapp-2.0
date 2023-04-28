@@ -17,7 +17,6 @@ const components = {
             width: '100%',
             aspectRatio: width / height,
             borderRadius: 16,
-            placeholder: value.blurHash,
           }}
           source={builder.image(value).url()}
         />

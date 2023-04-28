@@ -1,18 +1,19 @@
 import { useEffect, useState } from 'react';
-import { client } from '../lib/sanity';
 import { shortenedMonths } from '../constants/time';
 import { useTheme } from '@react-navigation/native';
 import { toPlainText } from '@portabletext/react';
 import { View } from 'react-native';
-import { builder } from '../lib/sanity';
+import { client, imageBuilder } from '../lib/sanity';
+import { MaterialIcons } from '@expo/vector-icons';
 
 import CardRow from '../components/CardRow';
 import RectangleCard from '../components/RectangleCard';
 import Layout from '../components/Layout';
 import Text from '../components/Text';
 import HomeHeader from '../components/HomeHeader';
+import SquareCard from '../components/SquareCard';
 
-const Home = ({ navigation }) => {
+const Home = () => {
   const [announcements, setAnnouncements] = useState([]);
   const [events, setEvents] = useState([]);
   const theme = useTheme();
@@ -35,7 +36,7 @@ const Home = ({ navigation }) => {
      * Fetches current and upcoming events from Sanity
      */
     async function fetchEvents() {
-      const today = new Date(Date.now()).toLocaleDateString('en-CA');
+      const today = new Date().toISOString().substring(0, 10);
       const result = await client.fetch(
         '*[_type == "event" && end_date >= $today] | order(date asc) {_id, name, card_image}',
         { today: today }
@@ -74,7 +75,7 @@ const Home = ({ navigation }) => {
           </Text>
           <CardRow>
             {announcements.map((announcement) => {
-              const d = new Date(Date.parse(announcement.date));
+              const d = new Date(announcement.date);
               const month = shortenedMonths[d.getMonth()];
               const day = d.getDate();
               const date = `${month} ${day}`;
@@ -110,9 +111,8 @@ const Home = ({ navigation }) => {
                 key={event._id}
                 title={event.name}
                 imageSource={
-                  event.card_image && builder.image(event.card_image).url()
+                  event.card_image && imageBuilder.image(event.card_image).url()
                 }
-                blurhash={event.card_image && event.card_image.blurHash}
                 navigateTo="Event"
                 navigationParams={{ title: event.name, id: event._id }}
               />
@@ -129,6 +129,17 @@ const Home = ({ navigation }) => {
           <Text color="text" variant="heading5">
             More
           </Text>
+          <SquareCard
+            title="Past Events"
+            icon={
+              <MaterialIcons
+                name="directions-run"
+                size={44}
+                color={theme.colors.onPrimary}
+              />
+            }
+            navigateTo="Past Events"
+          />
         </View>
       </View>
     </Layout>

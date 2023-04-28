@@ -1,25 +1,17 @@
-import { View, StyleSheet, Image, Pressable } from 'react-native';
+import { View, StyleSheet, Pressable } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
-import ExpandButton from './ExpandButton';
 import Text from './Text';
 
 /**
  * Card component, which displays text and images
  * @param {string} title The main title of the card
  * @param {string} navigateTo The name of the screen to navigate to when the card is pressed
- * @param {object} navigationParams The params to pass to the screen when navigating
  * @param {component} icon Icon component to display on top right of card
  * @returns
  */
-const SquareCard = ({
-  title,
-  subtitle,
-  navigateTo,
-  navigationParams,
-  icon,
-}) => {
+const SquareCard = ({ title, navigateTo, navigationParams, icon }) => {
   const theme = useTheme();
   const navigation = useNavigation();
 

@@ -14,8 +14,7 @@ import Text from './Text';
  * @param {string} supertitle Like the subtitle, but above the title
  * @param {string} navigateTo The name of the screen to navigate to when the card is pressed
  * @param {object} navigationParams The params to pass to the screen when navigating
- * @param {string} imageSource The source of the image to display on the card. Must be same size as card (240x160)
- * @param {string} blurHash The blurhash of the image to display on the card
+ * @param {string} imageSource The source of the image to display on the card. Must be same size as card
  * @returns
  */
 const RectangleCard = ({
@@ -25,7 +24,6 @@ const RectangleCard = ({
   navigateTo,
   navigationParams,
   imageSource,
-  blurHash,
 }) => {
   const theme = useTheme();
   const navigation = useNavigation();
@@ -58,7 +56,6 @@ const RectangleCard = ({
       marginTop: theme.spacing.s1,
     },
     image: {
-      contentFit: 'contain',
       height: '100%',
       width: '100%',
       position: 'absolute',
@@ -77,13 +74,7 @@ const RectangleCard = ({
       onPress={() => navigation.navigate(navigateTo)}
       underlayColor={theme.colors.onPrimary}
     >
-      {imageSource && (
-        <Image
-          style={styles.image}
-          source={imageSource}
-          placeholder={blurHash}
-        />
-      )}
+      {imageSource && <Image style={styles.image} source={imageSource} />}
       <LinearGradient
         style={styles.background}
         colors={[theme.colors.card + 'CC', theme.colors.card + '00']}
