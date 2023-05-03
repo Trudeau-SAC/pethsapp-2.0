@@ -6,7 +6,7 @@ import { lightTheme, darkTheme } from './constants/themes';
 import { registerRootComponent } from 'expo';
 import { SettingsProvider, useSettings } from './contexts/SettingsContext';
 import * as SplashScreen from 'expo-splash-screen';
-import { StrictMode, useCallback } from 'react';
+import { useCallback } from 'react';
 
 import HomeTabs from './HomeTabs';
 import Announcement from './screens/home/AnnouncementScreen';
@@ -58,10 +58,12 @@ const App = () => {
   );
 };
 
-registerRootComponent(
-  <StrictMode>
+const AppWrapper = () => {
+  return (
     <SettingsProvider>
       <App />
     </SettingsProvider>
-  </StrictMode>
-);
+  );
+};
+
+registerRootComponent(AppWrapper);
