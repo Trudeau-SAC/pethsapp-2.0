@@ -47,7 +47,6 @@ const PastEventsScreen = () => {
     } else {
       schoolYear = `${startDate.getFullYear() - 1}-${startDate.getFullYear()}`;
     }
-    console.log(event.start_date + ' ' + startDate.getMonth());
 
     // Add event to map
     if (eventsMap.has(schoolYear)) {
