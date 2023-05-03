@@ -1,4 +1,5 @@
 import { useTheme } from '@react-navigation/native';
+import { View } from 'react-native';
 
 import Layout from '../components/Layout';
 import Text from '../components/Text';
@@ -20,7 +21,24 @@ const Settings = () => {
         Settings
       </Text>
 
-      <Setting name="Dark Mode" />
+      <View style={{ rowGap: theme.spacing.s12 }}>
+        <View style={{ rowGap: theme.spacing.s4 }}>
+          <Text color="text" variant="heading5">
+            Notifications
+          </Text>
+
+          <Setting name="Announcements and Events" />
+          <Setting name="Snow Day" />
+        </View>
+
+        <View style={{ rowGap: theme.spacing.s4 }}>
+          <Text color="text" variant="heading5">
+            Preferences
+          </Text>
+
+          <Setting name="Dark Mode" />
+        </View>
+      </View>
     </Layout>
   );
 };

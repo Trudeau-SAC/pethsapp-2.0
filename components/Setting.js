@@ -16,7 +16,7 @@ export default function Setting({ name }) {
       backgroundColor: theme.colors.background,
       borderColor: theme.colors.border,
       borderWidth: 1,
-      padding: 19,
+      padding: theme.spacing.s4_5,
       borderRadius: 16,
       flex: 0,
       flexDirection: 'row',
@@ -33,8 +33,9 @@ export default function Setting({ name }) {
       <Switch
         onValueChange={() =>
           dispatch({
-            type: 'toggle',
+            type: 'changed',
             name: name,
+            value: !settings[name],
           })
         }
         value={settings[name]}
