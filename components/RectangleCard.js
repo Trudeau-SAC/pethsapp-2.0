@@ -39,6 +39,7 @@ const RectangleCard = ({
       overflow: 'hidden',
     },
     background: {
+      position: 'absolute',
       width: '100%',
       height: '100%',
     },
@@ -58,8 +59,6 @@ const RectangleCard = ({
     image: {
       height: '100%',
       width: '100%',
-      position: 'absolute',
-      right: 0,
     },
     expandButton: {
       position: 'absolute',
@@ -74,7 +73,14 @@ const RectangleCard = ({
       onPress={() => navigation.navigate(navigateTo)}
       underlayColor={theme.colors.onPrimary}
     >
-      {imageSource && <Image style={styles.image} source={imageSource} />}
+      {imageSource && (
+        <Image
+          style={styles.image}
+          source={imageSource}
+          contentFit="contain"
+          contentPosition="right"
+        />
+      )}
       <LinearGradient
         style={styles.background}
         colors={[theme.colors.card + 'CC', theme.colors.card + '00']}

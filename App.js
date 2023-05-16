@@ -13,6 +13,7 @@ import Announcement from './screens/home/AnnouncementScreen';
 import Event from './screens/home/EventScreen';
 import PastEvents from './screens/home/PastEventsScreen';
 import ClubsList from './screens/community/ClubsListScreen';
+import ClubStatus from './screens/community/ClubStatusScreen';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -53,6 +54,7 @@ const App = () => {
         <Stack.Screen name="Event" component={Event} />
         <Stack.Screen name="Past Events" component={PastEvents} />
         <Stack.Screen name="Clubs List" component={ClubsList} />
+        <Stack.Screen name="Club Status" component={ClubStatus} />
       </Stack.Navigator>
     </NavigationContainer>
   );

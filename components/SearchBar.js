@@ -11,7 +11,6 @@ export default function SearchBar({ value, onChangeText, placeholder }) {
       borderWidth: 1,
       padding: 16,
       borderRadius: 16,
-      flex: 0,
       flexDirection: 'row',
       alignItems: 'center',
     },
@@ -19,6 +18,7 @@ export default function SearchBar({ value, onChangeText, placeholder }) {
       ...theme.textVariants.heading7,
       color: theme.colors.text,
       height: 22,
+      flex: 1,
     },
     icon: {
       color: theme.colors.text,

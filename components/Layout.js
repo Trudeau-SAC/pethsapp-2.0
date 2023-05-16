@@ -6,14 +6,16 @@ import { LinearGradient } from 'expo-linear-gradient';
 /**
  * Provides padding and gradient background for screens.
  */
-export default function Layout({ children }) {
+export default function Layout({ children, hasTabBar = true }) {
   const insets = useSafeAreaInsets();
   const theme = useTheme();
 
   const styles = StyleSheet.create({
     container: {
+      minHeight: '100%',
       paddingTop: theme.spacing.s5,
-      paddingBottom: theme.tabBarHeight + theme.spacing.s5,
+      paddingBottom:
+        (hasTabBar ? theme.tabBarHeight : insets.bottom) + theme.spacing.s5,
       paddingLeft: insets.left + theme.spacing.s5,
       paddingRight: insets.right + theme.spacing.s5,
     },
