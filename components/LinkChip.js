@@ -10,6 +10,8 @@ const LinkChip = ({ text, link }) => {
   const theme = useTheme();
   const [isPressed, setIsPressed] = useState(false);
 
+  const colour = theme.dark ? 'tertiary' : 'primary';
+
   return (
     <Pressable
       style={({ pressed }) => ({
@@ -19,25 +21,25 @@ const LinkChip = ({ text, link }) => {
         justifyContent: 'space-between',
         columnGap: theme.spacing.s1,
         borderWidth: 1,
-        borderColor: theme.colors.primary,
+        borderColor: theme.colors[colour],
         borderRadius: 100,
         alignSelf: 'flex-start',
         alignItems: 'center',
         backgroundColor: pressed
-          ? theme.colors.primary
+          ? theme.colors[colour]
           : theme.colors.background,
       })}
       onPressIn={() => setIsPressed(true)}
       onPressOut={() => setIsPressed(false)}
       onPress={() => Linking.openURL(link)}
     >
-      <Text variant="body2" color={isPressed ? 'background' : 'primary'}>
+      <Text variant="body2" color={isPressed ? 'background' : colour}>
         {text}
       </Text>
       <Feather
         name="arrow-up-right"
         size={16}
-        color={isPressed ? theme.colors.background : theme.colors.primary}
+        color={isPressed ? theme.colors.background : theme.colors[colour]}
       />
     </Pressable>
   );

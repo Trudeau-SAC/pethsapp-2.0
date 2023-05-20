@@ -9,7 +9,7 @@ const Settings = () => {
   const theme = useTheme();
 
   return (
-    <Layout>
+    <Layout hasTabBar={true}>
       <Text
         style={{
           marginTop: theme.spacing.s15,

@@ -1,23 +1,23 @@
-import { useState } from 'react';
 import { useTheme } from '@react-navigation/native';
-import { ScrollView, View } from 'react-native';
-import Chip from './Chip';
+import { ScrollView } from 'react-native';
 
-export default function ChipRow({ titles, selected, onPress }) {
+export default function ChipRow({ children }) {
   const theme = useTheme();
 
   return (
-    <ScrollView style={{ overflow: 'visible' }} horizontal>
-      {titles.map((title, index) => (
-        <View
-          key={title}
-          style={{
-            marginRight: index === titles.length - 1 ? 0 : theme.spacing.s3,
-          }}
-        >
-          <Chip title={title} selected={title === selected} onPress={onPress} />
-        </View>
-      ))}
+    <ScrollView
+      style={{
+        overflow: 'visible',
+      }}
+      contentContainerStyle={{
+        flexDirection: 'row',
+        columnGap: theme.spacing.s3,
+      }}
+      showsHorizontalScrollIndicator={false}
+      alwaysBounceHorizontal={false}
+      horizontal
+    >
+      {children}
     </ScrollView>
   );
 }

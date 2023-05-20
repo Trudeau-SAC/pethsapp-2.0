@@ -53,7 +53,7 @@ const Home = () => {
   }, []);
 
   return (
-    <Layout>
+    <Layout hasTabBar={true}>
       {/* Header */}
       <View
         style={{
@@ -63,6 +63,8 @@ const Home = () => {
       >
         <HomeHeader />
       </View>
+
+      <LinkChip text="Join our Discord" link="https://discord.gg/5XZtHTJ" />
 
       <View style={{ rowGap: theme.spacing.s12 }}>
         {/* Announcements section */}

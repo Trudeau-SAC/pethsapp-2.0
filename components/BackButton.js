@@ -1,5 +1,5 @@
 import { useTheme } from '@react-navigation/native';
-import { TouchableHighlight } from 'react-native';
+import { Pressable } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
@@ -8,19 +8,22 @@ const BackButton = () => {
   const navigation = useNavigation();
 
   return (
-    <TouchableHighlight
-      style={{
+    <Pressable
+      style={({ pressed }) => ({
         width: 48,
         height: 48,
         borderRadius: 24,
-        backgroundColor: theme.colors.background,
-        padding: 8,
+        backgroundColor: pressed
+          ? theme.dark
+            ? theme.colors.neutral1
+            : theme.colors.neutral2
+          : theme.colors.background,
+        padding: theme.spacing.s2,
         borderColor: theme.colors.border,
         borderWidth: 1,
         justifyContent: 'center',
         alignItems: 'center',
-      }}
-      underlayColor={theme.colors.background}
+      })}
       onPress={() => {
         navigation.goBack();
       }}
@@ -30,7 +33,7 @@ const BackButton = () => {
         size={theme.spacing.s6}
         color={theme.colors.border}
       />
-    </TouchableHighlight>
+    </Pressable>
   );
 };
 

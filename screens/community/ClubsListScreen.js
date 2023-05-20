@@ -8,6 +8,7 @@ import Text from '../../components/Text';
 import BackButton from '../../components/BackButton';
 import SearchBar from '../../components/SearchBar';
 import ChipRow from '../../components/ChipRow';
+import Chip from '../../components/Chip';
 
 const ClubsList = () => {
   const theme = useTheme();
@@ -93,11 +94,17 @@ const ClubsList = () => {
 
       {/* Chip Row */}
       <View style={{ marginBottom: theme.spacing.s9 }}>
-        <ChipRow
-          titles={years}
-          selected={selectedYear}
-          onPress={setSelectedYear}
-        />
+        <ChipRow>
+          {years.map((year, index) => (
+            <View key={year}>
+              <Chip
+                title={year}
+                selected={year === selectedYear}
+                onPress={setSelectedYear}
+              />
+            </View>
+          ))}
+        </ChipRow>
       </View>
 
       {/* Clubs */}

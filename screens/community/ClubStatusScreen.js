@@ -13,7 +13,7 @@ const ClubStatus = () => {
   const theme = useTheme();
 
   return (
-    <Layout hasTabBar={false}>
+    <Layout>
       <View
         style={{
           flex: 1,

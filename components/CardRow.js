@@ -25,6 +25,8 @@ export default function CardRow({ children }) {
         flexGrow: 0,
         minHeight: 160,
       }}
+      showsHorizontalScrollIndicator={false}
+      alwaysBounceHorizontal={false}
       horizontal
     >
       {views}
