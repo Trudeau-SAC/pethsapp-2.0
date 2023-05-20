@@ -12,6 +12,7 @@ import Layout from '../components/Layout';
 import Text from '../components/Text';
 import HomeHeader from '../components/HomeHeader';
 import SquareCard from '../components/SquareCard';
+import LinkChip from '../components/LinkChip';
 
 const Home = () => {
   const [announcements, setAnnouncements] = useState([]);

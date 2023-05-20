@@ -48,7 +48,9 @@ const HomeTabs = () => {
           </View>
         ),
         tabBarActiveTintColor: theme.colors.onPrimary,
-        tabBarInactiveTintColor: 'rgb(150, 150, 150)',
+        tabBarInactiveTintColor: theme.dark
+          ? 'rgb(150, 150, 150)'
+          : 'rgb(200, 200, 200)',
         tabBarIcon: ({ color }) => {
           let iconName;
 
