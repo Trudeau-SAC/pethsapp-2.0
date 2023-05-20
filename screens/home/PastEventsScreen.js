@@ -22,7 +22,7 @@ const PastEventsScreen = () => {
     async function fetchEvents() {
       const today = new Date().toISOString().substring(0, 10);
       const result = await client.fetch(
-        '*[_type == "event" && end_date < $today] | order(start_date desc) {_id, name, card_image, start_date}',
+        '*[_type == "event" && end_date < $today] | order(start_date desc) {_id, name, card_image, start_date, "asset": card_image.asset->{metadata{blurHash}}}',
         { today: today }
       );
 
@@ -79,6 +79,11 @@ const PastEventsScreen = () => {
               }
               navigateTo="Event"
               navigationParams={{ title: event.name, id: event._id }}
+              placeholder={{
+                blurhash: event.asset.metadata.blurHash,
+                width: 240,
+                height: 160,
+              }}
             />
           ))}
         </CardRow>

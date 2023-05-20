@@ -7,7 +7,7 @@ import Text from '../components/Text';
 import RectangleCard from '../components/RectangleCard';
 import CardRow from '../components/CardRow';
 
-const Community = ({ navigation }) => {
+const Community = () => {
   const theme = useTheme();
 
   return (

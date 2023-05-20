@@ -24,6 +24,7 @@ const RectangleCard = ({
   navigateTo,
   navigationParams,
   imageSource,
+  placeholder,
 }) => {
   const theme = useTheme();
   const navigation = useNavigation();
@@ -77,8 +78,8 @@ const RectangleCard = ({
         <Image
           style={styles.image}
           source={imageSource}
-          contentFit="contain"
           contentPosition="right"
+          placeholder={placeholder}
         />
       )}
       <LinearGradient
