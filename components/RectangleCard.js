@@ -77,7 +77,7 @@ const RectangleCard = ({
       {imageSource && (
         <Image
           style={styles.image}
-          source={imageSource}
+          source={{ uri: imageSource, width: 240, height: 160 }}
           contentPosition="right"
           placeholder={placeholder}
         />
