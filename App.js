@@ -7,6 +7,7 @@ import { registerRootComponent } from 'expo';
 import { SettingsProvider, useSettings } from './contexts/SettingsContext';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
+import { StatusBar } from 'expo-status-bar';
 
 import HomeTabs from './HomeTabs';
 import Announcement from './screens/home/AnnouncementScreen';
@@ -44,19 +45,22 @@ const App = () => {
   }
 
   return (
-    <NavigationContainer
-      theme={settings['Dark Mode'] ? darkTheme : lightTheme}
-      onReady={onLayoutRootView}
-    >
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Home Tabs" component={HomeTabs} />
-        <Stack.Screen name="Announcement" component={Announcement} />
-        <Stack.Screen name="Event" component={Event} />
-        <Stack.Screen name="Past Events" component={PastEvents} />
-        <Stack.Screen name="Clubs List" component={ClubsList} />
-        <Stack.Screen name="Club Status" component={ClubStatus} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <>
+      <StatusBar style={settings['Dark Mode'] ? 'light' : 'dark'} />
+      <NavigationContainer
+        theme={settings['Dark Mode'] ? darkTheme : lightTheme}
+        onReady={onLayoutRootView}
+      >
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Home Tabs" component={HomeTabs} />
+          <Stack.Screen name="Announcement" component={Announcement} />
+          <Stack.Screen name="Event" component={Event} />
+          <Stack.Screen name="Past Events" component={PastEvents} />
+          <Stack.Screen name="Clubs List" component={ClubsList} />
+          <Stack.Screen name="Club Status" component={ClubStatus} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
   );
 };
 
