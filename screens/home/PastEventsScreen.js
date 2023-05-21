@@ -79,11 +79,6 @@ const PastEventsScreen = () => {
               }
               navigateTo="Event"
               navigationParams={{ title: event.name, id: event._id }}
-              placeholder={{
-                blurhash: event.asset.metadata.blurHash,
-                width: 240,
-                height: 160,
-              }}
             />
           ))}
         </CardRow>

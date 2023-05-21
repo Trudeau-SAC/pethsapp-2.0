@@ -24,7 +24,6 @@ const RectangleCard = ({
   navigateTo,
   navigationParams,
   imageSource,
-  placeholder,
 }) => {
   const theme = useTheme();
   const navigation = useNavigation();
@@ -74,14 +73,7 @@ const RectangleCard = ({
       onPress={() => navigation.navigate(navigateTo)}
       underlayColor={theme.colors.onPrimary}
     >
-      {imageSource && (
-        <Image
-          style={styles.image}
-          source={{ uri: imageSource, width: 240, height: 160 }}
-          contentPosition="right"
-          placeholder={placeholder}
-        />
-      )}
+      {imageSource && <Image style={styles.image} source={imageSource} />}
       <LinearGradient
         style={styles.background}
         colors={[theme.colors.card + 'CC', theme.colors.card + '00']}

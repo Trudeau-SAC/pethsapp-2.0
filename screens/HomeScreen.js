@@ -12,7 +12,6 @@ import Layout from '../components/Layout';
 import Text from '../components/Text';
 import HomeHeader from '../components/HomeHeader';
 import SquareCard from '../components/SquareCard';
-import LinkChip from '../components/LinkChip';
 
 const Home = () => {
   const [announcements, setAnnouncements] = useState([]);
@@ -63,8 +62,6 @@ const Home = () => {
       >
         <HomeHeader />
       </View>
-
-      <LinkChip text="Join our Discord" link="https://discord.gg/5XZtHTJ" />
 
       <View style={{ rowGap: theme.spacing.s12 }}>
         {/* Announcements section */}
