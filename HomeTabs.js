@@ -21,6 +21,7 @@ const HomeTabs = () => {
       backgroundColor: 'transparent',
       borderTopColor: 'transparent',
       height: tabBarHeight,
+      elevation: 0,
     },
     tabBarBackground: {
       height: '100%',
