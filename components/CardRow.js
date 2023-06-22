@@ -7,29 +7,23 @@ import { useTheme } from '@react-navigation/native';
 export default function CardRow({ children }) {
   const theme = useTheme();
 
-  const views = children.map((child, index) => (
-    <View
-      key={child.key}
-      style={{
-        marginRight: index === children.length - 1 ? 0 : theme.spacing.s6,
-      }}
-    >
-      {child}
-    </View>
-  ));
-
   return (
     <ScrollView
+      bounces={false}
       style={{
         overflow: 'visible',
         flexGrow: 0,
         minHeight: 160,
       }}
+      contentContainerStyle={{
+        gap: theme.spacing.s6,
+        paddingHorizontal: theme.spacing.s5,
+      }}
       showsHorizontalScrollIndicator={false}
       alwaysBounceHorizontal={false}
       horizontal
     >
-      {views}
+      {children}
     </ScrollView>
   );
 }

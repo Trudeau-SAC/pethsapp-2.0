@@ -33,7 +33,6 @@ const RectangleCard = ({
       borderColor: theme.colors.border,
       borderWidth: 1,
       borderRadius: 24,
-      display: 'block',
       width: 240,
       height: 160,
       overflow: 'hidden',

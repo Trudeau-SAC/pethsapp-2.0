@@ -2,6 +2,7 @@ import { StyleSheet, ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTheme } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { tabBarHeight } from '../constants/sizes';
 
 /**
  * Provides padding and gradient background for screens.
@@ -15,7 +16,7 @@ export default function Layout({ children, hasTabBar = false }) {
       minHeight: '100%',
       paddingTop: theme.spacing.s5,
       paddingBottom:
-        (hasTabBar ? theme.tabBarHeight : insets.bottom) + theme.spacing.s5,
+        (hasTabBar ? tabBarHeight : insets.bottom) + theme.spacing.s5,
       paddingLeft: insets.left + theme.spacing.s5,
       paddingRight: insets.right + theme.spacing.s5,
     },

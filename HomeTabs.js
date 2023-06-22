@@ -3,6 +3,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useTheme } from '@react-navigation/native';
 import { View, StyleSheet } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import { tabBarHeight } from './constants/sizes';
 
 import Home from './screens/HomeScreen';
 import Community from './screens/CommunityScreen';
@@ -19,7 +20,7 @@ const HomeTabs = () => {
       position: 'absolute',
       backgroundColor: 'transparent',
       borderTopColor: 'transparent',
-      height: theme.tabBarHeight,
+      height: tabBarHeight,
     },
     tabBarBackground: {
       height: '100%',

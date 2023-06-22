@@ -20,7 +20,6 @@ const SquareCard = ({ title, navigateTo, navigationParams, icon }) => {
       borderColor: theme.colors.border,
       borderWidth: 1,
       borderRadius: 24,
-      display: 'block',
       width: 160,
       height: 160,
       overflow: 'hidden',

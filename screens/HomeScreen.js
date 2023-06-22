@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { shortenedMonths } from '../constants/time';
 import { useTheme } from '@react-navigation/native';
 import { toPlainText } from '@portabletext/react';
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { client, imageBuilder } from '../lib/sanity';
 import { MaterialIcons } from '@expo/vector-icons';
 
@@ -17,6 +17,13 @@ const Home = () => {
   const [announcements, setAnnouncements] = useState([]);
   const [events, setEvents] = useState([]);
   const theme = useTheme();
+
+  const styles = StyleSheet.create({
+    row: {
+      // For some reason, the Android overscroll stretching causes overflow to be cut off. Therefore, ignore padding.
+      marginHorizontal: -theme.spacing.s5,
+    },
+  });
 
   useEffect(() => {
     let ignore = false;
@@ -73,27 +80,29 @@ const Home = () => {
           <Text color="text" variant="heading5">
             Announcements
           </Text>
-          <CardRow>
-            {announcements.map((announcement) => {
-              const d = new Date(announcement.date);
-              const month = shortenedMonths[d.getMonth()];
-              const day = d.getDate();
-              const date = `${month} ${day}`;
-              let previewBody = toPlainText(announcement.body); // Convert portable text to plain text
-              previewBody = previewBody.replace(/\n|\r/g, ' '); // Remove newlines
-              previewBody = previewBody.substring(0, 100); // Shorten for preview
+          <View style={styles.row}>
+            <CardRow>
+              {announcements.map((announcement) => {
+                const d = new Date(announcement.date);
+                const month = shortenedMonths[d.getMonth()];
+                const day = d.getDate();
+                const date = `${month} ${day}`;
+                let previewBody = toPlainText(announcement.body); // Convert portable text to plain text
+                previewBody = previewBody.replace(/\n|\r/g, ' '); // Remove newlines
+                previewBody = previewBody.substring(0, 100); // Shorten for preview
 
-              return (
-                <RectangleCard
-                  key={announcement._id}
-                  title={date}
-                  subtitle={previewBody}
-                  navigateTo="Announcement"
-                  navigationParams={{ title: date, body: announcement.body }}
-                />
-              );
-            })}
-          </CardRow>
+                return (
+                  <RectangleCard
+                    key={announcement._id}
+                    title={date}
+                    subtitle={previewBody}
+                    navigateTo="Announcement"
+                    navigationParams={{ title: date, body: announcement.body }}
+                  />
+                );
+              })}
+            </CardRow>
+          </View>
         </View>
 
         {/* Events section */}
@@ -105,19 +114,22 @@ const Home = () => {
           <Text color="text" variant="heading5">
             Events
           </Text>
-          <CardRow>
-            {events.map((event) => (
-              <RectangleCard
-                key={event._id}
-                title={event.name}
-                imageSource={
-                  event.card_image && imageBuilder.image(event.card_image).url()
-                }
-                navigateTo="Event"
-                navigationParams={{ title: event.name, id: event._id }}
-              />
-            ))}
-          </CardRow>
+          <View style={styles.row}>
+            <CardRow>
+              {events.map((event) => (
+                <RectangleCard
+                  key={event._id}
+                  title={event.name}
+                  imageSource={
+                    event.card_image &&
+                    imageBuilder.image(event.card_image).url()
+                  }
+                  navigateTo="Event"
+                  navigationParams={{ title: event.name, id: event._id }}
+                />
+              ))}
+            </CardRow>
+          </View>
         </View>
 
         {/* More section */}

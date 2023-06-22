@@ -1,5 +1,5 @@
 import { useTheme } from '@react-navigation/native';
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { clubs, opportunities } from '../constants/community';
 
 import Layout from '../components/Layout';
@@ -9,6 +9,15 @@ import CardRow from '../components/CardRow';
 
 const Community = () => {
   const theme = useTheme();
+
+  const styles = StyleSheet.create({
+    section: {
+      rowGap: theme.spacing.s4,
+    },
+    row: {
+      marginHorizontal: -theme.spacing.s5,
+    },
+  });
 
   return (
     <Layout hasTabBar={true}>
@@ -24,31 +33,35 @@ const Community = () => {
       </Text>
 
       <View style={{ rowGap: theme.spacing.s12 }}>
-        <View style={{ rowGap: theme.spacing.s4 }}>
+        <View style={styles.section}>
           <Text color="text" variant="heading5">
             Clubs
           </Text>
 
-          <CardRow>
-            {clubs.map((club) => (
-              <RectangleCard {...club} />
-            ))}
-          </CardRow>
+          <View style={styles.row}>
+            <CardRow>
+              {clubs.map((club) => (
+                <RectangleCard {...club} />
+              ))}
+            </CardRow>
+          </View>
         </View>
 
-        <View style={{ rowGap: theme.spacing.s4 }}>
+        <View style={styles.section}>
           <Text color="text" variant="heading5">
             Opportunities
           </Text>
 
-          <CardRow>
-            {opportunities.map((opportunity) => (
-              <RectangleCard {...opportunity} />
-            ))}
-          </CardRow>
+          <View style={styles.row}>
+            <CardRow>
+              {opportunities.map((opportunity) => (
+                <RectangleCard {...opportunity} />
+              ))}
+            </CardRow>
+          </View>
         </View>
 
-        <View style={{ rowGap: theme.spacing.s4 }}>
+        <View style={styles.section}>
           <Text color="text" variant="heading5">
             Links
           </Text>

@@ -22,7 +22,7 @@ const PastEventsScreen = () => {
     async function fetchEvents() {
       const today = new Date().toISOString().substring(0, 10);
       const result = await client.fetch(
-        '*[_type == "event" && end_date < $today] | order(start_date desc) {_id, name, card_image, start_date, "asset": card_image.asset->{metadata{blurHash}}}',
+        '*[_type == "event" && end_date < $today] | order(start_date desc) {_id, name, card_image, start_date}',
         { today: today }
       );
 
