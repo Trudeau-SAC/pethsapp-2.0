@@ -9,7 +9,6 @@ export default function CardRow({ children }) {
 
   return (
     <ScrollView
-      bounces={false}
       style={{
         overflow: 'visible',
         flexGrow: 0,

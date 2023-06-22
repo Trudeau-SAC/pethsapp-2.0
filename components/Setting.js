@@ -16,12 +16,16 @@ export default function Setting({ name }) {
       backgroundColor: theme.colors.background,
       borderColor: theme.colors.border,
       borderWidth: 1,
-      padding: theme.spacing.s4_5,
+      paddingVertical: theme.spacing.s3_5,
+      paddingHorizontal: theme.spacing.s5,
       borderRadius: 16,
       flex: 0,
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
+    },
+    switch: {
+      height: 32,
     },
   });
 
@@ -31,6 +35,7 @@ export default function Setting({ name }) {
         {name}
       </Text>
       <Switch
+        style={styles.switch}
         onValueChange={() =>
           dispatch({
             type: 'changed',
