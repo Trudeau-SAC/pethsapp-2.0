@@ -6,8 +6,9 @@ import { lightTheme, darkTheme } from './constants/themes';
 import { registerRootComponent } from 'expo';
 import { SettingsProvider, useSettings } from './contexts/SettingsContext';
 import * as SplashScreen from 'expo-splash-screen';
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
+import { registerForPushNotificationsAsync } from './lib/notifications';
 
 import HomeTabs from './HomeTabs';
 import Announcement from './screens/home/AnnouncementScreen';
@@ -23,6 +24,13 @@ const Stack = createNativeStackNavigator();
 const App = () => {
   const settings = useSettings();
 
+  useEffect(() => {
+    if (settings['Announcements and Events'] || settings['Snow Day']) {
+      registerForPushNotificationsAsync();
+    }
+  }, [settings]);
+
+  // Load fonts
   const [fontsLoaded] = useFonts({
     GeneralSansBold: require('./assets/fonts/GeneralSans-Bold.otf'),
     GeneralSansBoldItalic: require('./assets/fonts/GeneralSans-BoldItalic.otf'),

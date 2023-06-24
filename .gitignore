@@ -13,4 +13,6 @@ web-build/
 # macOS
 .DS_Store
 
+# Secrets!
 .envrc
+google-services.json
