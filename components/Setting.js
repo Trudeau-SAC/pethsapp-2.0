@@ -1,15 +1,11 @@
 import { View, StyleSheet, Switch } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import Text from './Text';
-import { useSettings, useSettingsDispatch } from '../contexts/SettingsContext';
 
 /**
  * Represents a setting in the settings screen
  */
-export default function Setting({ name }) {
-  const settings = useSettings();
-  const dispatch = useSettingsDispatch();
-
+export default function Setting({ name, value, onValueChange }) {
   const theme = useTheme();
   const styles = StyleSheet.create({
     container: {
@@ -36,14 +32,8 @@ export default function Setting({ name }) {
       </Text>
       <Switch
         style={styles.switch}
-        onValueChange={() =>
-          dispatch({
-            type: 'changed',
-            name: name,
-            value: !settings[name],
-          })
-        }
-        value={settings[name]}
+        onValueChange={onValueChange}
+        value={value}
       />
     </View>
   );

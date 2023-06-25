@@ -8,6 +8,7 @@ import { SettingsProvider, useSettings } from './contexts/SettingsContext';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
 import { StatusBar } from 'expo-status-bar';
+import { setupPushNotifications } from './lib/notifications';
 
 import HomeTabs from './HomeTabs';
 import Announcement from './screens/home/AnnouncementScreen';
@@ -19,6 +20,8 @@ import ClubStatus from './screens/community/ClubStatusScreen';
 SplashScreen.preventAutoHideAsync();
 
 const Stack = createNativeStackNavigator();
+
+setupPushNotifications();
 
 const App = () => {
   const settings = useSettings();
