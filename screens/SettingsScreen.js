@@ -1,6 +1,10 @@
 import { useTheme } from '@react-navigation/native';
 import { View } from 'react-native';
-import { useSettings, useSettingsDispatch } from '../contexts/SettingsContext';
+import {
+  useSettings,
+  useNotificationSettings,
+  useSettingsDispatch,
+} from '../contexts/SettingsContext';
 import { registerForPushNotificationsAsync } from '../lib/notifications';
 
 import Layout from '../components/Layout';
@@ -10,10 +14,11 @@ import Setting from '../components/Setting';
 const Settings = () => {
   const theme = useTheme();
   const settings = useSettings();
+  const notificationSettings = useNotificationSettings();
   const dispatch = useSettingsDispatch();
 
   const changeNotification = async (name, value) => {
-    const token = await registerForPushNotificationsAsync();
+    const token = await registerForPushNotificationsAsync(notificationSettings);
 
     if (token === null) return;
 

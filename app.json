@@ -24,7 +24,6 @@
       "bundleIdentifier": "com.trudeausac.pethsapp"
     },
     "android": {
-      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/icons/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"

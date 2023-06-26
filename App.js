@@ -4,11 +4,19 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { lightTheme, darkTheme } from './constants/themes';
 import { registerRootComponent } from 'expo';
-import { SettingsProvider, useSettings } from './contexts/SettingsContext';
+import {
+  SettingsProvider,
+  useNotificationSettings,
+  useSettings,
+} from './contexts/SettingsContext';
 import * as SplashScreen from 'expo-splash-screen';
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { setupPushNotifications } from './lib/notifications';
+import {
+  setupPushNotifications,
+  registerDevicePushTokenAsync,
+} from './lib/notifications';
+import { addPushTokenListener } from 'expo-notifications';
 
 import HomeTabs from './HomeTabs';
 import Announcement from './screens/home/AnnouncementScreen';
@@ -25,6 +33,14 @@ setupPushNotifications();
 
 const App = () => {
   const settings = useSettings();
+  const notificationSettings = useNotificationSettings();
+
+  useEffect(() => {
+    const subscription = addPushTokenListener((token) =>
+      registerDevicePushTokenAsync(token, notificationSettings)
+    );
+    return () => subscription.remove();
+  }, [notificationSettings]);
 
   // Load fonts
   const [fontsLoaded] = useFonts({
