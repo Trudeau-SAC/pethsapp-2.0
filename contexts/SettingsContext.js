@@ -51,15 +51,6 @@ export function useSettings() {
   return useContext(SettingsContext);
 }
 
-export function useNotificationSettings() {
-  const settings = useSettings();
-
-  return {
-    'Announcements and Events': settings['Announcements and Events'],
-    'Snow Day': settings['Snow Day'],
-  };
-}
-
 export function useSettingsDispatch() {
   return useContext(SettingsDispatchContext);
 }

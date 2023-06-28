@@ -1,11 +1,10 @@
 import { useTheme } from '@react-navigation/native';
 import { View } from 'react-native';
+import { useSettings, useSettingsDispatch } from '../contexts/SettingsContext';
 import {
-  useSettings,
-  useNotificationSettings,
-  useSettingsDispatch,
-} from '../contexts/SettingsContext';
-import { registerForPushNotificationsAsync } from '../lib/notifications';
+  registerForPushNotificationsAsync,
+  registerDevicePushTokenAsync,
+} from '../lib/notifications';
 
 import Layout from '../components/Layout';
 import Text from '../components/Text';
@@ -14,25 +13,30 @@ import Setting from '../components/Setting';
 const Settings = () => {
   const theme = useTheme();
   const settings = useSettings();
-  const notificationSettings = useNotificationSettings();
   const dispatch = useSettingsDispatch();
 
   const changeNotification = async (name, value) => {
-    const token = await registerForPushNotificationsAsync(notificationSettings);
+    const token = await registerForPushNotificationsAsync();
 
-    if (token === null) return;
+    if (token !== null) {
+      // Dispatch change
+      dispatch({
+        type: 'changed',
+        name: name,
+        value: value,
+      });
 
-    // Update database with token
-    if (value === true) {
-    } else if (value === false) {
+      // Update database
+      const notificationSettings = {
+        'Announcements and Events': settings['Announcements and Events'],
+        'Snow Day': settings['Snow Day'],
+      };
+      const newNotificationSettings = {
+        ...notificationSettings,
+        [name]: value,
+      };
+      await registerDevicePushTokenAsync(token, newNotificationSettings);
     }
-
-    // Dispatch change
-    dispatch({
-      type: 'changed',
-      name: name,
-      value: value,
-    });
   };
 
   return (
