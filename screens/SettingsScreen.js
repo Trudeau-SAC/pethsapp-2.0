@@ -36,6 +36,8 @@ const Settings = () => {
         [name]: value,
       };
       await registerDevicePushTokenAsync(token, newNotificationSettings);
+    } else {
+      console.log('Error registering for push notifications');
     }
   };
 
