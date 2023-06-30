@@ -6,13 +6,8 @@ import { lightTheme, darkTheme } from './constants/themes';
 import { registerRootComponent } from 'expo';
 import { SettingsProvider, useSettings } from './contexts/SettingsContext';
 import * as SplashScreen from 'expo-splash-screen';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { setNotificationHandler } from 'expo-notifications';
-import {
-  registerForPushNotificationsAsync,
-  registerDevicePushTokenAsync,
-} from './lib/notifications';
 
 import HomeTabs from './HomeTabs';
 import Announcement from './screens/home/AnnouncementScreen';
@@ -25,28 +20,8 @@ SplashScreen.preventAutoHideAsync();
 
 const Stack = createNativeStackNavigator();
 
-setNotificationHandler({
-  handleNotification: async () => ({
-    shouldShowAlert: true,
-    shouldPlaySound: false,
-    shouldSetBadge: false,
-  }),
-});
-
 const App = () => {
   const { settings } = useSettings();
-  const [expoPushToken, setExpoPushToken] = useState(null);
-
-  useEffect(() => {
-    registerForPushNotificationsAsync().then((token) =>
-      setExpoPushToken(token)
-    );
-  }, []);
-
-  useEffect(() => {
-    if (expoPushToken !== null)
-      registerDevicePushTokenAsync(expoPushToken, settings);
-  }, [expoPushToken, settings]);
 
   // Load fonts
   const [fontsLoaded] = useFonts({
