@@ -1,47 +1,95 @@
 import { useState, createContext, useContext, useEffect } from 'react';
 import * as SecureStore from 'expo-secure-store';
+import messaging from '@react-native-firebase/messaging';
 
 const initialSettings = {
-  'Announcements and Events': false,
-  'Snow Day': false,
+  'Announcements and Events': true,
+  'Snow Day': true,
   'Dark Mode': false,
 };
+
+const settingToNotificationTopics = new Map([
+  ['Announcements and Events', ['announcements', 'events']],
+  ['Snow Day', ['snow-days']],
+]);
+
+let didInitSettings = false;
 
 export const SettingsContext = createContext(null);
 
 export function SettingsProvider({ children }) {
   const [settings, setSettings] = useState(initialSettings);
 
-  useEffect(() => {
-    // Load settings from SecureStore
-    let ignore = false;
+  /**
+   * Register or unregister to receive notifications for a setting.
+   *
+   * @param {string} name The setting name
+   * @param {boolean} value The setting value
+   */
+  const registerNotificationTopics = (name, value) => {
+    const topics = settingToNotificationTopics.get(name);
 
-    async function fetchSettings() {
-      const result = await SecureStore.getItemAsync('settings');
-      const value = JSON.parse(result);
-
-      if (result != null && !ignore) {
-        setSettings(value);
+    try {
+      if (value) {
+        for (const topic of topics) {
+          messaging().subscribeToTopic(topic);
+        }
+      } else {
+        for (const topic of topics) {
+          messaging().unsubscribeFromTopic(topic);
+        }
       }
+    } catch (error) {
+      console.error('Error subscribing to topic:', error);
     }
-    fetchSettings();
+  };
 
-    return () => {
-      ignore = true;
-    };
+  /**
+   * Update a setting.
+   *
+   * @param {string} name
+   * @param {boolean} value
+   */
+  const updateSetting = (name, value) => {
+    setSettings({ ...settings, [name]: value });
+
+    if (settingToNotificationTopics.has(name)) {
+      registerNotificationTopics(name, value);
+    }
+  };
+
+  useEffect(() => {
+    if (!didInitSettings) {
+      didInitSettings = true;
+
+      /**
+       * Load settings from SecureStore and subscribe to topics.
+       */
+      async function initSettings() {
+        const result = await SecureStore.getItemAsync('settings');
+        const value = JSON.parse(result);
+
+        if (result != null) {
+          setSettings(value);
+        }
+
+        for (const setting of settingToNotificationTopics.keys()) {
+          registerNotificationTopics(setting, value[setting]);
+        }
+      }
+
+      initSettings();
+    }
   }, []);
 
   useEffect(() => {
     // Save settings to SecureStore
-    async function saveSettings() {
-      const value = JSON.stringify(settings);
-      await SecureStore.setItemAsync('settings', value);
-    }
-    saveSettings();
-  }, [settings, setSettings]);
+    const value = JSON.stringify(settings);
+    SecureStore.setItemAsync('settings', value);
+  }, [settings]);
 
   return (
-    <SettingsContext.Provider value={{ settings, setSettings }}>
+    <SettingsContext.Provider value={{ settings, updateSetting }}>
       {children}
     </SettingsContext.Provider>
   );

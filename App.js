@@ -8,6 +8,8 @@ import { SettingsProvider, useSettings } from './contexts/SettingsContext';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
 import { StatusBar } from 'expo-status-bar';
+import messaging from '@react-native-firebase/messaging';
+import { Platform, PermissionsAndroid } from 'react-native';
 
 import HomeTabs from './HomeTabs';
 import Announcement from './screens/home/AnnouncementScreen';
@@ -17,6 +19,13 @@ import ClubsList from './screens/community/ClubsListScreen';
 import ClubStatus from './screens/community/ClubStatusScreen';
 
 SplashScreen.preventAutoHideAsync();
+
+// Request notification permissions
+if (Platform.OS === 'ios') {
+  messaging().requestPermission();
+} else if (Platform.OS === 'android') {
+  PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS);
+}
 
 const Stack = createNativeStackNavigator();
 

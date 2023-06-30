@@ -8,7 +8,7 @@ import Setting from '../components/Setting';
 
 const Settings = () => {
   const theme = useTheme();
-  const { settings, setSettings } = useSettings();
+  const { settings, updateSetting } = useSettings();
 
   return (
     <Layout hasTabBar={true}>
@@ -33,15 +33,13 @@ const Settings = () => {
             name="Announcements and Events"
             value={settings['Announcements and Events']}
             onValueChange={(value) =>
-              setSettings({ ...settings, 'Announcements and Events': value })
+              updateSetting('Announcements and Events', value)
             }
           />
           <Setting
             name="Snow Day"
             value={settings['Snow Day']}
-            onValueChange={(value) =>
-              setSettings({ ...settings, 'Snow Day': value })
-            }
+            onValueChange={(value) => updateSetting('Snow Day', value)}
           />
         </View>
 
@@ -53,9 +51,7 @@ const Settings = () => {
           <Setting
             name="Dark Mode"
             value={settings['Dark Mode']}
-            onValueChange={(value) =>
-              setSettings({ ...settings, 'Dark Mode': value })
-            }
+            onValueChange={(value) => updateSetting('Dark Mode', value)}
           />
         </View>
       </View>

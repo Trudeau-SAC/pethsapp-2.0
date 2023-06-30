@@ -3,6 +3,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTheme } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { tabBarHeight } from '../constants/sizes';
+import { StatusBar } from 'expo-status-bar';
 
 /**
  * Provides padding and gradient background for screens.
