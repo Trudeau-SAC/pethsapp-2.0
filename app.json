@@ -21,9 +21,13 @@
       "config": {
         "usesNonExemptEncryption": false
       },
-      "bundleIdentifier": "com.trudeausac.pethsapp"
+      "bundleIdentifier": "com.trudeausac.pethsapp",
+      "infoPlist": {
+        "UIBackgroundModes": ["fetch", "remote-notification"]
+      }
     },
     "android": {
+      "package": "com.trudeausac.pethsapp",
       "adaptiveIcon": {
         "foregroundImage": "./assets/icons/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
@@ -32,6 +36,17 @@
     "web": {
       "favicon": "./assets/icons/favicon.png"
     },
+    "plugins": [
+      "@react-native-firebase/app",
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "useFrameworks": "static"
+          }
+        }
+      ]
+    ],
     "extra": {
       "eas": {
         "projectId": "7925a464-a7a6-435b-8852-f8b67f661ac7"
