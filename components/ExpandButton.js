@@ -1,5 +1,5 @@
 import { useTheme } from '@react-navigation/native';
-import { StyleSheet, TouchableHighlight, Image } from 'react-native';
+import { StyleSheet, TouchableHighlight } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
 const ExpandButton = ({ onPress }) => {

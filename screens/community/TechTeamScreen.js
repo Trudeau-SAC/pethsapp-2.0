@@ -9,7 +9,7 @@ import BackButton from '../../components/BackButton';
 import Button from '../../components/Button';
 import { Image } from 'expo-image';
 
-const ClubStatus = () => {
+const TechTeam = () => {
   const theme = useTheme();
 
   return (
@@ -37,7 +37,7 @@ const ClubStatus = () => {
           variant="heading2"
           color="text"
         >
-          Club Status
+          Tech Team
         </Text>
 
         <Text
@@ -45,28 +45,28 @@ const ClubStatus = () => {
           variant="heading7"
           style={{ fontFamily: fonts.regular }}
         >
-          Have an idea for a club and want to get started? {'\n\n'} Fill out the
-          club status form!
+          Planning an activity that needs technology? Fill out this form and the
+          Tech Team will get back to you!
         </Text>
 
         <View
           style={{
-            padding: theme.spacing.s7,
+            padding: theme.spacing.s12,
             flex: 1,
           }}
         >
           <Image
             style={{ width: '100%', height: '100%' }}
-            source={require('../../assets/images/rocket.png')}
+            source={require('../../assets/images/computer.png')}
             contentFit="contain"
           />
         </View>
 
         <Button
-          title="Club Status Form"
+          title="Tech Team Form"
           onPress={() =>
             Linking.openURL(
-              'https://docs.google.com/document/d/1pZa37xuwaybow-2D7MNpaCUq4IPVLgYm146Upr2543U/edit?usp=sharing'
+              'https://docs.google.com/forms/d/e/1FAIpQLScIrCRQrYJBQwXtfRiDTVb7qfUxpo_19CketcqJszuM11UJsw/viewform'
             )
           }
         />
@@ -75,4 +75,4 @@ const ClubStatus = () => {
   );
 };
 
-export default ClubStatus;
+export default TechTeam;
