@@ -20,6 +20,7 @@ import ClubFunding from './screens/community/ClubFundingScreen';
 import ClubPromotion from './screens/community/ClubPromotionScreen';
 import TechTeam from './screens/community/TechTeamScreen';
 import Volunteering from './screens/community/VolunteeringScreen';
+import YouthCommittees from './screens/community/YouthCommitteesScreen';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -96,6 +97,7 @@ const App = () => {
           />
           <Stack.Screen name="Tech Team" component={TechTeam} />
           <Stack.Screen name="Volunteering" component={Volunteering} />
+          <Stack.Screen name="Youth Committees" component={YouthCommittees} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
