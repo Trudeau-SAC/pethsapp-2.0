@@ -19,6 +19,7 @@ import ClubStatus from './screens/community/ClubStatusScreen';
 import ClubFunding from './screens/community/ClubFundingScreen';
 import ClubPromotion from './screens/community/ClubPromotionScreen';
 import TechTeam from './screens/community/TechTeamScreen';
+import Volunteering from './screens/community/VolunteeringScreen';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -94,6 +95,7 @@ const App = () => {
             options={options.webViewScreen}
           />
           <Stack.Screen name="Tech Team" component={TechTeam} />
+          <Stack.Screen name="Volunteering" component={Volunteering} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
