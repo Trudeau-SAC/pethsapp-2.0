@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import { client } from '../../lib/sanity';
+import { useSanityData } from '../../lib/sanity';
 import Layout from '../../components/Layout';
 import { View, StyleSheet } from 'react-native';
 import { useTheme } from '@react-navigation/native';
@@ -9,7 +8,11 @@ import Resource from '../../components/Resource';
 
 const YouthCommittees = () => {
   const theme = useTheme();
-  const [youthCommittees, setYouthCommittees] = useState([]);
+  const youthCommittees = useSanityData('*[_type == "youthCommittee"]');
+
+  if (youthCommittees === null) {
+    return <Text>Loading...</Text>;
+  }
 
   const styles = StyleSheet.create({
     backButton: {
@@ -20,23 +23,6 @@ const YouthCommittees = () => {
       marginBottom: theme.spacing.s8,
     },
   });
-
-  useEffect(() => {
-    let ignore = false;
-
-    async function fetchVolunteering() {
-      const result = await client.fetch('*[_type == "youthCommittee"]');
-      if (!ignore) {
-        setYouthCommittees(result);
-      }
-    }
-    fetchVolunteering();
-
-    // Cleanup function
-    return () => {
-      ignore = true;
-    };
-  }, []);
 
   return (
     <Layout>
