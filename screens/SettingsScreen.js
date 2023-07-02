@@ -1,6 +1,10 @@
 import { useTheme } from '@react-navigation/native';
 import { View } from 'react-native';
-import { useSettings } from '../contexts/SettingsContext';
+import {
+  useAnnouncementsAndEvents,
+  useSnowDay,
+  useDarkMode,
+} from '../contexts/SettingsContext';
 
 import Layout from '../components/Layout';
 import Text from '../components/Text';
@@ -8,7 +12,10 @@ import Setting from '../components/Setting';
 
 const Settings = () => {
   const theme = useTheme();
-  const { settings, updateSetting } = useSettings();
+  const { announcementsAndEvents, updateAnnouncementsAndEvents } =
+    useAnnouncementsAndEvents();
+  const { snowDay, updateSnowDay } = useSnowDay();
+  const { darkMode, updateDarkMode } = useDarkMode();
 
   return (
     <Layout hasTabBar={true}>
@@ -31,15 +38,13 @@ const Settings = () => {
 
           <Setting
             name="Announcements and Events"
-            value={settings['Announcements and Events']}
-            onValueChange={(value) =>
-              updateSetting('Announcements and Events', value)
-            }
+            value={announcementsAndEvents}
+            onValueChange={updateAnnouncementsAndEvents}
           />
           <Setting
             name="Snow Day"
-            value={settings['Snow Day']}
-            onValueChange={(value) => updateSetting('Snow Day', value)}
+            value={snowDay}
+            onValueChange={updateSnowDay}
           />
         </View>
 
@@ -50,8 +55,8 @@ const Settings = () => {
 
           <Setting
             name="Dark Mode"
-            value={settings['Dark Mode']}
-            onValueChange={(value) => updateSetting('Dark Mode', value)}
+            value={darkMode}
+            onValueChange={updateDarkMode}
           />
         </View>
       </View>

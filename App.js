@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { lightTheme, darkTheme } from './constants/themes';
 import { registerRootComponent } from 'expo';
-import { SettingsProvider, useSettings } from './contexts/SettingsContext';
+import { SettingsProvider, useDarkMode } from './contexts/SettingsContext';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
 import messaging from '@react-native-firebase/messaging';
@@ -38,8 +38,8 @@ if (Platform.OS === 'ios') {
 const Stack = createNativeStackNavigator();
 
 const App = () => {
-  const { settings } = useSettings();
-  const theme = settings['Dark Mode'] ? darkTheme : lightTheme;
+  const { darkMode } = useDarkMode();
+  const theme = darkMode ? darkTheme : lightTheme;
 
   // Load fonts
   const [fontsLoaded] = useFonts({
@@ -79,7 +79,7 @@ const App = () => {
         <Stack.Navigator
           screenOptions={{
             headerShown: false,
-            statusBarStyle: settings['Dark Mode'] ? 'light' : 'dark',
+            statusBarStyle: darkMode ? 'light' : 'dark',
             statusBarTranslucent: true,
           }}
         >

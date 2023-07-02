@@ -2,99 +2,118 @@ import { useState, createContext, useContext, useEffect } from 'react';
 import * as SecureStore from 'expo-secure-store';
 import messaging from '@react-native-firebase/messaging';
 
-const initialSettings = {
-  'Announcements and Events': true,
-  'Snow Day': true,
-  'Dark Mode': false,
+let didInit = false;
+
+export const AnnouncementsAndEventsContext = createContext(null);
+export const SnowDayContext = createContext(null);
+export const DarkModeContext = createContext(null);
+
+const stringToBoolean = (string) => {
+  return string === 'true';
 };
 
-const settingToNotificationTopics = new Map([
-  ['Announcements and Events', ['announcements', 'events']],
-  ['Snow Day', ['snow-days']],
-]);
+const updateAnnouncementsAndEventsNotifications = (value) => {
+  if (value) {
+    messaging().subscribeToTopic('announcements');
+    messaging().subscribeToTopic('events');
+  } else {
+    messaging().unsubscribeFromTopic('announcements');
+    messaging().unsubscribeFromTopic('events');
+  }
+};
 
-let didInitSettings = false;
-
-export const SettingsContext = createContext(null);
+const updateSnowDayNotifications = (value) => {
+  if (value) {
+    messaging().subscribeToTopic('snow-days');
+  } else {
+    messaging().unsubscribeFromTopic('snow-days');
+  }
+};
 
 export function SettingsProvider({ children }) {
-  const [settings, setSettings] = useState(initialSettings);
-
-  /**
-   * Register or unregister to receive notifications for a setting.
-   *
-   * @param {string} name The setting name
-   * @param {boolean} value The setting value
-   */
-  const registerNotificationTopics = (name, value) => {
-    const topics = settingToNotificationTopics.get(name);
-
-    try {
-      if (value) {
-        for (const topic of topics) {
-          messaging().subscribeToTopic(topic);
-        }
-      } else {
-        for (const topic of topics) {
-          messaging().unsubscribeFromTopic(topic);
-        }
-      }
-    } catch (error) {
-      console.error('Error subscribing to topic:', error);
-    }
-  };
-
-  /**
-   * Update a setting.
-   *
-   * @param {string} name
-   * @param {boolean} value
-   */
-  const updateSetting = (name, value) => {
-    setSettings({ ...settings, [name]: value });
-
-    if (settingToNotificationTopics.has(name)) {
-      registerNotificationTopics(name, value);
-    }
-  };
+  const [announcementsAndEvents, setAnnouncementsAndEvents] = useState(null);
+  const [snowDay, setSnowDay] = useState(null);
+  const [darkMode, setDarkMode] = useState(null);
 
   useEffect(() => {
-    if (!didInitSettings) {
-      didInitSettings = true;
+    if (!didInit) {
+      didInit = true;
 
-      /**
-       * Load settings from SecureStore and subscribe to topics.
-       */
-      async function initSettings() {
-        const result = await SecureStore.getItemAsync('settings');
-        const value = JSON.parse(result);
-
-        if (result != null) {
-          setSettings(value);
+      SecureStore.getItemAsync('announcementsAndEvents').then((value) => {
+        if (value) {
+          value = stringToBoolean(value);
+        } else {
+          value = true;
+          SecureStore.setItemAsync('announcementsAndEvents', value.toString());
         }
 
-        for (const setting of settingToNotificationTopics.keys()) {
-          registerNotificationTopics(setting, value[setting]);
-        }
-      }
+        setAnnouncementsAndEvents(value);
+        updateAnnouncementsAndEventsNotifications(value);
+      });
 
-      initSettings();
+      SecureStore.getItemAsync('snowDay').then((value) => {
+        if (value) {
+          value = stringToBoolean(value);
+        } else {
+          value = true;
+          SecureStore.setItemAsync('snowDay', value.toString());
+        }
+
+        setSnowDay(value);
+        updateSnowDayNotifications(value);
+      });
+
+      SecureStore.getItemAsync('darkMode').then((value) => {
+        if (value) {
+          value = stringToBoolean(value);
+        } else {
+          value = false;
+          SecureStore.setItemAsync('darkMode', value.toString());
+        }
+
+        setDarkMode(value);
+      });
     }
   }, []);
 
-  useEffect(() => {
-    // Save settings to SecureStore
-    const value = JSON.stringify(settings);
-    SecureStore.setItemAsync('settings', value);
-  }, [settings]);
+  const updateAnnouncementsAndEvents = (value) => {
+    setAnnouncementsAndEvents(value);
+    SecureStore.setItemAsync('announcementsAndEvents', value.toString());
+    updateAnnouncementsAndEventsNotifications(value);
+  };
+
+  const updateSnowDay = (value) => {
+    setSnowDay(value);
+    SecureStore.setItemAsync('snowDay', value.toString());
+    updateSnowDayNotifications(value);
+  };
+
+  const updateDarkMode = (value) => {
+    setDarkMode(value);
+    SecureStore.setItemAsync('darkMode', value.toString());
+  };
 
   return (
-    <SettingsContext.Provider value={{ settings, updateSetting }}>
-      {children}
-    </SettingsContext.Provider>
+    <AnnouncementsAndEventsContext.Provider
+      value={{ announcementsAndEvents, updateAnnouncementsAndEvents }}
+    >
+      <SnowDayContext.Provider value={{ snowDay, updateSnowDay }}>
+        <DarkModeContext.Provider value={{ darkMode, updateDarkMode }}>
+          {children}
+        </DarkModeContext.Provider>
+      </SnowDayContext.Provider>
+    </AnnouncementsAndEventsContext.Provider>
   );
 }
 
-export function useSettings() {
-  return useContext(SettingsContext);
+export function useAnnouncementsAndEvents() {
+  return useContext(AnnouncementsAndEventsContext);
+}
+
+export function useSnowDay() {
+  return useContext(SnowDayContext);
+}
+
+export function useDarkMode() {
+  return useContext(DarkModeContext);
 }
