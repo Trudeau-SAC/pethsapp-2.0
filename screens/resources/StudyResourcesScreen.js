@@ -10,7 +10,7 @@ import Chip from '../../components/Chip';
 const StudyResources = () => {
   const theme = useTheme();
 
-  return <View></View>;
+  return <Layout></Layout>;
 };
 
 export default StudyResources;

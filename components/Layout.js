@@ -3,7 +3,6 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTheme } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { tabBarHeight } from '../constants/sizes';
-import { StatusBar } from 'expo-status-bar';
 
 /**
  * Provides padding and gradient background for screens.
@@ -27,30 +26,24 @@ export default function Layout({ children, hasTabBar = false }) {
       left: 0,
       right: 0,
     },
-    topBackground: {
-      backgroundColor: theme.colors.primary + '4D',
-      height: 1000,
-      position: 'absolute',
-      top: -1000,
-      left: 0,
-      right: 0,
-    },
   });
 
   return (
-    <ScrollView
-      contentContainerStyle={styles.container}
-      alwaysBounceVertical={false}
-    >
-      {/* View so that when the screen bounces on IOS, the background is consistent */}
-      <View style={styles.topBackground} />
+    <View>
       <LinearGradient
         style={styles.gradient}
         colors={[theme.colors.primary + '4D', theme.colors.primary + '00']}
         start={{ x: 0, y: 0 }}
         end={{ x: 0, y: 1 }}
       />
-      {children}
-    </ScrollView>
+      <ScrollView
+        contentContainerStyle={styles.container}
+        alwaysBounceVertical={false}
+        scrollEventThrottle={16}
+      >
+        {children}
+      </ScrollView>
+      <View style={styles.statusBarBackground} />
+    </View>
   );
 }

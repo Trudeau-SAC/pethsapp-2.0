@@ -1,8 +1,7 @@
 import { useTheme } from '@react-navigation/native';
 import { View } from 'react-native';
-import { useEffect, useState } from 'react';
-import { client } from '../../lib/sanity';
-
+import { useState } from 'react';
+import { useSanityData } from '../../lib/sanity';
 import Layout from '../../components/Layout';
 import Text from '../../components/Text';
 import BackButton from '../../components/BackButton';
@@ -12,46 +11,27 @@ import Chip from '../../components/Chip';
 
 const ClubsList = () => {
   const theme = useTheme();
-  const [clubs, setClubs] = useState([]);
+  const clubs = useSanityData('*[_type == "club"] | order(year desc, name)');
   const [selectedYear, setSelectedYear] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
 
-  useEffect(() => {
-    let ignore = false;
+  if (clubs === null) {
+    return <Text>Loading...</Text>;
+  }
 
-    /**
-     * Fetch years
-     */
-    async function fetchYears() {
-      const result = await client.fetch(
-        `*[_type == "club"] | order(year desc) {year}`
-      );
-      if (!ignore) {
-        setSelectedYear(0);
-      }
-    }
+  if (selectedYear >= clubs.length) {
+    setSelectedYear(clubs.length - 1);
+    return null;
+  }
 
-    /**
-     * Fetch clubs from a specific year
-     */
-    async function fetchClubs(year) {
-      const result = await client.fetch(
-        `*[_type == "club" && year == ${year}] | order(year desc, name)`
-      );
-      if (!ignore) {
-        setClubs(result);
-      }
-    }
+  // Get all years
+  const yearArray = clubs.map((club) => club.year);
+  const yearSet = new Set(yearArray);
+  const uniqueYears = Array.from(yearSet);
 
-    return () => {
-      ignore = true;
-    };
-  }, []);
-
-  // Filter clubs by year and search query
   const filteredClubs = clubs.filter(
     (club) =>
-      club.year === years[selectedYear] &&
+      club.year === uniqueYears[selectedYear] &&
       club.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -90,11 +70,11 @@ const ClubsList = () => {
       {/* Chip Row */}
       <View style={{ marginBottom: theme.spacing.s9 }}>
         <ChipRow>
-          {years.map((year, index) => (
+          {uniqueYears.map((year, index) => (
             <View key={year}>
               <Chip
                 title={year}
-                selected={year === years[selectedYear]}
+                selected={index === selectedYear}
                 onPress={() => setSelectedYear(index)}
               />
             </View>
