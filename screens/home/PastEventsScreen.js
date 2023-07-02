@@ -1,40 +1,30 @@
 import { useTheme } from '@react-navigation/native';
 import { View } from 'react-native';
-import { client, imageBuilder } from '../../lib/sanity';
-import { useEffect, useState } from 'react';
-
+import { useSanityData, imageBuilder } from '../../lib/sanity';
 import CardRow from '../../components/CardRow';
 import RectangleCard from '../../components/RectangleCard';
 import Layout from '../../components/Layout';
 import Text from '../../components/Text';
 import BackButton from '../../components/BackButton';
+import { StyleSheet } from 'react-native';
 
 const PastEventsScreen = () => {
-  const [events, setEvents] = useState([]);
+  const today = new Date().toISOString().substring(0, 10);
+  const events = useSanityData(
+    '*[_type == "event" && end_date < $today] | order(start_date desc) {_id, name, card_image, start_date}',
+    { today: today }
+  );
   const theme = useTheme();
 
-  useEffect(() => {
-    let ignore = false;
+  if (events === null) {
+    return <Text>Loading...</Text>;
+  }
 
-    /**
-     * Fetches past events from Sanity
-     */
-    async function fetchEvents() {
-      const today = new Date().toISOString().substring(0, 10);
-      const result = await client.fetch(
-        '*[_type == "event" && end_date < $today] | order(start_date desc) {_id, name, card_image, start_date}',
-        { today: today }
-      );
-
-      if (!ignore) setEvents(result);
-    }
-    fetchEvents();
-
-    // Cleanup function
-    return () => {
-      ignore = true;
-    };
-  }, []);
+  const styles = StyleSheet.create({
+    row: {
+      marginHorizontal: -theme.spacing.s5,
+    },
+  });
 
   // Group events by school year
   const eventsMap = new Map();
@@ -69,19 +59,21 @@ const PastEventsScreen = () => {
         <Text color="text" variant="heading5">
           {schoolYear}
         </Text>
-        <CardRow>
-          {events.map((event) => (
-            <RectangleCard
-              key={event._id}
-              title={event.name}
-              imageSource={
-                event.card_image && imageBuilder.image(event.card_image).url()
-              }
-              navigateTo="Event"
-              navigationParams={{ title: event.name, id: event._id }}
-            />
-          ))}
-        </CardRow>
+        <View style={styles.row}>
+          <CardRow>
+            {events.map((event) => (
+              <RectangleCard
+                key={event._id}
+                title={event.name}
+                imageSource={
+                  event.card_image && imageBuilder.image(event.card_image).url()
+                }
+                navigateTo="Event"
+                navigationParams={{ title: event.name, id: event._id }}
+              />
+            ))}
+          </CardRow>
+        </View>
       </View>
     )
   );

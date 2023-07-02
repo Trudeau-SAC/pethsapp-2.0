@@ -6,10 +6,15 @@ import { useTheme } from '@react-navigation/native';
 import BackButton from '../../components/BackButton';
 import Text from '../../components/Text';
 import Resource from '../../components/Resource';
+import { useSanityData } from '../../lib/sanity';
 
 const Volunteering = () => {
   const theme = useTheme();
-  const [volunteering, setVolunteering] = useState([]);
+  const volunteering = useSanityData('*[_type == "volunteering"]');
+
+  if (volunteering === null) {
+    return <Text>Loading...</Text>;
+  }
 
   const styles = StyleSheet.create({
     backButton: {
@@ -20,23 +25,6 @@ const Volunteering = () => {
       marginBottom: theme.spacing.s8,
     },
   });
-
-  useEffect(() => {
-    let ignore = false;
-
-    async function fetchVolunteering() {
-      const result = await client.fetch('*[_type == "volunteering"]');
-      if (!ignore) {
-        setVolunteering(result);
-      }
-    }
-    fetchVolunteering();
-
-    // Cleanup function
-    return () => {
-      ignore = true;
-    };
-  }, []);
 
   return (
     <Layout>

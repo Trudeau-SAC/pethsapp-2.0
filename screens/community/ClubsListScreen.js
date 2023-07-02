@@ -20,35 +20,35 @@ const ClubsList = () => {
     let ignore = false;
 
     /**
-     * Fetches clubs from Sanity
+     * Fetch years
      */
-    async function fetchClubs() {
-      try {
-        const result = await client.fetch(
-          '*[_type == "club"] | order(year desc, name)'
-        );
-        if (!ignore) {
-          setClubs(result);
-        }
-      } catch (e) {
-        console.error(e);
+    async function fetchYears() {
+      const result = await client.fetch(
+        `*[_type == "club"] | order(year desc) {year}`
+      );
+      if (!ignore) {
+        setSelectedYear(0);
       }
     }
-    fetchClubs();
 
-    // Cleanup function
+    /**
+     * Fetch clubs from a specific year
+     */
+    async function fetchClubs(year) {
+      const result = await client.fetch(
+        `*[_type == "club" && year == ${year}] | order(year desc, name)`
+      );
+      if (!ignore) {
+        setClubs(result);
+      }
+    }
+
     return () => {
       ignore = true;
     };
   }, []);
 
-  // Get all years
-  let yearSet = new Set();
-  for (let i = 0; i < clubs.length; i++) {
-    yearSet.add(clubs[i].year);
-  }
-  const years = Array.from(yearSet);
-
+  // Filter clubs by year and search query
   const filteredClubs = clubs.filter(
     (club) =>
       club.year === years[selectedYear] &&

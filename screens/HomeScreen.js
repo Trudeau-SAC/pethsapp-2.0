@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
 import { shortenedMonths } from '../constants/time';
 import { useTheme } from '@react-navigation/native';
 import { toPlainText } from '@portabletext/react';
 import { StyleSheet, View } from 'react-native';
-import { client, imageBuilder } from '../lib/sanity';
+import { imageBuilder } from '../lib/sanity';
 import { MaterialIcons } from '@expo/vector-icons';
-
+import { useSanityDataRealtime } from '../lib/sanity';
 import CardRow from '../components/CardRow';
 import RectangleCard from '../components/RectangleCard';
 import Layout from '../components/Layout';
@@ -14,9 +13,19 @@ import HomeHeader from '../components/HomeHeader';
 import SquareCard from '../components/SquareCard';
 
 const Home = () => {
-  const [announcements, setAnnouncements] = useState([]);
-  const [events, setEvents] = useState([]);
+  const announcements = useSanityDataRealtime(
+    '*[_type == "announcement"] | order(date desc) {_id, date, body}[0...5]'
+  );
+  const today = new Date().toISOString().substring(0, 10);
+  const events = useSanityDataRealtime(
+    '*[_type == "event" && end_date >= $today] | order(date asc) {_id, name, card_image}',
+    { today: today }
+  );
   const theme = useTheme();
+
+  if (announcements === null || events === null) {
+    return <Text>Loading...</Text>;
+  }
 
   const styles = StyleSheet.create({
     row: {
@@ -24,39 +33,6 @@ const Home = () => {
       marginHorizontal: -theme.spacing.s5,
     },
   });
-
-  useEffect(() => {
-    let ignore = false;
-
-    /**
-     * Fetches the 5 most recent announcements from Sanity
-     */
-    async function fetchAnnouncements() {
-      const result = await client.fetch(
-        '*[_type == "announcement"] | order(date desc) {_id, date, body}[0...5]'
-      );
-      if (!ignore) setAnnouncements(result);
-    }
-    fetchAnnouncements();
-
-    /**
-     * Fetches current and upcoming events from Sanity
-     */
-    async function fetchEvents() {
-      const today = new Date().toISOString().substring(0, 10);
-      const result = await client.fetch(
-        '*[_type == "event" && end_date >= $today] | order(date asc) {_id, name, card_image}',
-        { today: today }
-      );
-      if (!ignore) setEvents(result);
-    }
-    fetchEvents();
-
-    // Cleanup function
-    return () => {
-      ignore = true;
-    };
-  }, []);
 
   return (
     <Layout hasTabBar={true}>
@@ -85,7 +61,7 @@ const Home = () => {
               {announcements.map((announcement) => {
                 const d = new Date(announcement.date);
                 const month = shortenedMonths[d.getMonth()];
-                const day = d.getDate();
+                const day = d.getUTCDate();
                 const date = `${month} ${day}`;
                 let previewBody = toPlainText(announcement.body); // Convert portable text to plain text
                 previewBody = previewBody.replace(/\n|\r/g, ' '); // Remove newlines
@@ -97,7 +73,10 @@ const Home = () => {
                     title={date}
                     subtitle={previewBody}
                     navigateTo="Announcement"
-                    navigationParams={{ title: date, body: announcement.body }}
+                    navigationParams={{
+                      title: date,
+                      body: announcement.body,
+                    }}
                   />
                 );
               })}
