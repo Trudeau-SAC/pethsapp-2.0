@@ -1,6 +1,6 @@
 import { useTheme } from '@react-navigation/native';
 import { StyleSheet, View } from 'react-native';
-import { clubs, opportunities } from '../constants/community';
+import { clubs, opportunities, links } from '../constants/community';
 
 import Layout from '../components/Layout';
 import Text from '../components/Text';

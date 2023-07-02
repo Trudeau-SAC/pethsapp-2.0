@@ -45,3 +45,5 @@ export const opportunities = [
     imageSource: require('../assets/card-graphics/boy-and-girl.png'),
   },
 ];
+
+export const links = [];

@@ -21,6 +21,10 @@ import ClubPromotion from './screens/community/ClubPromotionScreen';
 import TechTeam from './screens/community/TechTeamScreen';
 import Volunteering from './screens/community/VolunteeringScreen';
 import YouthCommittees from './screens/community/YouthCommitteesScreen';
+import StudyResources from './screens/resources/StudyResourcesScreen';
+import PostSecondary from './screens/resources/PostSecondaryScreen';
+import FAQ from './screens/resources/FAQScreen';
+import StudentServices from './screens/resources/StudentServicesScreen';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -98,6 +102,10 @@ const App = () => {
           <Stack.Screen name="Tech Team" component={TechTeam} />
           <Stack.Screen name="Volunteering" component={Volunteering} />
           <Stack.Screen name="Youth Committees" component={YouthCommittees} />
+          <Stack.Screen name="Study Resources" component={StudyResources} />
+          <Stack.Screen name="Post-Secondary" component={PostSecondary} />
+          <Stack.Screen name="FAQ" component={FAQ} />
+          <Stack.Screen name="Student Services" component={StudentServices} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
