@@ -23,7 +23,7 @@ export default function Chip({ title, selected, onPress }) {
   });
 
   return (
-    <Pressable style={styles.chip} onPress={() => onPress(title)}>
+    <Pressable style={styles.chip} onPress={onPress}>
       <Text color={selected ? 'background' : 'text'} variant="body1">
         {title}
       </Text>

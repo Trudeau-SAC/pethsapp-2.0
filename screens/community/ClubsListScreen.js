@@ -13,11 +13,9 @@ import Chip from '../../components/Chip';
 const ClubsList = () => {
   const theme = useTheme();
   const [clubs, setClubs] = useState([]);
-  const [years, setYears] = useState([]);
-  const [selectedYear, setSelectedYear] = useState('');
+  const [selectedYear, setSelectedYear] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Fetch clubs from Sanity
   useEffect(() => {
     let ignore = false;
 
@@ -29,18 +27,8 @@ const ClubsList = () => {
         const result = await client.fetch(
           '*[_type == "club"] | order(year desc, name)'
         );
-
         if (!ignore) {
           setClubs(result);
-
-          // Get all years
-          let yearSet = new Set();
-          for (let i = 0; i < result.length; i++) {
-            yearSet.add(result[i].year);
-          }
-          const yearArray = Array.from(yearSet);
-          setYears(yearArray);
-          setSelectedYear(yearArray[0]);
         }
       } catch (e) {
         console.error(e);
@@ -54,9 +42,16 @@ const ClubsList = () => {
     };
   }, []);
 
+  // Get all years
+  let yearSet = new Set();
+  for (let i = 0; i < clubs.length; i++) {
+    yearSet.add(clubs[i].year);
+  }
+  const years = Array.from(yearSet);
+
   const filteredClubs = clubs.filter(
     (club) =>
-      club.year === selectedYear &&
+      club.year === years[selectedYear] &&
       club.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -99,8 +94,8 @@ const ClubsList = () => {
             <View key={year}>
               <Chip
                 title={year}
-                selected={year === selectedYear}
-                onPress={setSelectedYear}
+                selected={year === years[selectedYear]}
+                onPress={() => setSelectedYear(index)}
               />
             </View>
           ))}
