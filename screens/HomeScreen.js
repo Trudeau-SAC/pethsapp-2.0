@@ -16,7 +16,7 @@ import { useState } from 'react';
 const Home = () => {
   const announcements = useSanityData(
     '*[_type == "announcement"] | order(date desc) {_id, date, body}[0...5]',
-    {},
+    undefined,
     false
   );
   const today = new Date().toISOString().substring(0, 10);
