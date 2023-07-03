@@ -65,7 +65,9 @@ const RectangleCard = ({
       top: theme.spacing.s4,
     },
     tint: {
-      backgroundColor: `rgba(0, 0, 0, ${isPressedIn ? 0.2 : 0})`,
+      backgroundColor: `rgba(${theme.dark ? '255, 255, 255, ' : '0, 0, 0, '} ${
+        isPressedIn ? 0.2 : 0
+      })`,
       position: 'absolute',
       width: '100%',
       height: '100%',
