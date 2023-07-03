@@ -8,7 +8,16 @@ import Chip from '../../components/Chip';
 import { useSanityData } from '../../lib/sanity';
 import { useState } from 'react';
 
-const topics = ['Math', 'Biology', 'Physics', 'Chemistry', 'French', 'English'];
+const topics = [
+  'Math',
+  'Biology',
+  'Physics',
+  'Chemistry',
+  'French',
+  'English',
+  'Online Courses',
+  'Online Tools',
+];
 
 const StudyResources = () => {
   const theme = useTheme();
