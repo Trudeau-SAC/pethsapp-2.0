@@ -21,6 +21,21 @@ const StudyResources = () => {
     studyResourceGroupsParam
   );
 
+  let studyResourceElements;
+  if (studyResourceGroups === null) {
+    studyResourceElements = <Text>Loading...</Text>;
+  } else if (studyResourceGroups.length === 0) {
+    studyResourceElements = null;
+  } else {
+    studyResourceElements = studyResourceGroups[0].studyResources.map(
+      (studyResource) => (
+        <Text key={studyResource._key} variant="body" color="text">
+          {studyResource.name}
+        </Text>
+      )
+    );
+  }
+
   return (
     <Layout>
       {/* Back button */}
@@ -63,19 +78,7 @@ const StudyResources = () => {
       </View>
 
       {/* Study Resources */}
-      <View style={{ rowGap: theme.spacing.s4 }}>
-        {studyResourceGroups === null ? (
-          <Text>Loading...</Text>
-        ) : (
-          studyResourceGroups.map((studyResourceGroup) =>
-            studyResourceGroup.studyResources.map((studyResource) => (
-              <Text key={studyResource._id} variant="body" color="text">
-                {studyResource.name}
-              </Text>
-            ))
-          )
-        )}
-      </View>
+      <View style={{ rowGap: theme.spacing.s4 }}>{studyResourceElements}</View>
     </Layout>
   );
 };
