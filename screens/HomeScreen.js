@@ -11,21 +11,19 @@ import Layout from '../components/Layout';
 import Text from '../components/Text';
 import HomeHeader from '../components/HomeHeader';
 import SquareCard from '../components/SquareCard';
+import { useState } from 'react';
 
 const Home = () => {
   const announcements = useSanityDataRealtime(
     '*[_type == "announcement"] | order(date desc) {_id, date, body}[0...5]'
   );
   const today = new Date().toISOString().substring(0, 10);
+  const [eventsParam] = useState({ today: today });
   const events = useSanityDataRealtime(
     '*[_type == "event" && end_date >= $today] | order(date asc) {_id, name, card_image}',
-    { today: today }
+    eventsParam
   );
   const theme = useTheme();
-
-  if (announcements === null || events === null) {
-    return <Text>Loading...</Text>;
-  }
 
   const styles = StyleSheet.create({
     row: {
@@ -58,28 +56,32 @@ const Home = () => {
           </Text>
           <View style={styles.row}>
             <CardRow>
-              {announcements.map((announcement) => {
-                const d = new Date(announcement.date);
-                const month = shortenedMonths[d.getMonth()];
-                const day = d.getUTCDate();
-                const date = `${month} ${day}`;
-                let previewBody = toPlainText(announcement.body); // Convert portable text to plain text
-                previewBody = previewBody.replace(/\n|\r/g, ' '); // Remove newlines
-                previewBody = previewBody.substring(0, 100); // Shorten for preview
+              {announcements === null ? (
+                <Text>Loading...</Text>
+              ) : (
+                announcements.map((announcement) => {
+                  const d = new Date(announcement.date);
+                  const month = shortenedMonths[d.getMonth()];
+                  const day = d.getUTCDate();
+                  const date = `${month} ${day}`;
+                  let previewBody = toPlainText(announcement.body); // Convert portable text to plain text
+                  previewBody = previewBody.replace(/\n|\r/g, ' '); // Remove newlines
+                  previewBody = previewBody.substring(0, 100); // Shorten for preview
 
-                return (
-                  <RectangleCard
-                    key={announcement._id}
-                    title={date}
-                    subtitle={previewBody}
-                    navigateTo="Announcement"
-                    navigationParams={{
-                      title: date,
-                      body: announcement.body,
-                    }}
-                  />
-                );
-              })}
+                  return (
+                    <RectangleCard
+                      key={announcement._id}
+                      title={date}
+                      subtitle={previewBody}
+                      navigateTo="Announcement"
+                      navigationParams={{
+                        title: date,
+                        body: announcement.body,
+                      }}
+                    />
+                  );
+                })
+              )}
             </CardRow>
           </View>
         </View>
@@ -95,18 +97,22 @@ const Home = () => {
           </Text>
           <View style={styles.row}>
             <CardRow>
-              {events.map((event) => (
-                <RectangleCard
-                  key={event._id}
-                  title={event.name}
-                  imageSource={
-                    event.card_image &&
-                    imageBuilder.image(event.card_image).url()
-                  }
-                  navigateTo="Event"
-                  navigationParams={{ title: event.name, id: event._id }}
-                />
-              ))}
+              {events === null ? (
+                <Text>Loading...</Text>
+              ) : (
+                events.map((event) => (
+                  <RectangleCard
+                    key={event._id}
+                    title={event.name}
+                    imageSource={
+                      event.card_image &&
+                      imageBuilder.image(event.card_image).url()
+                    }
+                    navigateTo="Event"
+                    navigationParams={{ title: event.name, id: event._id }}
+                  />
+                ))
+              )}
             </CardRow>
           </View>
         </View>

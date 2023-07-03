@@ -7,12 +7,14 @@ import Layout from '../../components/Layout';
 import Text from '../../components/Text';
 import BackButton from '../../components/BackButton';
 import { StyleSheet } from 'react-native';
+import { useState } from 'react';
 
 const PastEventsScreen = () => {
   const today = new Date().toISOString().substring(0, 10);
+  const [eventsParam] = useState({ today: today });
   const events = useSanityData(
     '*[_type == "event" && end_date < $today] | order(start_date desc) {_id, name, card_image, start_date}',
-    { today: today }
+    eventsParam
   );
   const theme = useTheme();
 
