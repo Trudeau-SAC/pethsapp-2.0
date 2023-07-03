@@ -4,7 +4,7 @@ import { toPlainText } from '@portabletext/react';
 import { StyleSheet, View } from 'react-native';
 import { imageBuilder } from '../lib/sanity';
 import { MaterialIcons } from '@expo/vector-icons';
-import { useSanityDataRealtime } from '../lib/sanity';
+import { useSanityData } from '../lib/sanity';
 import CardRow from '../components/CardRow';
 import RectangleCard from '../components/RectangleCard';
 import Layout from '../components/Layout';
@@ -14,14 +14,17 @@ import SquareCard from '../components/SquareCard';
 import { useState } from 'react';
 
 const Home = () => {
-  const announcements = useSanityDataRealtime(
-    '*[_type == "announcement"] | order(date desc) {_id, date, body}[0...5]'
+  const announcements = useSanityData(
+    '*[_type == "announcement"] | order(date desc) {_id, date, body}[0...5]',
+    {},
+    false
   );
   const today = new Date().toISOString().substring(0, 10);
   const [eventsParam] = useState({ today: today });
-  const events = useSanityDataRealtime(
+  const events = useSanityData(
     '*[_type == "event" && end_date >= $today] | order(date asc) {_id, name, card_image}',
-    eventsParam
+    eventsParam,
+    false
   );
   const theme = useTheme();
 
