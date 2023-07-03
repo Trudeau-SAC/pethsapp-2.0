@@ -32,7 +32,7 @@ const YouthCommittees = () => {
       </View>
 
       {/* Title */}
-      <Text style={styles.title} variant="heading2" color="text">
+      <Text style={styles.title} variant="heading3" color="text">
         Youth Committees
       </Text>
 

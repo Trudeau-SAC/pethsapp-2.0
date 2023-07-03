@@ -13,12 +13,12 @@ const topics = ['Math', 'Biology', 'Physics', 'Chemistry', 'French', 'English'];
 const StudyResources = () => {
   const theme = useTheme();
   const [selectedTopic, setSelectedTopic] = useState(0);
-  const [studyResourceGroupParam, setStudyResourceGroupParam] = useState({
+  const [studyResourceGroupsParam, setStudyResourceGroupsParam] = useState({
     topic: topics[selectedTopic],
   });
-  const studyResourceGroup = useSanityData(
-    '*[_type == "studyResourceGroup && topic == $topic"]',
-    studyResourceGroupParam
+  const studyResourceGroups = useSanityData(
+    '*[_type == "studyResourceGroup" && topic == $topic]',
+    studyResourceGroupsParam
   );
 
   return (
@@ -36,13 +36,46 @@ const StudyResources = () => {
       {/* Title */}
       <Text
         style={{
-          marginBottom: theme.spacing.s8,
+          marginBottom: theme.spacing.s7,
         }}
-        variant="heading2"
+        variant="heading3"
         color="text"
       >
         Study Resources
       </Text>
+
+      {/* Chip Row */}
+      <View style={{ marginBottom: theme.spacing.s10 }}>
+        <ChipRow>
+          {topics.map((topic, index) => (
+            <View key={topic}>
+              <Chip
+                title={topic}
+                selected={index === selectedTopic}
+                onPress={() => {
+                  setSelectedTopic(index);
+                  setStudyResourceGroupsParam({ topic: topics[index] });
+                }}
+              />
+            </View>
+          ))}
+        </ChipRow>
+      </View>
+
+      {/* Study Resources */}
+      <View style={{ rowGap: theme.spacing.s4 }}>
+        {studyResourceGroups === null ? (
+          <Text>Loading...</Text>
+        ) : (
+          studyResourceGroups.map((studyResourceGroup) =>
+            studyResourceGroup.studyResources.map((studyResource) => (
+              <Text key={studyResource._id} variant="body" color="text">
+                {studyResource.name}
+              </Text>
+            ))
+          )
+        )}
+      </View>
     </Layout>
   );
 };

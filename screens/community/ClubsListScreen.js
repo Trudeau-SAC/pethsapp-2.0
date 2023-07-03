@@ -83,7 +83,7 @@ const ClubsList = () => {
         <Text>Loading...</Text>
       ) : (
         filteredClubs.map((club) => (
-          <Text key={club.name} variant="body" color="text">
+          <Text key={club._id} variant="body" color="text">
             {club.name}
           </Text>
         ))
