@@ -74,41 +74,39 @@ const App = () => {
   };
 
   return (
-    <>
-      <NavigationContainer theme={theme} onReady={onLayoutRootView}>
-        <Stack.Navigator
-          screenOptions={{
-            headerShown: false,
-            statusBarStyle: darkMode ? 'light' : 'dark',
-            statusBarTranslucent: true,
-          }}
-        >
-          <Stack.Screen name="Home Tabs" component={HomeTabs} />
-          <Stack.Screen name="Announcement" component={Announcement} />
-          <Stack.Screen name="Event" component={Event} />
-          <Stack.Screen name="Past Events" component={PastEvents} />
-          <Stack.Screen name="Clubs List" component={ClubsList} />
-          <Stack.Screen name="Club Status" component={ClubStatus} />
-          <Stack.Screen
-            name="Club Funding"
-            component={ClubFunding}
-            options={options.webViewScreen}
-          />
-          <Stack.Screen
-            name="Club Promotion"
-            component={ClubPromotion}
-            options={options.webViewScreen}
-          />
-          <Stack.Screen name="Tech Team" component={TechTeam} />
-          <Stack.Screen name="Volunteering" component={Volunteering} />
-          <Stack.Screen name="Youth Committees" component={YouthCommittees} />
-          <Stack.Screen name="Study Resources" component={StudyResources} />
-          <Stack.Screen name="Post-Secondary" component={PostSecondary} />
-          <Stack.Screen name="FAQ" component={FAQ} />
-          <Stack.Screen name="Student Services" component={StudentServices} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </>
+    <NavigationContainer theme={theme} onReady={onLayoutRootView}>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+          statusBarStyle: darkMode ? 'light' : 'dark',
+          statusBarTranslucent: true,
+        }}
+      >
+        <Stack.Screen name="Home Tabs" component={HomeTabs} />
+        <Stack.Screen name="Announcement" component={Announcement} />
+        <Stack.Screen name="Event" component={Event} />
+        <Stack.Screen name="Past Events" component={PastEvents} />
+        <Stack.Screen name="Clubs List" component={ClubsList} />
+        <Stack.Screen name="Club Status" component={ClubStatus} />
+        <Stack.Screen
+          name="Club Funding"
+          component={ClubFunding}
+          options={options.webViewScreen}
+        />
+        <Stack.Screen
+          name="Club Promotion"
+          component={ClubPromotion}
+          options={options.webViewScreen}
+        />
+        <Stack.Screen name="Tech Team" component={TechTeam} />
+        <Stack.Screen name="Volunteering" component={Volunteering} />
+        <Stack.Screen name="Youth Committees" component={YouthCommittees} />
+        <Stack.Screen name="Study Resources" component={StudyResources} />
+        <Stack.Screen name="Post-Secondary" component={PostSecondary} />
+        <Stack.Screen name="FAQ" component={FAQ} />
+        <Stack.Screen name="Student Services" component={StudentServices} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 

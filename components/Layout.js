@@ -12,9 +12,11 @@ export default function Layout({ children, hasTabBar = false }) {
   const theme = useTheme();
 
   const styles = StyleSheet.create({
+    screen: {
+      paddingTop: insets.top,
+    },
     container: {
       minHeight: '100%',
-      paddingTop: theme.spacing.s5,
       paddingBottom:
         (hasTabBar ? tabBarHeight : insets.bottom) + theme.spacing.s5,
       paddingLeft: insets.left + theme.spacing.s5,
@@ -29,7 +31,7 @@ export default function Layout({ children, hasTabBar = false }) {
   });
 
   return (
-    <View>
+    <View style={styles.screen}>
       <LinearGradient
         style={styles.gradient}
         colors={[theme.colors.primary + '4D', theme.colors.primary + '00']}
