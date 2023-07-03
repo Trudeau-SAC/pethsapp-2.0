@@ -1,11 +1,10 @@
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Pressable } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import { Image } from 'expo-image';
-
-import ExpandButton from './ExpandButton';
 import Text from './Text';
+import { useState } from 'react';
 
 /**
  * Card component, which displays text and images
@@ -27,6 +26,7 @@ const RectangleCard = ({
 }) => {
   const theme = useTheme();
   const navigation = useNavigation();
+  const [isPressedIn, setIsPressedIn] = useState(false);
 
   const styles = StyleSheet.create({
     container: {
@@ -64,12 +64,23 @@ const RectangleCard = ({
       right: theme.spacing.s4,
       top: theme.spacing.s4,
     },
+    tint: {
+      backgroundColor: `rgba(0, 0, 0, ${isPressedIn ? 0.2 : 0})`,
+      position: 'absolute',
+      width: '100%',
+      height: '100%',
+    },
   });
 
   return (
-    <View
+    <Pressable
       style={styles.container}
-      onPress={() => navigation.navigate(navigateTo)}
+      onPressIn={() => setIsPressedIn(true)}
+      onPressOut={() => setIsPressedIn(false)}
+      onPress={() => {
+        if (navigateTo) navigation.navigate(navigateTo, navigationParams);
+      }}
+      unstable_pressDelay={100}
       underlayColor={theme.colors.onPrimary}
     >
       {imageSource && <Image style={styles.image} source={imageSource} />}
@@ -96,14 +107,8 @@ const RectangleCard = ({
           </Text>
         )}
       </View>
-      {navigateTo && (
-        <View style={styles.expandButton}>
-          <ExpandButton
-            onPress={() => navigation.navigate(navigateTo, navigationParams)}
-          />
-        </View>
-      )}
-    </View>
+      <View style={styles.tint} />
+    </Pressable>
   );
 };
 
