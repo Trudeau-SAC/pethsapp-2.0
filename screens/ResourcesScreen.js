@@ -36,7 +36,7 @@ const Resources = ({ navigation }) => {
         {/* Materials section */}
         <View style={styles.section}>
           <Text color="text" variant="heading5">
-            Clubs
+            Materials
           </Text>
 
           <View style={styles.row}>
