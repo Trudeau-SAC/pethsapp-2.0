@@ -102,9 +102,17 @@ const App = () => {
         <Stack.Screen name="Volunteering" component={Volunteering} />
         <Stack.Screen name="Youth Committees" component={YouthCommittees} />
         <Stack.Screen name="Study Resources" component={StudyResources} />
-        <Stack.Screen name="Post-Secondary" component={PostSecondary} />
+        <Stack.Screen
+          name="Post-Secondary"
+          component={PostSecondary}
+          options={options.webViewScreen}
+        />
         <Stack.Screen name="FAQ" component={FAQ} />
-        <Stack.Screen name="Student Services" component={StudentServices} />
+        <Stack.Screen
+          name="Student Services"
+          component={StudentServices}
+          options={options.webViewScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
