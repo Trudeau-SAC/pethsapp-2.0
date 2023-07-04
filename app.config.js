@@ -40,7 +40,7 @@ if (process.env.APP_ENV === 'production') {
       package: 'com.trudeausac.pethsapp.staging',
     },
     extra: {
-      sanityDataset: 'staging',
+      sanityDataset: 'development', // Sanity.io free tier only allows 2 datasets
     },
   };
 }
