@@ -10,6 +10,7 @@ const Expander = ({ title, children }) => {
 
   const styles = StyleSheet.create({
     expander: {
+      borderColor: theme.colors.border,
       borderRadius: 16,
       backgroundColor: theme.colors.background,
       paddingVertical: 18,
@@ -35,7 +36,7 @@ const Expander = ({ title, children }) => {
         <Text variant="heading7" color="text">
           {title}
         </Text>
-        <Feather name="maximize-2" size={20} color="black" />
+        <Feather name="maximize-2" size={20} color={theme.colors.text} />
       </View>
       {isExpanded && children}
     </Pressable>

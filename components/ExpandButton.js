@@ -1,29 +1,44 @@
 import { useTheme } from '@react-navigation/native';
-import { StyleSheet, TouchableHighlight } from 'react-native';
+import { View, StyleSheet, Pressable } from 'react-native';
+import Text from './Text';
 import { Feather } from '@expo/vector-icons';
+import { useState } from 'react';
 
-const ExpandButton = ({ onPress }) => {
+const Expander = ({ title, children }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
   const theme = useTheme();
 
   const styles = StyleSheet.create({
-    button: {
-      width: 36,
-      height: 36,
-      borderRadius: 18,
-      backgroundColor: theme.colors.onPrimary,
-      padding: 8,
+    expander: {
+      borderRadius: 16,
+      backgroundColor: theme.colors.background,
+      paddingVertical: 18,
+      paddingHorizontal: 20,
+      borderWidth: 1,
+    },
+    topRow: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      marginBottom: isExpanded ? 18 : 0,
     },
   });
 
+  const handlePressed = () => {
+    setIsExpanded(!isExpanded);
+    console.log(`Expanded: ${!isExpanded}`);
+  };
+
   return (
-    <TouchableHighlight
-      style={styles.button}
-      underlayColor={theme.colors.neutral2}
-      onPress={onPress}
-    >
-      <Feather name="maximize-2" size={20} color={theme.colors.primary} />
-    </TouchableHighlight>
+    <Pressable onPress={handlePressed} style={styles.expander}>
+      <View style={styles.topRow}>
+        <Text variant="heading7" color="text">
+          {title}
+        </Text>
+        <Feather name="maximize-2" size={20} color="black" />
+      </View>
+      {isExpanded && children}
+    </Pressable>
   );
 };
-
-export default ExpandButton;
+export default Expander;
