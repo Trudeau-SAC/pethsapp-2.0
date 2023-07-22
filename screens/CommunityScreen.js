@@ -6,6 +6,7 @@ import Layout from '../components/Layout';
 import Text from '../components/Text';
 import RectangleCard from '../components/RectangleCard';
 import CardRow from '../components/CardRow';
+import LinkButton from '../components/LinkButton';
 
 const Community = () => {
   const theme = useTheme();
@@ -65,6 +66,7 @@ const Community = () => {
           <Text color="text" variant="heading5">
             Links
           </Text>
+          <LinkButton url={'https://google.com'} title="Instagram"></LinkButton>
         </View>
       </View>
     </Layout>

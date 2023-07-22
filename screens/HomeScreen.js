@@ -12,6 +12,7 @@ import Text from '../components/Text';
 import HomeHeader from '../components/HomeHeader';
 import SquareCard from '../components/SquareCard';
 import { useState } from 'react';
+import Expander from '../components/Expander';
 
 const Home = () => {
   const announcements = useSanityData(
@@ -46,6 +47,10 @@ const Home = () => {
       >
         <HomeHeader />
       </View>
+
+      <Expander title="slkfjasdfj">
+        <Text>Hello World</Text>
+      </Expander>
 
       <View style={{ rowGap: theme.spacing.s12 }}>
         {/* Announcements section */}
