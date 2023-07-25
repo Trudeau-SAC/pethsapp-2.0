@@ -66,7 +66,21 @@ const Community = () => {
           <Text color="text" variant="heading5">
             Links
           </Text>
-          <LinkButton url={'https://google.com'} title="Instagram"></LinkButton>
+          <LinkButton
+            url={'https://www.instagram.com/trudeausac/'}
+            iconName="instagram"
+            title="Instagram"
+          ></LinkButton>
+          <LinkButton
+            url={'https://google.com'}
+            iconName="music"
+            title="Morning Music Suggestion"
+          ></LinkButton>
+          <LinkButton
+            url={'https://google.com'}
+            iconName="mail"
+            title="Grade Rep Feedback"
+          ></LinkButton>
         </View>
       </View>
     </Layout>

@@ -4,7 +4,7 @@ import { Alert, Linking, View, StyleSheet, Pressable } from 'react-native';
 import Text from './Text';
 import { Feather } from '@expo/vector-icons';
 
-const LinkButton = ({ title, url }) => {
+const LinkButton = ({ title, url, iconName }) => {
   const theme = useTheme();
 
   const styles = StyleSheet.create({
@@ -42,7 +42,7 @@ const LinkButton = ({ title, url }) => {
   return (
     <Pressable title={title} onPress={handlePress} style={styles.linkbutton}>
       <View style={styles.topRow}>
-        <Feather name="instagram" size={20} color={theme.colors.text} />
+        <Feather name={iconName} size={20} color={theme.colors.text} />
         <View style={styles.linkname}>
           <Text variant="heading7" color="text">
             {title}
