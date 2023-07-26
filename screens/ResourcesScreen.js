@@ -5,8 +5,9 @@ import { StyleSheet, View } from 'react-native';
 import { materials, links } from '../constants/resources';
 import CardRow from '../components/CardRow';
 import RectangleCard from '../components/RectangleCard';
+import LinkButton from '../components/LinkButton';
 
-const Resources = ({ navigation }) => {
+const Resources = () => {
   const theme = useTheme();
 
   const styles = StyleSheet.create({
@@ -53,6 +54,10 @@ const Resources = ({ navigation }) => {
           <Text color="text" variant="heading5">
             Links
           </Text>
+
+          {links.map((link) => (
+            <LinkButton {...link} />
+          ))}
         </View>
       </View>
     </Layout>
