@@ -8,6 +8,9 @@ import BackButton from '../../components/BackButton';
 import SearchBar from '../../components/SearchBar';
 import ChipRow from '../../components/ChipRow';
 import Chip from '../../components/Chip';
+import Expander from '../../components/Expander';
+import { fonts } from '../../constants/themes';
+import RichText from '../../components/RichText';
 
 const years = ['2023-2024', '2022-2023'];
 
@@ -82,11 +85,101 @@ const ClubsList = () => {
       {filteredClubs === null ? (
         <Text>Loading...</Text>
       ) : (
-        filteredClubs.map((club) => (
-          <Text key={club._id} variant="body" color="text">
-            {club.name}
-          </Text>
-        ))
+        filteredClubs.map((club) => {
+          const emailRichText = [
+            {
+              _type: 'block',
+              children: [
+                {
+                  _type: 'span',
+                  marks: ['link'],
+                  text: club.email,
+                },
+              ],
+              markDefs: [
+                {
+                  _key: 'link',
+                  _type: 'link',
+                  href: `mailto:${club.email}`,
+                },
+              ],
+              style: 'normal',
+            },
+          ];
+
+          return (
+            <Expander key={club._id} title={club.name}>
+              <View style={{ gap: theme.spacing.s3 }}>
+                <View>
+                  <Text
+                    variant="body"
+                    color="text"
+                    style={{ fontFamily: fonts.bold }}
+                  >
+                    Description
+                  </Text>
+                  <Text variant="body" color="text">
+                    {club.description}
+                  </Text>
+                </View>
+
+                <View>
+                  <Text
+                    variant="body"
+                    color="text"
+                    style={{ fontFamily: fonts.bold }}
+                  >
+                    Email
+                  </Text>
+                  <RichText value={emailRichText} />
+                </View>
+
+                <View>
+                  <Text
+                    variant="body"
+                    color="text"
+                    style={{ fontFamily: fonts.bold }}
+                  >
+                    Teacher Advisors
+                  </Text>
+                  {club.teacher_advisors.map((teacherAdvisor) => (
+                    <Text key={teacherAdvisor} variant="body" color="text">
+                      {teacherAdvisor}
+                    </Text>
+                  ))}
+                </View>
+
+                <View>
+                  <Text
+                    variant="body"
+                    color="text"
+                    style={{ fontFamily: fonts.bold }}
+                  >
+                    Club Leaders
+                  </Text>
+                  {club.club_leaders.map((clubLeader) => (
+                    <Text key={clubLeader} variant="body" color="text">
+                      {clubLeader}
+                    </Text>
+                  ))}
+                </View>
+
+                <View>
+                  <Text
+                    variant="body"
+                    color="text"
+                    style={{ fontFamily: fonts.bold }}
+                  >
+                    Meeting Date
+                  </Text>
+                  <Text variant="body" color="text">
+                    {club.meeting_date}
+                  </Text>
+                </View>
+              </View>
+            </Expander>
+          );
+        })
       )}
     </Layout>
   );
