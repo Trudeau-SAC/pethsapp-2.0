@@ -5,9 +5,9 @@ import { View, StyleSheet } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { tabBarHeight } from './constants/sizes';
 
-import Home from './screens/HomeScreen';
-import Community from './screens/CommunityScreen';
-import Resources from './screens/ResourcesScreen';
+import Home from './screens/home/HomeScreen';
+import Community from './screens/community/CommunityScreen';
+import Resources from './screens/resources/ResourcesScreen';
 import Settings from './screens/SettingsScreen';
 
 const Tabs = createBottomTabNavigator();

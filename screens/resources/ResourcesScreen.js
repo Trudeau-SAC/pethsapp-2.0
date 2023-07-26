@@ -1,14 +1,13 @@
 import { useTheme } from '@react-navigation/native';
+import Layout from '../../components/Layout';
+import Text from '../../components/Text';
 import { StyleSheet, View } from 'react-native';
-import { clubs, opportunities, links } from '../constants/community';
+import { materials, links } from '../../constants/resources';
+import CardRow from '../../components/CardRow';
+import RectangleCard from '../../components/RectangleCard';
+import LinkButton from '../../components/LinkButton';
 
-import Layout from '../components/Layout';
-import Text from '../components/Text';
-import RectangleCard from '../components/RectangleCard';
-import CardRow from '../components/CardRow';
-import LinkButton from '../components/LinkButton';
-
-const Community = () => {
+const Resources = () => {
   const theme = useTheme();
 
   const styles = StyleSheet.create({
@@ -22,6 +21,7 @@ const Community = () => {
 
   return (
     <Layout hasTabBar={true}>
+      {/* Title */}
       <Text
         style={{
           marginTop: theme.spacing.s15,
@@ -30,38 +30,26 @@ const Community = () => {
         variant="heading2"
         color="text"
       >
-        Community
+        Resources
       </Text>
 
       <View style={{ rowGap: theme.spacing.s12 }}>
+        {/* Materials section */}
         <View style={styles.section}>
           <Text color="text" variant="heading5">
-            Clubs
+            Materials
           </Text>
 
           <View style={styles.row}>
             <CardRow>
-              {clubs.map((club) => (
-                <RectangleCard {...club} />
+              {materials.map((materials) => (
+                <RectangleCard {...materials} />
               ))}
             </CardRow>
           </View>
         </View>
 
-        <View style={styles.section}>
-          <Text color="text" variant="heading5">
-            Opportunities
-          </Text>
-
-          <View style={styles.row}>
-            <CardRow>
-              {opportunities.map((opportunity) => (
-                <RectangleCard {...opportunity} />
-              ))}
-            </CardRow>
-          </View>
-        </View>
-
+        {/* Links section */}
         <View style={styles.section}>
           <Text color="text" variant="heading5">
             Links
@@ -76,4 +64,4 @@ const Community = () => {
   );
 };
 
-export default Community;
+export default Resources;

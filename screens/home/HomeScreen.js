@@ -1,16 +1,16 @@
-import { shortenedMonths } from '../constants/time';
+import { shortenedMonths } from '../../constants/time';
 import { useTheme } from '@react-navigation/native';
 import { toPlainText } from '@portabletext/react';
 import { StyleSheet, View } from 'react-native';
-import { imageBuilder } from '../lib/sanity';
+import { imageBuilder } from '../../lib/sanity';
 import { MaterialIcons } from '@expo/vector-icons';
-import { useSanityData } from '../lib/sanity';
-import CardRow from '../components/CardRow';
-import RectangleCard from '../components/RectangleCard';
-import Layout from '../components/Layout';
-import Text from '../components/Text';
-import HomeHeader from '../components/HomeHeader';
-import SquareCard from '../components/SquareCard';
+import { useSanityData } from '../../lib/sanity';
+import CardRow from '../../components/CardRow';
+import RectangleCard from '../../components/RectangleCard';
+import Layout from '../../components/Layout';
+import Text from '../../components/Text';
+import HomeHeader from '../../components/HomeHeader';
+import SquareCard from '../../components/SquareCard';
 import { useState } from 'react';
 
 const Home = () => {

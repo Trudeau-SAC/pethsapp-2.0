@@ -1,13 +1,14 @@
 import { useTheme } from '@react-navigation/native';
-import Layout from '../components/Layout';
-import Text from '../components/Text';
 import { StyleSheet, View } from 'react-native';
-import { materials, links } from '../constants/resources';
-import CardRow from '../components/CardRow';
-import RectangleCard from '../components/RectangleCard';
-import LinkButton from '../components/LinkButton';
+import { clubs, opportunities, links } from '../../constants/community';
 
-const Resources = () => {
+import Layout from '../../components/Layout';
+import Text from '../../components/Text';
+import RectangleCard from '../../components/RectangleCard';
+import CardRow from '../../components/CardRow';
+import LinkButton from '../../components/LinkButton';
+
+const Community = () => {
   const theme = useTheme();
 
   const styles = StyleSheet.create({
@@ -21,7 +22,6 @@ const Resources = () => {
 
   return (
     <Layout hasTabBar={true}>
-      {/* Title */}
       <Text
         style={{
           marginTop: theme.spacing.s15,
@@ -30,26 +30,38 @@ const Resources = () => {
         variant="heading2"
         color="text"
       >
-        Resources
+        Community
       </Text>
 
       <View style={{ rowGap: theme.spacing.s12 }}>
-        {/* Materials section */}
         <View style={styles.section}>
           <Text color="text" variant="heading5">
-            Materials
+            Clubs
           </Text>
 
           <View style={styles.row}>
             <CardRow>
-              {materials.map((materials) => (
-                <RectangleCard {...materials} />
+              {clubs.map((club) => (
+                <RectangleCard {...club} />
               ))}
             </CardRow>
           </View>
         </View>
 
-        {/* Links section */}
+        <View style={styles.section}>
+          <Text color="text" variant="heading5">
+            Opportunities
+          </Text>
+
+          <View style={styles.row}>
+            <CardRow>
+              {opportunities.map((opportunity) => (
+                <RectangleCard {...opportunity} />
+              ))}
+            </CardRow>
+          </View>
+        </View>
+
         <View style={styles.section}>
           <Text color="text" variant="heading5">
             Links
@@ -64,4 +76,4 @@ const Resources = () => {
   );
 };
 
-export default Resources;
+export default Community;
