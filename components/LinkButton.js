@@ -25,7 +25,7 @@ const LinkButton = ({ title, url, iconName }) => {
       flex: 1,
       flexDirection: 'row',
       justifyContent: 'space-between',
-      paddingHorizontal: 20,
+      paddingHorizontal: iconName ? 20 : 0,
     },
   });
 
@@ -42,7 +42,9 @@ const LinkButton = ({ title, url, iconName }) => {
   return (
     <Pressable title={title} onPress={handlePress} style={styles.linkbutton}>
       <View style={styles.topRow}>
-        <Feather name={iconName} size={20} color={theme.colors.text} />
+        {iconName && (
+          <Feather name={iconName} size={20} color={theme.colors.text} />
+        )}
         <View style={styles.linkname}>
           <Text variant="heading7" color="text">
             {title}
