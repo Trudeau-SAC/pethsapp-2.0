@@ -39,7 +39,11 @@ const Expander = ({ title, children }) => {
             {title}
           </Text>
         </View>
-        <Feather name="maximize-2" size={20} color={theme.colors.text} />
+        <Feather
+          name={isExpanded ? 'minimize-2' : 'maximize-2'}
+          size={20}
+          color={theme.colors.text}
+        />
       </View>
       {isExpanded && children}
     </Pressable>
