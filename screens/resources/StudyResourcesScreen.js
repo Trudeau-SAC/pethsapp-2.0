@@ -7,6 +7,7 @@ import ChipRow from '../../components/ChipRow';
 import Chip from '../../components/Chip';
 import { useSanityData } from '../../lib/sanity';
 import { useState } from 'react';
+import LinkButton from '../../components/LinkButton';
 
 const topics = [
   'Math',
@@ -30,6 +31,7 @@ const StudyResources = () => {
     studyResourceGroupsParam
   );
 
+  // Create links to study resources
   let studyResourceElements;
   if (studyResourceGroups === null) {
     studyResourceElements = <Text>Loading...</Text>;
@@ -38,9 +40,11 @@ const StudyResources = () => {
   } else {
     studyResourceElements = studyResourceGroups[0].studyResources.map(
       (studyResource) => (
-        <Text key={studyResource._key} variant="body" color="text">
-          {studyResource.name}
-        </Text>
+        <LinkButton
+          key={studyResource._key}
+          title={studyResource.name}
+          url={studyResource.link}
+        />
       )
     );
   }

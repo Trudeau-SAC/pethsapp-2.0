@@ -1,6 +1,6 @@
 import { useTheme } from '@react-navigation/native';
 import React, { useCallback } from 'react';
-import { Alert, Linking, View, StyleSheet, Pressable } from 'react-native';
+import { Linking, View, StyleSheet, Pressable } from 'react-native';
 import Text from './Text';
 import { Feather } from '@expo/vector-icons';
 

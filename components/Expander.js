@@ -1,5 +1,5 @@
 import { useTheme } from '@react-navigation/native';
-import { Animated, View, StyleSheet, Pressable } from 'react-native';
+import { View, StyleSheet, Pressable } from 'react-native';
 import Text from './Text';
 import { Feather } from '@expo/vector-icons';
 import { useState } from 'react';

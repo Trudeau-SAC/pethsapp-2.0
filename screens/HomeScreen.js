@@ -12,8 +12,6 @@ import Text from '../components/Text';
 import HomeHeader from '../components/HomeHeader';
 import SquareCard from '../components/SquareCard';
 import { useState } from 'react';
-import Expander from '../components/Expander';
-import LinkButton from '../components/LinkButton';
 
 const Home = () => {
   const announcements = useSanityData(
@@ -48,11 +46,6 @@ const Home = () => {
       >
         <HomeHeader />
       </View>
-
-      <LinkButton
-        title="Cool Website"
-        url="https://dayssincelastjavascriptframework.com/"
-      />
 
       <View style={{ rowGap: theme.spacing.s12 }}>
         {/* Announcements section */}
