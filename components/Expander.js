@@ -28,7 +28,6 @@ const Expander = ({ title, children }) => {
 
   const handlePressed = () => {
     setIsExpanded(!isExpanded);
-    console.log(`Expanded: ${!isExpanded}`);
   };
 
   return (
