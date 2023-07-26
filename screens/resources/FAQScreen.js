@@ -7,6 +7,8 @@ import ChipRow from '../../components/ChipRow';
 import Chip from '../../components/Chip';
 import { useSanityData } from '../../lib/sanity';
 import { useState } from 'react';
+import Expander from '../../components/Expander';
+import RichText from '../../components/RichText';
 
 const topics = ['General', 'Grade 9', 'Grade 10', 'Grade 11', 'Grade 12'];
 
@@ -28,9 +30,11 @@ const FAQ = () => {
     faqElements = null;
   } else {
     faqElements = faqGroups[0].faqs.map((faq) => (
-      <Text key={faq._key} variant="body" color="text">
-        {faq.question}
-      </Text>
+      <Expander key={faq._key} title={faq.question}>
+        <Text variant="body" color="text">
+          <RichText value={faq.answer} />
+        </Text>
+      </Expander>
     ));
   }
 
