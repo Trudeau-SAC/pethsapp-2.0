@@ -69,7 +69,7 @@ const Home = () => {
                   const date = `${month} ${day}`;
                   let previewBody = toPlainText(announcement.body); // Convert portable text to plain text
                   previewBody = previewBody.replace(/\n|\r/g, ' '); // Remove newlines
-                  previewBody = previewBody.substring(0, 100); // Shorten for preview
+                  previewBody = previewBody.substring(0, 60); // Shorten for preview
 
                   return (
                     <RectangleCard
