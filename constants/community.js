@@ -46,4 +46,17 @@ export const opportunities = [
   },
 ];
 
-export const links = [];
+export const links = [
+  {
+    key: 0,
+    title: 'Instagram',
+    url: 'https://www.instagram.com/trudeausac/',
+    iconName: 'instagram',
+  },
+  {
+    key: 1,
+    title: 'Morning Music Suggestion',
+    url: 'https://docs.google.com/forms/d/e/1FAIpQLSeA5vVyfYFa41ep5IIa-xdAoHaW6tcDL9xVY4grqhLyQz4Flg/viewform',
+    iconName: 'music',
+  },
+];
