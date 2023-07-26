@@ -13,15 +13,16 @@ const Expander = ({ title, children }) => {
       borderColor: theme.colors.border,
       borderRadius: 16,
       backgroundColor: theme.colors.background,
-      paddingVertical: 18,
-      paddingHorizontal: 20,
+      paddingVertical: theme.spacing.s4_5,
+      paddingHorizontal: theme.spacing.s5,
       borderWidth: 1,
     },
     topRow: {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
-      marginBottom: isExpanded ? 18 : 0,
+      marginBottom: isExpanded ? theme.spacing.s4_5 : 0,
+      gap: theme.spacing.s5,
     },
   });
 
@@ -33,9 +34,11 @@ const Expander = ({ title, children }) => {
   return (
     <Pressable onPress={handlePressed} style={styles.expander}>
       <View style={styles.topRow}>
-        <Text variant="heading7" color="text">
-          {title}
-        </Text>
+        <View style={{ flex: 1 }}>
+          <Text variant="heading7" color="text">
+            {title}
+          </Text>
+        </View>
         <Feather name="maximize-2" size={20} color={theme.colors.text} />
       </View>
       {isExpanded && children}
