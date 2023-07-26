@@ -82,105 +82,107 @@ const ClubsList = () => {
       </View>
 
       {/* Clubs */}
-      {filteredClubs === null ? (
-        <Text>Loading...</Text>
-      ) : (
-        filteredClubs.map((club) => {
-          const emailRichText = [
-            {
-              _type: 'block',
-              children: [
-                {
-                  _type: 'span',
-                  marks: ['link'],
-                  text: club.email,
-                },
-              ],
-              markDefs: [
-                {
-                  _key: 'link',
-                  _type: 'link',
-                  href: `mailto:${club.email}`,
-                },
-              ],
-              style: 'normal',
-            },
-          ];
+      <View style={{ gap: theme.spacing.s4 }}>
+        {filteredClubs === null ? (
+          <Text>Loading...</Text>
+        ) : (
+          filteredClubs.map((club) => {
+            const emailRichText = [
+              {
+                _type: 'block',
+                children: [
+                  {
+                    _type: 'span',
+                    marks: ['link'],
+                    text: club.email,
+                  },
+                ],
+                markDefs: [
+                  {
+                    _key: 'link',
+                    _type: 'link',
+                    href: `mailto:${club.email}`,
+                  },
+                ],
+                style: 'normal',
+              },
+            ];
 
-          return (
-            <Expander key={club._id} title={club.name}>
-              <View style={{ gap: theme.spacing.s3 }}>
-                <View>
-                  <Text
-                    variant="body"
-                    color="text"
-                    style={{ fontFamily: fonts.bold }}
-                  >
-                    Description
-                  </Text>
-                  <Text variant="body" color="text">
-                    {club.description}
-                  </Text>
-                </View>
-
-                <View>
-                  <Text
-                    variant="body"
-                    color="text"
-                    style={{ fontFamily: fonts.bold }}
-                  >
-                    Email
-                  </Text>
-                  <RichText value={emailRichText} />
-                </View>
-
-                <View>
-                  <Text
-                    variant="body"
-                    color="text"
-                    style={{ fontFamily: fonts.bold }}
-                  >
-                    Teacher Advisors
-                  </Text>
-                  {club.teacher_advisors.map((teacherAdvisor) => (
-                    <Text key={teacherAdvisor} variant="body" color="text">
-                      {teacherAdvisor}
+            return (
+              <Expander key={club._id} title={club.name}>
+                <View style={{ gap: theme.spacing.s3 }}>
+                  <View>
+                    <Text
+                      variant="body"
+                      color="text"
+                      style={{ fontFamily: fonts.bold }}
+                    >
+                      Description
                     </Text>
-                  ))}
-                </View>
-
-                <View>
-                  <Text
-                    variant="body"
-                    color="text"
-                    style={{ fontFamily: fonts.bold }}
-                  >
-                    Club Leaders
-                  </Text>
-                  {club.club_leaders.map((clubLeader) => (
-                    <Text key={clubLeader} variant="body" color="text">
-                      {clubLeader}
+                    <Text variant="body" color="text">
+                      {club.description}
                     </Text>
-                  ))}
-                </View>
+                  </View>
 
-                <View>
-                  <Text
-                    variant="body"
-                    color="text"
-                    style={{ fontFamily: fonts.bold }}
-                  >
-                    Meeting Date
-                  </Text>
-                  <Text variant="body" color="text">
-                    {club.meeting_date}
-                  </Text>
+                  <View>
+                    <Text
+                      variant="body"
+                      color="text"
+                      style={{ fontFamily: fonts.bold }}
+                    >
+                      Email
+                    </Text>
+                    <RichText value={emailRichText} />
+                  </View>
+
+                  <View>
+                    <Text
+                      variant="body"
+                      color="text"
+                      style={{ fontFamily: fonts.bold }}
+                    >
+                      Teacher Advisors
+                    </Text>
+                    {club.teacher_advisors.map((teacherAdvisor) => (
+                      <Text key={teacherAdvisor} variant="body" color="text">
+                        {teacherAdvisor}
+                      </Text>
+                    ))}
+                  </View>
+
+                  <View>
+                    <Text
+                      variant="body"
+                      color="text"
+                      style={{ fontFamily: fonts.bold }}
+                    >
+                      Club Leaders
+                    </Text>
+                    {club.club_leaders.map((clubLeader) => (
+                      <Text key={clubLeader} variant="body" color="text">
+                        {clubLeader}
+                      </Text>
+                    ))}
+                  </View>
+
+                  <View>
+                    <Text
+                      variant="body"
+                      color="text"
+                      style={{ fontFamily: fonts.bold }}
+                    >
+                      Meeting Date
+                    </Text>
+                    <Text variant="body" color="text">
+                      {club.meeting_date}
+                    </Text>
+                  </View>
                 </View>
-              </View>
-            </Expander>
-          );
-        })
-      )}
+              </Expander>
+            );
+          })
+        )}
+      </View>
     </Layout>
   );
 };
