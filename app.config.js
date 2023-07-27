@@ -57,8 +57,8 @@ const config = {
   userInterfaceStyle: 'light',
   splash: {
     image: './assets/icons/splash.png',
-    resizeMode: 'contain',
-    backgroundColor: '#810000',
+    resizeMode: 'cover',
+    backgroundColor: '#FEFBEF',
   },
   updates: {
     fallbackToCacheTimeout: 0,

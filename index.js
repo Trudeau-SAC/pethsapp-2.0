@@ -55,6 +55,7 @@ const App = () => {
 
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
+      await new Promise((resolve) => setTimeout(resolve, 2000));
       await SplashScreen.hideAsync();
     }
   }, [fontsLoaded]);
