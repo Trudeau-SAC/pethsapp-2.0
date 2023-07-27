@@ -13,7 +13,5 @@ web-build/
 # macOS
 .DS_Store
 
-# Secrets!
-.envrc
-google-services.json
-GoogleService-Info.plist
+# Secrets
+api_keys/

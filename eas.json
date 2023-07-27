@@ -22,6 +22,21 @@
     }
   },
   "submit": {
-    "production": {}
+    "production": {
+      "android": {
+        "serviceAccountKeyPath": ".api_keys/google.json",
+        "track": "production",
+        "releaseStatus": "completed",
+        "rollout": 1
+      },
+      "ios": {
+        "appleId": "trudeaustudentcouncil@gmail.com",
+        "ascAppId": "1544635100",
+        "appleTeamId": "93H73MPAB8",
+        "ascApiKeyPath": ".api_keys/apple.p8",
+        "ascApiKeyIssuerId": "22de026f-70b3-4c71-be93-23e9b839e33a",
+        "ascApiKeyId": "M776R93GV3"
+      }
+    }
   }
 }
