@@ -26,8 +26,7 @@
       "android": {
         "serviceAccountKeyPath": ".api_keys/google.json",
         "track": "production",
-        "releaseStatus": "completed",
-        "rollout": 1
+        "releaseStatus": "completed"
       },
       "ios": {
         "appleId": "trudeaustudentcouncil@gmail.com",
