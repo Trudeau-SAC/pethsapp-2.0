@@ -5,7 +5,10 @@
   "build": {
     "development": {
       "developmentClient": true,
-      "distribution": "internal"
+      "distribution": "internal",
+      "env": {
+        "APP_ENV": "development"
+      }
     },
     "preview": {
       "distribution": "internal",
@@ -15,10 +18,7 @@
       }
     },
     "production": {
-      "channel": "production",
-      "env": {
-        "APP_ENV": "production"
-      }
+      "channel": "production"
     }
   },
   "submit": {

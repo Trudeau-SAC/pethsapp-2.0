@@ -1,33 +1,31 @@
-import { palette } from './constants/themes';
-
 let Config = {
-  name: 'pethsapp (Dev)',
+  name: 'pethsapp',
   ios: {
-    googleServicesFile: process.env.DEV_GOOGLE_SERVICES_PLIST,
-    bundleIdentifier: 'com.trudeausac.pethsapp.dev',
+    googleServicesFile: process.env.PROD_GOOGLE_SERVICES_PLIST,
+    bundleIdentifier: 'com.trudeausac.pethsapp',
   },
   android: {
-    googleServicesFile: process.env.DEV_GOOGLE_SERVICES_JSON,
-    package: 'com.trudeausac.pethsapp.dev',
+    googleServicesFile: process.env.PROD_GOOGLE_SERVICES_JSON,
+    package: 'com.trudeausac.pethsapp',
   },
   extra: {
-    sanityDataset: 'development',
+    sanityDataset: 'production',
   },
 };
 
-if (process.env.APP_ENV === 'production') {
+if (process.env.APP_ENV === 'development') {
   Config = {
-    name: 'pethsapp',
+    name: 'pethsapp (Dev)',
     ios: {
-      googleServicesFile: process.env.PROD_GOOGLE_SERVICES_PLIST,
-      bundleIdentifier: 'com.trudeausac.pethsapp',
+      googleServicesFile: process.env.DEV_GOOGLE_SERVICES_PLIST,
+      bundleIdentifier: 'com.trudeausac.pethsapp.dev',
     },
     android: {
-      googleServicesFile: process.env.PROD_GOOGLE_SERVICES_JSON,
-      package: 'com.trudeausac.pethsapp',
+      googleServicesFile: process.env.DEV_GOOGLE_SERVICES_JSON,
+      package: 'com.trudeausac.pethsapp.dev',
     },
     extra: {
-      sanityDataset: 'production',
+      sanityDataset: 'development',
     },
   };
 } else if (process.env.APP_ENV === 'staging') {
