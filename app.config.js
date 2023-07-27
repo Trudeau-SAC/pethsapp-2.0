@@ -1,3 +1,5 @@
+import { palette } from './constants/themes';
+
 let Config = {
   name: 'pethsapp (Dev)',
   ios: {
@@ -56,7 +58,7 @@ const config = {
   splash: {
     image: './assets/icons/splash.png',
     resizeMode: 'contain',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#810000',
   },
   updates: {
     fallbackToCacheTimeout: 0,
@@ -77,10 +79,6 @@ const config = {
   android: {
     googleServicesFile: Config.android.googleServicesFile,
     package: Config.android.package,
-    adaptiveIcon: {
-      foregroundImage: './assets/icons/adaptive-icon.png',
-      backgroundColor: '#FFFFFF',
-    },
   },
   web: {
     favicon: './assets/icons/favicon.png',
