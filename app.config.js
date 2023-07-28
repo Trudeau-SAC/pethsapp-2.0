@@ -1,5 +1,3 @@
-import { palette } from './constants/themes';
-
 let Config = {
   name: 'pethsapp (Dev)',
   ios: {
