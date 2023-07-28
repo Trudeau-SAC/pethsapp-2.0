@@ -63,6 +63,7 @@ const config = {
   },
   assetBundlePatterns: ['**/*'],
   ios: {
+    buildNumber: '2',
     googleServicesFile: Config.ios.googleServicesFile,
     config: {
       usesNonExemptEncryption: false,
