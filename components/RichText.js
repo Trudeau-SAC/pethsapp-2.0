@@ -1,7 +1,7 @@
 import { PortableText } from '@portabletext/react-native';
 import { fonts } from '../constants/themes';
 import { Image } from 'expo-image';
-import { builder } from '../lib/sanity';
+import { latestDataImageBuilder } from '../lib/sanity';
 import { getImageDimensions } from '@sanity/asset-utils';
 import { StyleSheet } from 'react-native';
 import Text from './Text';
@@ -29,7 +29,7 @@ export default function RichText({ value }) {
               aspectRatio: width / height,
               borderRadius: 16,
             }}
-            source={builder.image(value).url()}
+            source={latestDataImageBuilder.image(value).url()}
           />
         );
       },
