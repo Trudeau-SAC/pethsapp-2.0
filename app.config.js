@@ -49,7 +49,7 @@ const config = {
   name: Config.name,
   owner: 'trudeausac',
   slug: 'pethsapp',
-  version: '1.0.0',
+  version: '3.0.0',
   orientation: 'portrait',
   icon: './assets/icons/icon.png',
   userInterfaceStyle: 'light',

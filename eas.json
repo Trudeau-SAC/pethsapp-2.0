@@ -10,6 +10,16 @@
         "APP_ENV": "development"
       }
     },
+    "development-simulator": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "ios": {
+        "simulator": true
+      },
+      "env": {
+        "APP_ENV": "development"
+      }
+    },
     "preview": {
       "distribution": "internal",
       "channel": "staging",
@@ -24,7 +34,7 @@
   "submit": {
     "production": {
       "android": {
-        "serviceAccountKeyPath": ".api_keys/google.json",
+        "serviceAccountKeyPath": "keys/google-service-account-key.json",
         "track": "production",
         "releaseStatus": "completed"
       },
@@ -32,7 +42,7 @@
         "appleId": "trudeaustudentcouncil@gmail.com",
         "ascAppId": "1544635100",
         "appleTeamId": "93H73MPAB8",
-        "ascApiKeyPath": ".api_keys/apple.p8",
+        "ascApiKeyPath": "keys/apple-api-key.p8",
         "ascApiKeyIssuerId": "22de026f-70b3-4c71-be93-23e9b839e33a",
         "ascApiKeyId": "M776R93GV3"
       }
