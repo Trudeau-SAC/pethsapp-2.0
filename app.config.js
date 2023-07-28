@@ -64,7 +64,6 @@ const config = {
   assetBundlePatterns: ['**/*'],
   ios: {
     googleServicesFile: Config.ios.googleServicesFile,
-    supportsTablet: true,
     config: {
       usesNonExemptEncryption: false,
     },
