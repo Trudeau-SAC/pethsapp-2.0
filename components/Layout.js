@@ -25,6 +25,7 @@ export default function Layout({ children, hasTabBar = false }) {
     gradient: {
       position: 'absolute',
       height: 164,
+      top: 0,
       left: 0,
       right: 0,
     },

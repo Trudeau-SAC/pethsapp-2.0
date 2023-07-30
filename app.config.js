@@ -49,7 +49,7 @@ const config = {
   name: Config.name,
   owner: 'trudeausac',
   slug: 'pethsapp',
-  version: '3.0.0',
+  version: '3.0.1',
   orientation: 'portrait',
   icon: './assets/icons/icon.png',
   userInterfaceStyle: 'light',
@@ -75,6 +75,12 @@ const config = {
     },
   },
   android: {
+    adaptiveIcon: {
+      foregroundImage: './assets/icons/adaptive_foreground.png',
+      backgroundImage: './assets/icons/adaptive_background.png',
+      monochromeImage: './assets/icons/adaptive_foreground_monochrome.png',
+    },
+    versionCode: 19,
     googleServicesFile: Config.android.googleServicesFile,
     package: Config.android.package,
   },
