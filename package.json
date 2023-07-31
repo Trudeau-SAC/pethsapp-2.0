@@ -56,5 +56,8 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "react-native-debugger-open": "^0.3.25"
   },
-  "private": true
+  "private": true,
+  "eslintConfig": {
+    "extends": "universe/native"
+  }
 }
