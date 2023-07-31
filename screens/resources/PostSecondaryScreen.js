@@ -4,6 +4,7 @@ import Chip from '../../components/Chip';
 import ChipRow from '../../components/ChipRow';
 import { View } from 'react-native';
 import { useTheme } from '@react-navigation/native';
+import { StatusBar } from 'expo-status-bar';
 
 const topics = [
   'Applications',
@@ -20,6 +21,8 @@ const PostSecondary = () => {
 
   return (
     <>
+      <StatusBar style="light" />
+
       {/* Chip Row */}
       <View
         style={{
@@ -42,6 +45,7 @@ const PostSecondary = () => {
         </ChipRow>
       </View>
 
+      {/* WebView */}
       <WebView
         source={{
           uri: `https://sharp-mcclintock-f1dbd1.netlify.app/resources/uni/${filenames[selectedTopic]}.md`,

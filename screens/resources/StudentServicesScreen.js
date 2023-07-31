@@ -1,12 +1,17 @@
+import { StatusBar } from 'expo-status-bar';
 import { WebView } from 'react-native-webview';
 
 const StudentServices = () => {
   return (
-    <WebView
-      source={{
-        uri: 'https://sharp-mcclintock-f1dbd1.netlify.app/resources/services.md',
-      }}
-    />
+    <>
+      <StatusBar style="light" />
+
+      <WebView
+        source={{
+          uri: 'https://sharp-mcclintock-f1dbd1.netlify.app/resources/services.md',
+        }}
+      />
+    </>
   );
 };
 
