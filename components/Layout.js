@@ -3,20 +3,31 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTheme } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { tabBarHeight } from '../constants/sizes';
+import { StatusBar, setStatusBarStyle } from 'expo-status-bar';
 
 /**
  * Provides padding and gradient background for screens.
  */
-export default function Layout({ children, hasTabBar = false }) {
+export default function Layout({
+  children,
+  hasTabBar = false,
+  statusBarStyle = 'auto',
+}) {
   const insets = useSafeAreaInsets();
   const theme = useTheme();
 
+  if (statusBarStyle === 'auto') {
+    setStatusBarStyle(theme.dark ? 'light' : 'dark');
+  } else if (statusBarStyle === 'light' || statusBarStyle === 'dark') {
+    setStatusBarStyle(statusBarStyle);
+  }
+
   const styles = StyleSheet.create({
     screen: {
+      flex: 1,
       paddingTop: insets.top,
     },
     container: {
-      minHeight: '100%',
       paddingBottom:
         (hasTabBar ? tabBarHeight : insets.bottom) + theme.spacing.s5,
       paddingLeft: insets.left + theme.spacing.s5,
@@ -32,21 +43,24 @@ export default function Layout({ children, hasTabBar = false }) {
   });
 
   return (
-    <View style={styles.screen}>
-      <LinearGradient
-        style={styles.gradient}
-        colors={[theme.colors.primary + '4D', theme.colors.primary + '00']}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 0, y: 1 }}
-      />
-      <ScrollView
-        contentContainerStyle={styles.container}
-        alwaysBounceVertical={false}
-        scrollEventThrottle={16}
-      >
-        {children}
-      </ScrollView>
-      <View style={styles.statusBarBackground} />
-    </View>
+    <>
+      <StatusBar />
+      <View style={styles.screen}>
+        <LinearGradient
+          style={styles.gradient}
+          colors={[theme.colors.primary + '4D', theme.colors.primary + '00']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 0, y: 1 }}
+        />
+        <ScrollView
+          contentContainerStyle={styles.container}
+          alwaysBounceVertical={false}
+          scrollEventThrottle={16}
+        >
+          {children}
+        </ScrollView>
+        <View style={styles.statusBarBackground} />
+      </View>
+    </>
   );
 }

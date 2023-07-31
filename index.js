@@ -55,7 +55,6 @@ const App = () => {
 
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
       await SplashScreen.hideAsync();
     }
   }, [fontsLoaded]);
@@ -70,7 +69,6 @@ const App = () => {
       headerShown: true,
       headerTintColor: theme.colors.onPrimary,
       headerTitleAlign: 'center',
-      statusBarStyle: 'light',
     },
   };
 
@@ -79,8 +77,6 @@ const App = () => {
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
-          statusBarStyle: darkMode ? 'light' : 'dark',
-          statusBarTranslucent: true,
         }}
       >
         <Stack.Screen name="Home Tabs" component={HomeTabs} />

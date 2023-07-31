@@ -71,7 +71,6 @@ const config = {
     bundleIdentifier: Config.ios.bundleIdentifier,
     infoPlist: {
       UIBackgroundModes: ['fetch', 'remote-notification'],
-      UIViewControllerBasedStatusBarAppearance: true,
     },
   },
   android: {
