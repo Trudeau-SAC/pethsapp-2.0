@@ -16,12 +16,6 @@ export default function Layout({
   const insets = useSafeAreaInsets();
   const theme = useTheme();
 
-  if (statusBarStyle === 'auto') {
-    setStatusBarStyle(theme.dark ? 'light' : 'dark');
-  } else if (statusBarStyle === 'light' || statusBarStyle === 'dark') {
-    setStatusBarStyle(statusBarStyle);
-  }
-
   const styles = StyleSheet.create({
     screen: {
       flex: 1,
@@ -44,7 +38,7 @@ export default function Layout({
 
   return (
     <>
-      <StatusBar />
+      <StatusBar style={theme.dark ? 'light' : 'dark'} />
       <View style={styles.screen}>
         <LinearGradient
           style={styles.gradient}
