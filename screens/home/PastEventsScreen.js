@@ -14,7 +14,7 @@ const PastEventsScreen = () => {
   const [eventsParam] = useState({ today: today });
   const events = useSanityData(
     '*[_type == "event" && end_date < $today] | order(start_date desc) {_id, name, card_image, start_date}',
-    eventsParam
+    eventsParam,
   );
   const theme = useTheme();
 
@@ -76,8 +76,8 @@ const PastEventsScreen = () => {
             ))}
           </CardRow>
         </View>
-      </View>
-    )
+      </View>,
+    ),
   );
 
   return (

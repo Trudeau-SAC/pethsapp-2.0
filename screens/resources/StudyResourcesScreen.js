@@ -28,7 +28,7 @@ const StudyResources = () => {
   });
   const studyResourceGroups = useSanityData(
     '*[_type == "studyResourceGroup" && topic == $topic]',
-    studyResourceGroupsParam
+    studyResourceGroupsParam,
   );
 
   // Create links to study resources
@@ -45,7 +45,7 @@ const StudyResources = () => {
           title={studyResource.name}
           url={studyResource.link}
         />
-      )
+      ),
     );
   }
 
