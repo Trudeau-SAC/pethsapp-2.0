@@ -16,7 +16,7 @@ export default function HomeHeader() {
           marginBottom: theme.spacing.s4,
         }}
       >
-        pethsapp.
+        {/* pethsapp. */}
       </Text>
       <Text
         variant="heading5"

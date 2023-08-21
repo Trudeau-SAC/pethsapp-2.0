@@ -49,12 +49,30 @@ export const opportunities = [
 export const links = [
   {
     key: 0,
-    title: 'Instagram',
+    title: 'TSAC Instagram',
     url: 'https://www.instagram.com/trudeausac/',
     iconName: 'instagram',
   },
   {
     key: 1,
+    title: 'Offical School Instagram',
+    url: 'https://www.instagram.com/trudeauhs/?hl=en',
+    iconName: 'instagram',
+  },
+  {
+    key: 2,
+    title: 'Youtube',
+    url: 'https://www.youtube.com/@TrudeauSac/videos',
+    iconName: 'youtube',
+  },
+  {
+    key: 3,
+    title: 'Twitter',
+    url: 'https://twitter.com/trudeauhs',
+    iconName: 'twitter',
+  },
+  {
+    key: 4,
     title: 'Morning Music Suggestion',
     url: 'https://docs.google.com/forms/d/e/1FAIpQLSeA5vVyfYFa41ep5IIa-xdAoHaW6tcDL9xVY4grqhLyQz4Flg/viewform',
     iconName: 'music',

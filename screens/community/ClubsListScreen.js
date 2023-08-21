@@ -21,13 +21,13 @@ const ClubsList = () => {
   const [clubsParam, setClubsParam] = useState({ year: years[selectedYear] });
   const clubs = useSanityData(
     '*[_type == "club" && year == $year] | order(year desc, name)',
-    clubsParam
+    clubsParam,
   );
 
   let filteredClubs = null;
   if (clubs !== null) {
     filteredClubs = clubs.filter((club) =>
-      club.name.toLowerCase().includes(searchQuery.toLowerCase())
+      club.name.toLowerCase().includes(searchQuery.toLowerCase()),
     );
   }
 
@@ -59,7 +59,7 @@ const ClubsList = () => {
         <SearchBar
           value={searchQuery}
           onChangeText={setSearchQuery}
-          placeholder="Search for clubs..."
+          placeholder="Search for clubs"
         />
       </View>
 
