@@ -77,4 +77,10 @@ export const links = [
     url: 'https://docs.google.com/forms/d/e/1FAIpQLSeA5vVyfYFa41ep5IIa-xdAoHaW6tcDL9xVY4grqhLyQz4Flg/viewform',
     iconName: 'music',
   },
+  {
+    key: 5,
+    title: 'Grade Rep Suggestion',
+    url: 'https://docs.google.com/forms/d/1wXap6CLZUxFz25U-e5KVi0z_QXPZ2ZSF69Couq2HMUA/edit',
+    iconName: 'file-text',
+  },
 ];
