@@ -49,38 +49,38 @@ export const opportunities = [
 export const links = [
   {
     key: 0,
-    title: 'TSAC Instagram',
-    url: 'https://www.instagram.com/trudeausac/',
-    iconName: 'instagram',
-  },
-  {
-    key: 1,
-    title: 'Offical School Instagram',
-    url: 'https://www.instagram.com/trudeauhs/?hl=en',
-    iconName: 'instagram',
-  },
-  {
-    key: 2,
-    title: 'Youtube',
-    url: 'https://www.youtube.com/@TrudeauSac/videos',
-    iconName: 'youtube',
-  },
-  {
-    key: 3,
-    title: 'Twitter',
-    url: 'https://twitter.com/trudeauhs',
-    iconName: 'twitter',
-  },
-  {
-    key: 4,
     title: 'Morning Music Suggestion',
     url: 'https://docs.google.com/forms/d/e/1FAIpQLSeA5vVyfYFa41ep5IIa-xdAoHaW6tcDL9xVY4grqhLyQz4Flg/viewform',
     iconName: 'music',
   },
   {
-    key: 5,
+    key: 1,
     title: 'Grade Rep Suggestion',
     url: 'https://docs.google.com/forms/d/1wXap6CLZUxFz25U-e5KVi0z_QXPZ2ZSF69Couq2HMUA/edit',
     iconName: 'file-text',
+  },
+  {
+    key: 2,
+    title: 'TSAC Instagram',
+    url: 'https://www.instagram.com/trudeausac/',
+    iconName: 'instagram',
+  },
+  {
+    key: 3,
+    title: 'Offical School Instagram',
+    url: 'https://www.instagram.com/trudeauhs/?hl=en',
+    iconName: 'instagram',
+  },
+  {
+    key: 4,
+    title: 'Youtube',
+    url: 'https://www.youtube.com/@TrudeauSac/videos',
+    iconName: 'youtube',
+  },
+  {
+    key: 5,
+    title: 'Twitter',
+    url: 'https://twitter.com/trudeauhs',
+    iconName: 'twitter',
   },
 ];
